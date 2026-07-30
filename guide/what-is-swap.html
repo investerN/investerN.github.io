@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>スワップポイントとは｜仕組みと付与日数の考え方｜スワップサヤ取りウォッチ</title>
+<meta name="description" content="FXのスワップポイントがなぜ発生するのか、買いと売りで金額が違う理由、水曜や木曜に3日分がまとめて付く理由まで、初めての方向けに整理しました。">
+<link rel="canonical" href="https://investern.github.io/guide/what-is-swap.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="スワップサヤ取りウォッチ">
+<meta property="og:title" content="スワップポイントとは｜仕組みと付与日数の考え方｜スワップサヤ取りウォッチ">
+<meta property="og:description" content="FXのスワップポイントがなぜ発生するのか、買いと売りで金額が違う理由、水曜や木曜に3日分がまとめて付く理由まで、初めての方向けに整理しました。">
+<meta property="og:url" content="https://investern.github.io/guide/what-is-swap.html">
+<meta name="twitter:card" content="summary">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  color-scheme:light;
+  --plane:#f9f9f7; --surface:#fcfcfb; --surface-2:#f2f1ec;
+  --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
+  --line:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,.10);
+  --accent:#2a78d6; --accent-ink:#184f95;
+  --pos:#006300; --neg:#d03b3b;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a;
+  --radius:10px;
+  --wrap:1120px;
+}
+@media (prefers-color-scheme:dark){
+  :root:where(:not([data-theme="light"])){
+    color-scheme:dark;
+    --plane:#0d0d0d; --surface:#1a1a19; --surface-2:#232322;
+    --ink:#fff; --ink-2:#c3c2b7; --muted:#898781;
+    --line:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10);
+    --accent:#3987e5; --accent-ink:#86b6ef;
+    --pos:#0ca30c; --neg:#e66767;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --plane:#0d0d0d; --surface:#1a1a19; --surface-2:#232322;
+  --ink:#fff; --ink-2:#c3c2b7; --muted:#898781;
+  --line:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10);
+  --accent:#3987e5; --accent-ink:#86b6ef;
+  --pos:#0ca30c; --neg:#e66767;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--plane); color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI","Hiragino Sans","Noto Sans JP",sans-serif;
+  font-size:16px; line-height:1.75;
+}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--wrap); margin:0 auto; padding:0 20px}
+
+/* --- ヘッダ --- */
+.site-head{
+  position:sticky; top:0; z-index:40; background:var(--surface);
+  border-bottom:1px solid var(--border); backdrop-filter:saturate(1.4) blur(6px);
+}
+.head-in{display:flex; align-items:center; gap:18px; height:60px}
+.brand{font-weight:700; font-size:17px; color:var(--ink); letter-spacing:-.01em; white-space:nowrap}
+.brand:hover{text-decoration:none}
+.brand span{color:var(--accent)}
+.nav{display:flex; gap:2px; margin-left:auto; flex-wrap:wrap}
+.nav a{
+  color:var(--ink-2); font-size:14px; font-weight:500;
+  padding:7px 11px; border-radius:7px; white-space:nowrap;
+}
+.nav a:hover{background:var(--surface-2); color:var(--ink); text-decoration:none}
+.nav a[aria-current="page"]{background:var(--surface-2); color:var(--ink); font-weight:600}
+
+/* --- 見出し・本文 --- */
+main{padding:28px 0 56px}
+h1{font-size:29px; line-height:1.35; margin:0 0 6px; letter-spacing:-.02em}
+h2{font-size:21px; margin:38px 0 12px; letter-spacing:-.01em; scroll-margin-top:76px}
+h3{font-size:17px; margin:26px 0 8px}
+.lede{color:var(--ink-2); font-size:15px; margin:0 0 4px}
+.crumb{font-size:13px; color:var(--muted); margin:0 0 14px}
+.crumb a{color:var(--muted)}
+.stamp{font-size:13px; color:var(--muted); margin:10px 0 0}
+.prose p,.prose li{font-size:15.5px; color:var(--ink-2)}
+.prose h2{color:var(--ink)} .prose h3{color:var(--ink)}
+.prose strong{color:var(--ink)}
+.prose ul,.prose ol{padding-left:22px}
+.prose li{margin:6px 0}
+
+/* --- カード --- */
+.card{
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius); padding:18px 20px; margin:16px 0;
+}
+.grid{display:grid; gap:14px}
+@media(min-width:720px){ .grid.c2{grid-template-columns:1fr 1fr} .grid.c3{grid-template-columns:repeat(3,1fr)} }
+.tile{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px}
+.tile .k{font-size:12.5px; color:var(--muted); margin:0 0 2px}
+.tile .v{font-size:25px; font-weight:700; letter-spacing:-.02em; margin:0; line-height:1.25}
+.tile .s{font-size:12.5px; color:var(--ink-2); margin:2px 0 0}
+
+/* --- 表 --- */
+.tblwrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px}
+caption{text-align:left; font-size:13px; color:var(--muted); padding:10px 14px 0}
+th,td{padding:9px 12px; text-align:left; border-bottom:1px solid var(--line); white-space:nowrap}
+/* 表は .tblwrap（overflow-x:auto）の中にあるので、sticky の基準は
+   ビューポートではなくこの枠になる。top に 60px などを入れると
+   枠の上端から60px下がって1行目に重なるため、必ず 0 にする。 */
+thead th{
+  position:sticky; top:0; background:var(--surface-2); color:var(--ink-2);
+  font-size:12.5px; font-weight:600; z-index:5;
+}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:var(--surface-2)}
+td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
+.pos{color:var(--pos); font-weight:600}
+.neg{color:var(--neg); font-weight:600}
+.rank{color:var(--muted); font-variant-numeric:tabular-nums; width:1%}
+
+/* --- バッジ・注記 --- */
+.tag{
+  display:inline-block; font-size:11.5px; font-weight:600; padding:2px 8px;
+  border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border);
+}
+.note{
+  font-size:13.5px; color:var(--ink-2); background:var(--surface-2);
+  border-left:3px solid var(--axis); border-radius:0 8px 8px 0; padding:11px 14px; margin:14px 0;
+}
+.note strong{color:var(--ink)}
+
+/* --- チャート --- */
+figure{margin:16px 0}
+figure svg{display:block; width:100%; height:auto; background:var(--surface);
+  border:1px solid var(--border); border-radius:var(--radius)}
+figcaption{font-size:13px; color:var(--muted); margin-top:7px}
+.legend{display:flex; gap:16px; flex-wrap:wrap; font-size:13px; color:var(--ink-2); margin:9px 0 0}
+.legend i{display:inline-block; width:11px; height:11px; border-radius:3px; margin-right:6px; vertical-align:-1px}
+details.tbl{margin:9px 0 0}
+details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
+
+/* --- リンク一覧 --- */
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin:12px 0}
+.chips a{
+  font-size:13.5px; padding:5px 11px; border-radius:7px; background:var(--surface);
+  border:1px solid var(--border); color:var(--ink-2);
+}
+.chips a:hover{border-color:var(--accent); color:var(--accent); text-decoration:none}
+
+/* --- 広告枠 --- */
+.adslot{margin:26px 0; min-height:1px; text-align:center}
+.adslot::before{content:"広告"; display:block; font-size:11px; color:var(--muted); margin-bottom:4px}
+
+/* --- フッタ --- */
+.site-foot{border-top:1px solid var(--border); background:var(--surface); padding:26px 0 40px; margin-top:40px}
+.foot-grid{display:grid; gap:18px; font-size:13.5px}
+@media(min-width:720px){ .foot-grid{grid-template-columns:2fr 1fr 1fr} }
+.foot-grid h4{font-size:13px; color:var(--muted); margin:0 0 7px; font-weight:600}
+.foot-grid ul{list-style:none; margin:0; padding:0}
+.foot-grid li{margin:4px 0}
+.foot-grid a{color:var(--ink-2)}
+.copy{font-size:12.5px; color:var(--muted); margin:22px 0 0}
+.disclaim{font-size:12.5px; color:var(--muted); margin:10px 0 0; line-height:1.7}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://investern.github.io/"}, {"@type": "ListItem", "position": 2, "name": "解説", "item": "https://investern.github.io/guide/"}, {"@type": "ListItem", "position": 3, "name": "スワップポイントとは"}]}</script>
+
+
+</head>
+<body>
+<header class="site-head"><div class="wrap head-in">
+<a class="brand" href="/">スワップ<span>サヤ取り</span>ウォッチ</a>
+<nav class="nav"><a href="/">トップ</a><a href="/ranking/two-pair.html">2通貨のサヤ</a><a href="/ranking/triangle.html">3通貨のサヤ</a><a href="/swaps.html">スワップ一覧</a><a href="/pairs/">通貨ペア</a><a href="/brokers/">FX業者</a><a href="/guide/" aria-current="page">解説</a></nav>
+</div></header>
+
+<main><div class="wrap">
+<nav class="crumb"><a href="/">トップ</a> › <a href="/guide/">解説</a> › スワップポイントとは</nav>
+
+<h1>スワップポイントとは</h1>
+<p class="lede">2国間の金利差から生まれる調整額です。買いと売りで金額が違うこと、日によって付与日数が変わることを押さえると、業者間の比較ができるようになります。</p>
+
+<div class="prose">
+<h2>スワップポイントは「金利差の調整額」</h2>
+<p>FXの取引では、通貨を買うと同時にもう一方の通貨を売っています。たとえば米ドル/円を買うということは、
+円を売って米ドルを買っている状態です。このとき、売った通貨（円）については金利を支払い、
+買った通貨（米ドル）については金利を受け取る、という関係が生まれます。
+この受け払いの差額を日割りで調整したものがスワップポイントです。</p>
+
+<p>ポジションを翌営業日まで持ち越した（ロールオーバーした）ときに発生し、
+その日のうちに決済してしまえば発生しません。日をまたいで保有し続ける限り、毎営業日ごとに積み上がっていきます。</p>
+
+<p>金利の高い通貨を買って金利の低い通貨を売れば受け取りになり、その逆なら支払いになります。
+低金利が長く続いた円を売る側に置く取引（円売り）で受け取りが発生しやすいのは、この構造によるものです。</p>
+
+<h2>買いと売りで金額が一致しない理由</h2>
+<p>理論上の金利差だけで決まるなら、同じ通貨ペアの買いスワップと売りスワップは
+符号が逆で絶対値が同じになるはずです。しかし実際の掲載値を見ると、たとえば買いが
+「+120円」でも売りは「−150円」というように、支払い側のほうが負担が大きくなっているのが普通です。</p>
+
+<p>これは、業者がカバー先の金融機関から調達したスワップに自社の取り分を上乗せしているためです。
+上乗せ幅は業者ごとに違い、同じ通貨ペア・同じ日でも会社によって受取額・支払額に差が出ます。
+<strong>この差こそが、業者間のサヤが生まれる直接の原因</strong>です。</p>
+
+<p>本サイトの<a href="/swaps.html">スワップ一覧</a>では、同じ日・同じ通貨ペアについて各社の掲載値を
+横並びにしているので、上乗せ幅の違いがそのまま見て取れます。</p>
+
+<h2>付与日数：3日分がまとめて付く日がある</h2>
+<p>スワップポイントの掲載表には「付与日数」という欄があります。ここが1のときは1日分、
+3のときは3日分がまとめて付与されます。金額も日数に応じて約3倍になります。</p>
+
+<p>3日分がまとめて付く日が生まれるのは、外国為替の決済が実際に資金が動く日（バリューデート）を
+基準にしているためです。土日は銀行が動かないため、週末をまたぐ分が特定の曜日にまとめて計上されます。
+何曜日にまとまるかは通貨ペアの決済慣行によって変わり、また各社の取り扱いによっても差があります。</p>
+
+<div class="note"><strong>比較するときの注意：</strong>
+同じ日の掲載値でも、A社が3日分・B社が1日分を表示していることがあります。
+金額だけを見比べると3倍の差があるように見えてしまうため、必ず付与日数もあわせて確認してください。
+本サイトでは、掲載値を<strong>すべて1万通貨・1日あたりに換算</strong>してから比較しています。</div>
+
+<h2>通貨単位の違いにも注意</h2>
+<p>スワップポイントを「1万通貨あたり」で掲載している業者が多い一方、
+1千通貨あたりで掲載している業者、南アフリカランド円やメキシコペソ円など一部の通貨ペアだけ
+10万通貨あたりで掲載している業者もあります。</p>
+
+<p>掲載単位が違うまま数字を並べると、10倍・100倍の差があるように誤解します。
+本サイトでは各社の掲載単位を個別に持っておき、換算した上で一覧にしています。
+詳しい手順は<a href="/guide/methodology.html">データの集め方と検証</a>にまとめました。</p>
+
+<h2>スワップは固定ではない</h2>
+<p>スワップポイントは各国の政策金利や市場金利を反映して日々変わります。
+政策金利が据え置かれていても、市場の資金需給や期末・年末などの要因で動くことがあります。</p>
+
+<p>とくに注意したいのは、<strong>受け取りだったものが支払いに転じることがある</strong>点です。
+金利差が縮まったり逆転したりすれば、当然スワップの符号も変わります。
+今日の数字が来月も続く前提で計画を立てるのは危険です。</p>
+
+<p>本サイトでは、通貨ペアごとのページで過去の推移をグラフにしています。
+今の水準が過去と比べて高いのか低いのか、変動が激しい通貨ペアなのかを確かめてから判断してください。</p>
+</div>
+
+<h2>関連する解説</h2>
+<div class="chips">
+<a href="/guide/swap-arbitrage.html">スワップのサヤ取りとは</a><a href="/guide/how-to-read.html">このサイトの数字の読み方</a><a href="/guide/risks.html">スワップのサヤ取りのリスクと注意点</a><a href="/guide/methodology.html">データの集め方と検証の方法</a><a href="/guide/glossary.html">FXスワップ関連の用語集</a>
+</div>
+
+
+</div></main>
+
+<footer class="site-foot"><div class="wrap">
+<div class="foot-grid">
+<div>
+  <h4>スワップサヤ取りウォッチ</h4>
+  <p style="margin:0;color:var(--ink-2)">国内FX23社のスワップポイントを毎日自動収集し、業者間のサヤを検証付きで公開</p>
+</div>
+<div><h4>サイトについて</h4><ul><li><a href="/about.html">このサイトについて</a></li><li><a href="/guide/methodology.html">データの集め方と検証</a></li><li><a href="/contact.html">お問い合わせ</a></li></ul></div><div><h4>解説</h4><ul><li><a href="/guide/what-is-swap.html">スワップポイントとは</a></li><li><a href="/guide/swap-arbitrage.html">サヤ取りの仕組み</a></li><li><a href="/guide/risks.html">リスクと注意点</a></li><li><a href="/guide/glossary.html">用語集</a></li></ul></div><div><h4>規約</h4><ul><li><a href="/privacy.html">プライバシーポリシー</a></li><li><a href="/disclaimer.html">免責事項</a></li></ul></div>
+</div>
+<p class="disclaim">本サイトは各FX業者が公表している情報を自動収集して掲載する情報提供サイトであり、特定の金融商品の売買を推奨するものではありません。掲載内容の正確性・完全性を保証するものではなく、本サイトの情報に基づく判断・行動により生じた損害について一切の責任を負いません。実際の取引にあたっては必ず各業者の公式サイトで最新の条件をご確認ください。</p>
+<p class="copy">© スワップサヤ取りウォッチ</p>
+</div></footer>
+</body>
+</html>

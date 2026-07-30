@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FX業者一覧｜スワップサヤ取りウォッチ</title>
+<meta name="description" content="国内FX各社のスワップポイントを収集し、業者ごとの取扱通貨ペアと条件をまとめたページの一覧です。">
+<link rel="canonical" href="https://investern.github.io/brokers/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="スワップサヤ取りウォッチ">
+<meta property="og:title" content="FX業者一覧｜スワップサヤ取りウォッチ">
+<meta property="og:description" content="国内FX各社のスワップポイントを収集し、業者ごとの取扱通貨ペアと条件をまとめたページの一覧です。">
+<meta property="og:url" content="https://investern.github.io/brokers/">
+<meta name="twitter:card" content="summary">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  color-scheme:light;
+  --plane:#f9f9f7; --surface:#fcfcfb; --surface-2:#f2f1ec;
+  --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
+  --line:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,.10);
+  --accent:#2a78d6; --accent-ink:#184f95;
+  --pos:#006300; --neg:#d03b3b;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a;
+  --radius:10px;
+  --wrap:1120px;
+}
+@media (prefers-color-scheme:dark){
+  :root:where(:not([data-theme="light"])){
+    color-scheme:dark;
+    --plane:#0d0d0d; --surface:#1a1a19; --surface-2:#232322;
+    --ink:#fff; --ink-2:#c3c2b7; --muted:#898781;
+    --line:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10);
+    --accent:#3987e5; --accent-ink:#86b6ef;
+    --pos:#0ca30c; --neg:#e66767;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --plane:#0d0d0d; --surface:#1a1a19; --surface-2:#232322;
+  --ink:#fff; --ink-2:#c3c2b7; --muted:#898781;
+  --line:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10);
+  --accent:#3987e5; --accent-ink:#86b6ef;
+  --pos:#0ca30c; --neg:#e66767;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--plane); color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI","Hiragino Sans","Noto Sans JP",sans-serif;
+  font-size:16px; line-height:1.75;
+}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--wrap); margin:0 auto; padding:0 20px}
+
+/* --- ヘッダ --- */
+.site-head{
+  position:sticky; top:0; z-index:40; background:var(--surface);
+  border-bottom:1px solid var(--border); backdrop-filter:saturate(1.4) blur(6px);
+}
+.head-in{display:flex; align-items:center; gap:18px; height:60px}
+.brand{font-weight:700; font-size:17px; color:var(--ink); letter-spacing:-.01em; white-space:nowrap}
+.brand:hover{text-decoration:none}
+.brand span{color:var(--accent)}
+.nav{display:flex; gap:2px; margin-left:auto; flex-wrap:wrap}
+.nav a{
+  color:var(--ink-2); font-size:14px; font-weight:500;
+  padding:7px 11px; border-radius:7px; white-space:nowrap;
+}
+.nav a:hover{background:var(--surface-2); color:var(--ink); text-decoration:none}
+.nav a[aria-current="page"]{background:var(--surface-2); color:var(--ink); font-weight:600}
+
+/* --- 見出し・本文 --- */
+main{padding:28px 0 56px}
+h1{font-size:29px; line-height:1.35; margin:0 0 6px; letter-spacing:-.02em}
+h2{font-size:21px; margin:38px 0 12px; letter-spacing:-.01em; scroll-margin-top:76px}
+h3{font-size:17px; margin:26px 0 8px}
+.lede{color:var(--ink-2); font-size:15px; margin:0 0 4px}
+.crumb{font-size:13px; color:var(--muted); margin:0 0 14px}
+.crumb a{color:var(--muted)}
+.stamp{font-size:13px; color:var(--muted); margin:10px 0 0}
+.prose p,.prose li{font-size:15.5px; color:var(--ink-2)}
+.prose h2{color:var(--ink)} .prose h3{color:var(--ink)}
+.prose strong{color:var(--ink)}
+.prose ul,.prose ol{padding-left:22px}
+.prose li{margin:6px 0}
+
+/* --- カード --- */
+.card{
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius); padding:18px 20px; margin:16px 0;
+}
+.grid{display:grid; gap:14px}
+@media(min-width:720px){ .grid.c2{grid-template-columns:1fr 1fr} .grid.c3{grid-template-columns:repeat(3,1fr)} }
+.tile{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px}
+.tile .k{font-size:12.5px; color:var(--muted); margin:0 0 2px}
+.tile .v{font-size:25px; font-weight:700; letter-spacing:-.02em; margin:0; line-height:1.25}
+.tile .s{font-size:12.5px; color:var(--ink-2); margin:2px 0 0}
+
+/* --- 表 --- */
+.tblwrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px}
+caption{text-align:left; font-size:13px; color:var(--muted); padding:10px 14px 0}
+th,td{padding:9px 12px; text-align:left; border-bottom:1px solid var(--line); white-space:nowrap}
+/* 表は .tblwrap（overflow-x:auto）の中にあるので、sticky の基準は
+   ビューポートではなくこの枠になる。top に 60px などを入れると
+   枠の上端から60px下がって1行目に重なるため、必ず 0 にする。 */
+thead th{
+  position:sticky; top:0; background:var(--surface-2); color:var(--ink-2);
+  font-size:12.5px; font-weight:600; z-index:5;
+}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:var(--surface-2)}
+td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
+.pos{color:var(--pos); font-weight:600}
+.neg{color:var(--neg); font-weight:600}
+.rank{color:var(--muted); font-variant-numeric:tabular-nums; width:1%}
+
+/* --- バッジ・注記 --- */
+.tag{
+  display:inline-block; font-size:11.5px; font-weight:600; padding:2px 8px;
+  border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border);
+}
+.note{
+  font-size:13.5px; color:var(--ink-2); background:var(--surface-2);
+  border-left:3px solid var(--axis); border-radius:0 8px 8px 0; padding:11px 14px; margin:14px 0;
+}
+.note strong{color:var(--ink)}
+
+/* --- チャート --- */
+figure{margin:16px 0}
+figure svg{display:block; width:100%; height:auto; background:var(--surface);
+  border:1px solid var(--border); border-radius:var(--radius)}
+figcaption{font-size:13px; color:var(--muted); margin-top:7px}
+.legend{display:flex; gap:16px; flex-wrap:wrap; font-size:13px; color:var(--ink-2); margin:9px 0 0}
+.legend i{display:inline-block; width:11px; height:11px; border-radius:3px; margin-right:6px; vertical-align:-1px}
+details.tbl{margin:9px 0 0}
+details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
+
+/* --- リンク一覧 --- */
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin:12px 0}
+.chips a{
+  font-size:13.5px; padding:5px 11px; border-radius:7px; background:var(--surface);
+  border:1px solid var(--border); color:var(--ink-2);
+}
+.chips a:hover{border-color:var(--accent); color:var(--accent); text-decoration:none}
+
+/* --- 広告枠 --- */
+.adslot{margin:26px 0; min-height:1px; text-align:center}
+.adslot::before{content:"広告"; display:block; font-size:11px; color:var(--muted); margin-bottom:4px}
+
+/* --- フッタ --- */
+.site-foot{border-top:1px solid var(--border); background:var(--surface); padding:26px 0 40px; margin-top:40px}
+.foot-grid{display:grid; gap:18px; font-size:13.5px}
+@media(min-width:720px){ .foot-grid{grid-template-columns:2fr 1fr 1fr} }
+.foot-grid h4{font-size:13px; color:var(--muted); margin:0 0 7px; font-weight:600}
+.foot-grid ul{list-style:none; margin:0; padding:0}
+.foot-grid li{margin:4px 0}
+.foot-grid a{color:var(--ink-2)}
+.copy{font-size:12.5px; color:var(--muted); margin:22px 0 0}
+.disclaim{font-size:12.5px; color:var(--muted); margin:10px 0 0; line-height:1.7}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://investern.github.io/"}, {"@type": "ListItem", "position": 2, "name": "FX業者"}]}</script>
+
+
+</head>
+<body>
+<header class="site-head"><div class="wrap head-in">
+<a class="brand" href="/">スワップ<span>サヤ取り</span>ウォッチ</a>
+<nav class="nav"><a href="/">トップ</a><a href="/ranking/two-pair.html">2通貨のサヤ</a><a href="/ranking/triangle.html">3通貨のサヤ</a><a href="/swaps.html">スワップ一覧</a><a href="/pairs/">通貨ペア</a><a href="/brokers/" aria-current="page">FX業者</a><a href="/guide/">解説</a></nav>
+</div></header>
+
+<main><div class="wrap">
+<nav class="crumb"><a href="/">トップ</a> › FX業者</nav>
+
+<h1>FX業者別のスワップポイント</h1>
+<p class="lede">本サイトが収集している国内FX業者の一覧です。取扱通貨ペア数と、
+その業者で買いスワップが最も高い通貨ペアを表示しています。</p>
+
+<div class="tblwrap"><table>
+<caption>2026年7月29日（水）時点で値を取得できた業者。</caption>
+<thead><tr><th>FX業者</th><th class="num">取扱ペア数</th>
+<th>買いが最も高いペア</th><th class="num">その買スワップ</th><th>公式</th></tr></thead>
+<tbody><tr><td><a href="/brokers/saxobank.html"><strong>サクソバンク証券</strong></a></td><td class="num">152</td><td>GBP/CHF</td><td class="num pos">+150.22</td><td><a href="https://cdn-storage.saxobank.com/jp/swappoint/swappoint-weekly.pdf" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/ig-shoken.html"><strong>IG証券</strong></a></td><td class="num">100</td><td>GBP/CHF</td><td class="num pos">+122.17</td><td><a href="https://www.ig.com/jp/forex/swap-point" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/hirose-fx.html"><strong>ヒロセ通商</strong></a></td><td class="num">53</td><td>GBP/CHF</td><td class="num pos">+180.00</td><td><a href="https://hirose-fx.co.jp/contents/news/Swap" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/jfx.html"><strong>JFX</strong></a></td><td class="num">41</td><td>GBP/CHF</td><td class="num pos">+180.00</td><td><a href="https://www.jfx.co.jp/trading_rule/swap/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/gaitame-com.html"><strong>外為どっとコム</strong></a></td><td class="num">41</td><td>GBP/CHF</td><td class="num pos">+179.00</td><td><a href="https://www.gaitame.com/service/fx/swap-cal.html?pair=audcad" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/rakuten-fx.html"><strong>楽天FX</strong></a></td><td class="num">37</td><td>GBP/JPY</td><td class="num pos">+162.00</td><td><a href="https://www.rakuten-sec.co.jp/web/fx/spread_swap/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/invast-shoken.html"><strong>インヴァスト証券</strong></a></td><td class="num">36</td><td>GBP/JPY</td><td class="num pos">+180.00</td><td><a href="https://www.invast.jp/triauto/market/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/matsui-shoken.html"><strong>松井証券FX</strong></a></td><td class="num">31</td><td>GBP/CHF</td><td class="num pos">+185.00</td><td><a href="https://www.matsui.co.jp/fx/market/swappoint/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/fxtf.html"><strong>FXTF</strong></a></td><td class="num">29</td><td>GBP/CHF</td><td class="num pos">+179.00</td><td><a href="https://www.fxtrade.co.jp/pdf/swap_templete.pdf" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/okasan-online.html"><strong>岡三オンライン</strong></a></td><td class="num">28</td><td>GBP/CHF</td><td class="num pos">+227.92</td><td><a href="https://www.okasan-online.co.jp/fx/swap_calender/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/central-tanshi.html"><strong>セントラル短資FX</strong></a></td><td class="num">27</td><td>GBP/CHF</td><td class="num pos">+221.80</td><td><a href="https://www.central-tanshifx.com/market/swapcalendar/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/gaitame-online.html"><strong>外為オンライン</strong></a></td><td class="num">25</td><td>GBP/CHF</td><td class="num pos">+210.00</td><td><a href="https://www.gaitameonline.com/dealings.jsp" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/fx-broadnet.html"><strong>FXブロードネット</strong></a></td><td class="num">24</td><td>GBP/CHF</td><td class="num pos">+201.00</td><td><a href="https://www.fxbroadnet.com/swap.jsp" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/gmo-gaika.html"><strong>GMO外貨</strong></a></td><td class="num">24</td><td>GBP/CHF</td><td class="num pos">+193.00</td><td><a href="https://www.gaikaex.com/gaikaex/mark/swap/calendar.php" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/inet-shoken.html"><strong>アイネット証券</strong></a></td><td class="num">24</td><td>GBP/CHF</td><td class="num pos">+210.00</td><td><a href="https://inet-sec.co.jp/study/fx-guide/swap-point/#nowswap" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/phillip-shoken.html"><strong>フィリップ証券</strong></a></td><td class="num">24</td><td>GBP/CHF</td><td class="num pos">+143.30</td><td><a href="https://www.phillip.co.jp/fx/swap/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/dmm-fx.html"><strong>DMM FX</strong></a></td><td class="num">23</td><td>GBP/CHF</td><td class="num pos">+202.00</td><td><a href="https://fx.dmm.com/fx/service/swapcalendar/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/gmo-click.html"><strong>GMOクリック証券</strong></a></td><td class="num">20</td><td>GBP/CHF</td><td class="num pos">+209.00</td><td><a href="https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&amp;month=07&amp;pare=AUDJPY" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/sbi-fxtrade.html"><strong>SBI FXトレード</strong></a></td><td class="num">17</td><td>GBP/JPY</td><td class="num pos">+170.00</td><td><a href="https://www.sbifxt.co.jp/market/swap_calendar.html" rel="nofollow noopener" target="_blank">公式</a></td></tr></tbody></table></div>
+<div class="note">各社のページ構造の変更などにより、一時的に値を取得できない日があります。
+その場合、その業者はこの一覧に現れません。掲載の有無は業者の評価とは無関係です。</div>
+
+
+</div></main>
+
+<footer class="site-foot"><div class="wrap">
+<div class="foot-grid">
+<div>
+  <h4>スワップサヤ取りウォッチ</h4>
+  <p style="margin:0;color:var(--ink-2)">国内FX23社のスワップポイントを毎日自動収集し、業者間のサヤを検証付きで公開</p>
+</div>
+<div><h4>サイトについて</h4><ul><li><a href="/about.html">このサイトについて</a></li><li><a href="/guide/methodology.html">データの集め方と検証</a></li><li><a href="/contact.html">お問い合わせ</a></li></ul></div><div><h4>解説</h4><ul><li><a href="/guide/what-is-swap.html">スワップポイントとは</a></li><li><a href="/guide/swap-arbitrage.html">サヤ取りの仕組み</a></li><li><a href="/guide/risks.html">リスクと注意点</a></li><li><a href="/guide/glossary.html">用語集</a></li></ul></div><div><h4>規約</h4><ul><li><a href="/privacy.html">プライバシーポリシー</a></li><li><a href="/disclaimer.html">免責事項</a></li></ul></div>
+</div>
+<p class="disclaim">本サイトは各FX業者が公表している情報を自動収集して掲載する情報提供サイトであり、特定の金融商品の売買を推奨するものではありません。掲載内容の正確性・完全性を保証するものではなく、本サイトの情報に基づく判断・行動により生じた損害について一切の責任を負いません。実際の取引にあたっては必ず各業者の公式サイトで最新の条件をご確認ください。</p>
+<p class="copy">© スワップサヤ取りウォッチ</p>
+</div></footer>
+</body>
+</html>

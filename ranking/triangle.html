@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3通貨のサヤ一覧（7/29）｜スワップサヤ取りウォッチ</title>
+<meta name="description" content="3つの通貨ペアを組み合わせて為替リスクを相殺し、スワップの合計を狙う組み合わせを、各脚の業者・売買方向・必要ロット数まで掲載しています。">
+<link rel="canonical" href="https://investern.github.io/ranking/triangle.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="スワップサヤ取りウォッチ">
+<meta property="og:title" content="3通貨のサヤ一覧（7/29）｜スワップサヤ取りウォッチ">
+<meta property="og:description" content="3つの通貨ペアを組み合わせて為替リスクを相殺し、スワップの合計を狙う組み合わせを、各脚の業者・売買方向・必要ロット数まで掲載しています。">
+<meta property="og:url" content="https://investern.github.io/ranking/triangle.html">
+<meta name="twitter:card" content="summary">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  color-scheme:light;
+  --plane:#f9f9f7; --surface:#fcfcfb; --surface-2:#f2f1ec;
+  --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
+  --line:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,.10);
+  --accent:#2a78d6; --accent-ink:#184f95;
+  --pos:#006300; --neg:#d03b3b;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a;
+  --radius:10px;
+  --wrap:1120px;
+}
+@media (prefers-color-scheme:dark){
+  :root:where(:not([data-theme="light"])){
+    color-scheme:dark;
+    --plane:#0d0d0d; --surface:#1a1a19; --surface-2:#232322;
+    --ink:#fff; --ink-2:#c3c2b7; --muted:#898781;
+    --line:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10);
+    --accent:#3987e5; --accent-ink:#86b6ef;
+    --pos:#0ca30c; --neg:#e66767;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --plane:#0d0d0d; --surface:#1a1a19; --surface-2:#232322;
+  --ink:#fff; --ink-2:#c3c2b7; --muted:#898781;
+  --line:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10);
+  --accent:#3987e5; --accent-ink:#86b6ef;
+  --pos:#0ca30c; --neg:#e66767;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--plane); color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI","Hiragino Sans","Noto Sans JP",sans-serif;
+  font-size:16px; line-height:1.75;
+}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--wrap); margin:0 auto; padding:0 20px}
+
+/* --- ヘッダ --- */
+.site-head{
+  position:sticky; top:0; z-index:40; background:var(--surface);
+  border-bottom:1px solid var(--border); backdrop-filter:saturate(1.4) blur(6px);
+}
+.head-in{display:flex; align-items:center; gap:18px; height:60px}
+.brand{font-weight:700; font-size:17px; color:var(--ink); letter-spacing:-.01em; white-space:nowrap}
+.brand:hover{text-decoration:none}
+.brand span{color:var(--accent)}
+.nav{display:flex; gap:2px; margin-left:auto; flex-wrap:wrap}
+.nav a{
+  color:var(--ink-2); font-size:14px; font-weight:500;
+  padding:7px 11px; border-radius:7px; white-space:nowrap;
+}
+.nav a:hover{background:var(--surface-2); color:var(--ink); text-decoration:none}
+.nav a[aria-current="page"]{background:var(--surface-2); color:var(--ink); font-weight:600}
+
+/* --- 見出し・本文 --- */
+main{padding:28px 0 56px}
+h1{font-size:29px; line-height:1.35; margin:0 0 6px; letter-spacing:-.02em}
+h2{font-size:21px; margin:38px 0 12px; letter-spacing:-.01em; scroll-margin-top:76px}
+h3{font-size:17px; margin:26px 0 8px}
+.lede{color:var(--ink-2); font-size:15px; margin:0 0 4px}
+.crumb{font-size:13px; color:var(--muted); margin:0 0 14px}
+.crumb a{color:var(--muted)}
+.stamp{font-size:13px; color:var(--muted); margin:10px 0 0}
+.prose p,.prose li{font-size:15.5px; color:var(--ink-2)}
+.prose h2{color:var(--ink)} .prose h3{color:var(--ink)}
+.prose strong{color:var(--ink)}
+.prose ul,.prose ol{padding-left:22px}
+.prose li{margin:6px 0}
+
+/* --- カード --- */
+.card{
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius); padding:18px 20px; margin:16px 0;
+}
+.grid{display:grid; gap:14px}
+@media(min-width:720px){ .grid.c2{grid-template-columns:1fr 1fr} .grid.c3{grid-template-columns:repeat(3,1fr)} }
+.tile{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px}
+.tile .k{font-size:12.5px; color:var(--muted); margin:0 0 2px}
+.tile .v{font-size:25px; font-weight:700; letter-spacing:-.02em; margin:0; line-height:1.25}
+.tile .s{font-size:12.5px; color:var(--ink-2); margin:2px 0 0}
+
+/* --- 表 --- */
+.tblwrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px}
+caption{text-align:left; font-size:13px; color:var(--muted); padding:10px 14px 0}
+th,td{padding:9px 12px; text-align:left; border-bottom:1px solid var(--line); white-space:nowrap}
+/* 表は .tblwrap（overflow-x:auto）の中にあるので、sticky の基準は
+   ビューポートではなくこの枠になる。top に 60px などを入れると
+   枠の上端から60px下がって1行目に重なるため、必ず 0 にする。 */
+thead th{
+  position:sticky; top:0; background:var(--surface-2); color:var(--ink-2);
+  font-size:12.5px; font-weight:600; z-index:5;
+}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:var(--surface-2)}
+td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
+.pos{color:var(--pos); font-weight:600}
+.neg{color:var(--neg); font-weight:600}
+.rank{color:var(--muted); font-variant-numeric:tabular-nums; width:1%}
+
+/* --- バッジ・注記 --- */
+.tag{
+  display:inline-block; font-size:11.5px; font-weight:600; padding:2px 8px;
+  border-radius:999px; background:var(--surface-2); color:var(--ink-2); border:1px solid var(--border);
+}
+.note{
+  font-size:13.5px; color:var(--ink-2); background:var(--surface-2);
+  border-left:3px solid var(--axis); border-radius:0 8px 8px 0; padding:11px 14px; margin:14px 0;
+}
+.note strong{color:var(--ink)}
+
+/* --- チャート --- */
+figure{margin:16px 0}
+figure svg{display:block; width:100%; height:auto; background:var(--surface);
+  border:1px solid var(--border); border-radius:var(--radius)}
+figcaption{font-size:13px; color:var(--muted); margin-top:7px}
+.legend{display:flex; gap:16px; flex-wrap:wrap; font-size:13px; color:var(--ink-2); margin:9px 0 0}
+.legend i{display:inline-block; width:11px; height:11px; border-radius:3px; margin-right:6px; vertical-align:-1px}
+details.tbl{margin:9px 0 0}
+details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
+
+/* --- リンク一覧 --- */
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin:12px 0}
+.chips a{
+  font-size:13.5px; padding:5px 11px; border-radius:7px; background:var(--surface);
+  border:1px solid var(--border); color:var(--ink-2);
+}
+.chips a:hover{border-color:var(--accent); color:var(--accent); text-decoration:none}
+
+/* --- 広告枠 --- */
+.adslot{margin:26px 0; min-height:1px; text-align:center}
+.adslot::before{content:"広告"; display:block; font-size:11px; color:var(--muted); margin-bottom:4px}
+
+/* --- フッタ --- */
+.site-foot{border-top:1px solid var(--border); background:var(--surface); padding:26px 0 40px; margin-top:40px}
+.foot-grid{display:grid; gap:18px; font-size:13.5px}
+@media(min-width:720px){ .foot-grid{grid-template-columns:2fr 1fr 1fr} }
+.foot-grid h4{font-size:13px; color:var(--muted); margin:0 0 7px; font-weight:600}
+.foot-grid ul{list-style:none; margin:0; padding:0}
+.foot-grid li{margin:4px 0}
+.foot-grid a{color:var(--ink-2)}
+.copy{font-size:12.5px; color:var(--muted); margin:22px 0 0}
+.disclaim{font-size:12.5px; color:var(--muted); margin:10px 0 0; line-height:1.7}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://investern.github.io/"}, {"@type": "ListItem", "position": 2, "name": "3通貨のサヤ"}]}</script>
+
+
+</head>
+<body>
+<header class="site-head"><div class="wrap head-in">
+<a class="brand" href="/">スワップ<span>サヤ取り</span>ウォッチ</a>
+<nav class="nav"><a href="/">トップ</a><a href="/ranking/two-pair.html">2通貨のサヤ</a><a href="/ranking/triangle.html" aria-current="page">3通貨のサヤ</a><a href="/swaps.html">スワップ一覧</a><a href="/pairs/">通貨ペア</a><a href="/brokers/">FX業者</a><a href="/guide/">解説</a></nav>
+</div></header>
+
+<main><div class="wrap">
+<nav class="crumb"><a href="/">トップ</a> › 3通貨のサヤ</nav>
+
+<h1>3通貨のサヤ 上位30件</h1>
+<p class="lede">3つの通貨ペアを組み合わせて為替リスクを相殺し、スワップの合計を狙う形です。</p>
+
+<div class="note"><strong>2通貨の形との違い：</strong>
+同じ通貨ペアを扱う業者同士でしか組めない2通貨の形と違い、
+3通貨なら「この業者はこの通貨ペアだけ条件が良い」という部分をつなげられます。
+反面、取引が3本になるのでスプレッドの負担が増え、
+ロット数の端数調整やロスカット管理も複雑になります。</div>
+
+<div class="card">
+<h3 style="margin-top:0">1. CHF/JPY/MXN
+<span class="tag" style="margin-left:6px">合計 +303.85円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>CHF/JPY</td><td>買</td><td class="num">1.0000</td><td>GMO外貨</td><td class="num neg">-20.00</td><td class="num">60.00円</td></tr><tr><td>CHF/MXN</td><td>売</td><td class="num">1.0000</td><td>インヴァスト証券</td><td class="num pos">+360.00</td><td class="num">不明</td></tr><tr><td>MXN/JPY</td><td>売</td><td class="num">21.2637</td><td>SBI FXトレード</td><td class="num neg">-36.15</td><td class="num">382.75円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">2. CHF/JPY/MXN
+<span class="tag" style="margin-left:6px">合計 +303.85円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>CHF/MXN</td><td>売</td><td class="num">1.0000</td><td>インヴァスト証券</td><td class="num pos">+360.00</td><td class="num">不明</td></tr><tr><td>CHF/JPY</td><td>買</td><td class="num">1.0000</td><td>GMO外貨</td><td class="num neg">-20.00</td><td class="num">60.00円</td></tr><tr><td>MXN/JPY</td><td>売</td><td class="num">21.2637</td><td>SBI FXトレード</td><td class="num neg">-36.15</td><td class="num">382.75円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">3. CHF/JPY/MXN
+<span class="tag" style="margin-left:6px">合計 +303.85円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>CHF/MXN</td><td>売</td><td class="num">1.0000</td><td>インヴァスト証券</td><td class="num pos">+360.00</td><td class="num">不明</td></tr><tr><td>MXN/JPY</td><td>売</td><td class="num">21.2637</td><td>SBI FXトレード</td><td class="num neg">-36.15</td><td class="num">382.75円</td></tr><tr><td>CHF/JPY</td><td>買</td><td class="num">1.0000</td><td>GMO外貨</td><td class="num neg">-20.00</td><td class="num">60.00円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">4. EUR/JPY/PLN
+<span class="tag" style="margin-left:6px">合計 +155.89円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>EUR/JPY</td><td>売</td><td class="num">1.0000</td><td>岡三オンライン</td><td class="num neg">-77.00</td><td class="num">不明</td></tr><tr><td>EUR/PLN</td><td>買</td><td class="num">1.0000</td><td>インヴァスト証券</td><td class="num neg">-70.00</td><td class="num">1,121.56円</td></tr><tr><td>PLN/JPY</td><td>買</td><td class="num">4.3271</td><td>GMOクリック証券</td><td class="num pos">+302.89</td><td class="num">1,211.58円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">5. EUR/JPY/PLN
+<span class="tag" style="margin-left:6px">合計 +155.89円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>EUR/PLN</td><td>買</td><td class="num">1.0000</td><td>インヴァスト証券</td><td class="num neg">-70.00</td><td class="num">1,121.56円</td></tr><tr><td>EUR/JPY</td><td>売</td><td class="num">1.0000</td><td>岡三オンライン</td><td class="num neg">-77.00</td><td class="num">不明</td></tr><tr><td>PLN/JPY</td><td>買</td><td class="num">4.3271</td><td>GMOクリック証券</td><td class="num pos">+302.89</td><td class="num">1,211.58円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">6. EUR/JPY/PLN
+<span class="tag" style="margin-left:6px">合計 +155.89円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>EUR/PLN</td><td>買</td><td class="num">1.0000</td><td>インヴァスト証券</td><td class="num neg">-70.00</td><td class="num">1,121.56円</td></tr><tr><td>PLN/JPY</td><td>買</td><td class="num">4.3271</td><td>GMOクリック証券</td><td class="num pos">+302.89</td><td class="num">1,211.58円</td></tr><tr><td>EUR/JPY</td><td>売</td><td class="num">1.0000</td><td>岡三オンライン</td><td class="num neg">-77.00</td><td class="num">不明</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">7. GBP/JPY/USD
+<span class="tag" style="margin-left:6px">合計 +69.30円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 521.98円 ／ 利益化目安 8日</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>GBP/JPY</td><td>売</td><td class="num">1.0000</td><td>松井証券FX</td><td class="num neg">-165.00</td><td class="num">50.00円</td></tr><tr><td>GBP/USD</td><td>買</td><td class="num">1.0000</td><td>外為オンライン</td><td class="num pos">+15.00</td><td class="num">458.68円</td></tr><tr><td>USD/JPY</td><td>買</td><td class="num">1.3291</td><td>GMO外貨</td><td class="num pos">+219.30</td><td class="num">13.29円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">8. GBP/JPY/USD
+<span class="tag" style="margin-left:6px">合計 +69.30円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 521.98円 ／ 利益化目安 8日</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>GBP/USD</td><td>買</td><td class="num">1.0000</td><td>外為オンライン</td><td class="num pos">+15.00</td><td class="num">458.68円</td></tr><tr><td>GBP/JPY</td><td>売</td><td class="num">1.0000</td><td>松井証券FX</td><td class="num neg">-165.00</td><td class="num">50.00円</td></tr><tr><td>USD/JPY</td><td>買</td><td class="num">1.3291</td><td>GMO外貨</td><td class="num pos">+219.30</td><td class="num">13.29円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">9. GBP/JPY/USD
+<span class="tag" style="margin-left:6px">合計 +69.30円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 521.98円 ／ 利益化目安 8日</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>GBP/USD</td><td>買</td><td class="num">1.0000</td><td>外為オンライン</td><td class="num pos">+15.00</td><td class="num">458.68円</td></tr><tr><td>USD/JPY</td><td>買</td><td class="num">1.3291</td><td>GMO外貨</td><td class="num pos">+219.30</td><td class="num">13.29円</td></tr><tr><td>GBP/JPY</td><td>売</td><td class="num">1.0000</td><td>松井証券FX</td><td class="num neg">-165.00</td><td class="num">50.00円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">10. CNH/JPY/USD
+<span class="tag" style="margin-left:6px">合計 +59.92円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>USD/CNH</td><td>売</td><td class="num">1.0000</td><td>外為どっとコム</td><td class="num neg">-78.00</td><td class="num">不明</td></tr><tr><td>CNH/JPY</td><td>売</td><td class="num">6.7707</td><td>GMO外貨</td><td class="num neg">-27.08</td><td class="num">338.53円</td></tr><tr><td>USD/JPY</td><td>買</td><td class="num">1.0000</td><td>GMO外貨</td><td class="num pos">+165.00</td><td class="num">10.00円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">11. CNH/JPY/USD
+<span class="tag" style="margin-left:6px">合計 +59.92円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>USD/CNH</td><td>売</td><td class="num">1.0000</td><td>外為どっとコム</td><td class="num neg">-78.00</td><td class="num">不明</td></tr><tr><td>USD/JPY</td><td>買</td><td class="num">1.0000</td><td>GMO外貨</td><td class="num pos">+165.00</td><td class="num">10.00円</td></tr><tr><td>CNH/JPY</td><td>売</td><td class="num">6.7707</td><td>GMO外貨</td><td class="num neg">-27.08</td><td class="num">338.53円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">12. CNH/JPY/USD
+<span class="tag" style="margin-left:6px">合計 +59.92円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>USD/JPY</td><td>買</td><td class="num">1.0000</td><td>GMO外貨</td><td class="num pos">+165.00</td><td class="num">10.00円</td></tr><tr><td>USD/CNH</td><td>売</td><td class="num">1.0000</td><td>外為どっとコム</td><td class="num neg">-78.00</td><td class="num">不明</td></tr><tr><td>CNH/JPY</td><td>売</td><td class="num">6.7707</td><td>GMO外貨</td><td class="num neg">-27.08</td><td class="num">338.53円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">13. CHF/JPY/ZAR
+<span class="tag" style="margin-left:6px">合計 +55.15円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>CHF/JPY</td><td>買</td><td class="num">1.0000</td><td>GMO外貨</td><td class="num neg">-20.00</td><td class="num">60.00円</td></tr><tr><td>CHF/ZAR</td><td>売</td><td class="num">1.0000</td><td>インヴァスト証券</td><td class="num pos">+340.00</td><td class="num">不明</td></tr><tr><td>ZAR/JPY</td><td>売</td><td class="num">20.3734</td><td>GMOクリック証券</td><td class="num neg">-264.85</td><td class="num">1,833.61円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">14. CHF/JPY/ZAR
+<span class="tag" style="margin-left:6px">合計 +55.15円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>CHF/ZAR</td><td>売</td><td class="num">1.0000</td><td>インヴァスト証券</td><td class="num pos">+340.00</td><td class="num">不明</td></tr><tr><td>CHF/JPY</td><td>買</td><td class="num">1.0000</td><td>GMO外貨</td><td class="num neg">-20.00</td><td class="num">60.00円</td></tr><tr><td>ZAR/JPY</td><td>売</td><td class="num">20.3734</td><td>GMOクリック証券</td><td class="num neg">-264.85</td><td class="num">1,833.61円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">15. CHF/JPY/ZAR
+<span class="tag" style="margin-left:6px">合計 +55.15円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>CHF/ZAR</td><td>売</td><td class="num">1.0000</td><td>インヴァスト証券</td><td class="num pos">+340.00</td><td class="num">不明</td></tr><tr><td>ZAR/JPY</td><td>売</td><td class="num">20.3734</td><td>GMOクリック証券</td><td class="num neg">-264.85</td><td class="num">1,833.61円</td></tr><tr><td>CHF/JPY</td><td>買</td><td class="num">1.0000</td><td>GMO外貨</td><td class="num neg">-20.00</td><td class="num">60.00円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">16. AUD/JPY/USD
+<span class="tag" style="margin-left:6px">合計 +53.40円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>USD/JPY</td><td>売</td><td class="num">1.0000</td><td>岡三オンライン</td><td class="num neg">-133.00</td><td class="num">不明</td></tr><tr><td>AUD/USD</td><td>売</td><td class="num">1.4339</td><td>JFX</td><td class="num pos">+21.51</td><td class="num">93.96円</td></tr><tr><td>AUD/JPY</td><td>買</td><td class="num">1.4339</td><td>外為オンライン</td><td class="num pos">+164.89</td><td class="num">458.83円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">17. CHF/EUR/JPY
+<span class="tag" style="margin-left:6px">合計 +53.22円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>CHF/JPY</td><td>売</td><td class="num">1.0000</td><td>岡三オンライン</td><td class="num pos">+50.00</td><td class="num">不明</td></tr><tr><td>EUR/CHF</td><td>売</td><td class="num">1.0717</td><td>GMO外貨</td><td class="num neg">-84.66</td><td class="num">299.96円</td></tr><tr><td>EUR/JPY</td><td>買</td><td class="num">1.0717</td><td>楽天FX</td><td class="num pos">+87.88</td><td class="num">42.87円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">18. GBP/JPY/USD
+<span class="tag" style="margin-left:6px">合計 +52.14円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 392.73円 ／ 利益化目安 8日</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>USD/JPY</td><td>買</td><td class="num">1.0000</td><td>GMO外貨</td><td class="num pos">+165.00</td><td class="num">10.00円</td></tr><tr><td>GBP/USD</td><td>買</td><td class="num">0.7524</td><td>外為オンライン</td><td class="num pos">+11.29</td><td class="num">345.11円</td></tr><tr><td>GBP/JPY</td><td>売</td><td class="num">0.7524</td><td>松井証券FX</td><td class="num neg">-124.14</td><td class="num">37.62円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">19. JPY/NZD/USD
+<span class="tag" style="margin-left:6px">合計 +50.32円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>USD/JPY</td><td>売</td><td class="num">1.0000</td><td>岡三オンライン</td><td class="num neg">-133.00</td><td class="num">不明</td></tr><tr><td>NZD/USD</td><td>売</td><td class="num">1.7294</td><td>インヴァスト証券</td><td class="num pos">+86.47</td><td class="num">566.62円</td></tr><tr><td>NZD/JPY</td><td>買</td><td class="num">1.7294</td><td>インヴァスト証券</td><td class="num pos">+96.85</td><td class="num">121.06円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">20. CHF/EUR/JPY
+<span class="tag" style="margin-left:6px">合計 +49.66円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>EUR/CHF</td><td>売</td><td class="num">1.0000</td><td>GMO外貨</td><td class="num neg">-79.00</td><td class="num">279.90円</td></tr><tr><td>CHF/JPY</td><td>売</td><td class="num">0.9331</td><td>岡三オンライン</td><td class="num pos">+46.66</td><td class="num">不明</td></tr><tr><td>EUR/JPY</td><td>買</td><td class="num">1.0000</td><td>楽天FX</td><td class="num pos">+82.00</td><td class="num">40.00円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">21. CHF/EUR/JPY
+<span class="tag" style="margin-left:6px">合計 +49.66円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>EUR/CHF</td><td>売</td><td class="num">1.0000</td><td>GMO外貨</td><td class="num neg">-79.00</td><td class="num">279.90円</td></tr><tr><td>EUR/JPY</td><td>買</td><td class="num">1.0000</td><td>楽天FX</td><td class="num pos">+82.00</td><td class="num">40.00円</td></tr><tr><td>CHF/JPY</td><td>売</td><td class="num">0.9331</td><td>岡三オンライン</td><td class="num pos">+46.66</td><td class="num">不明</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">22. CHF/EUR/JPY
+<span class="tag" style="margin-left:6px">合計 +49.66円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>EUR/JPY</td><td>買</td><td class="num">1.0000</td><td>楽天FX</td><td class="num pos">+82.00</td><td class="num">40.00円</td></tr><tr><td>EUR/CHF</td><td>売</td><td class="num">1.0000</td><td>GMO外貨</td><td class="num neg">-79.00</td><td class="num">279.90円</td></tr><tr><td>CHF/JPY</td><td>売</td><td class="num">0.9331</td><td>岡三オンライン</td><td class="num pos">+46.66</td><td class="num">不明</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">23. EUR/JPY/USD
+<span class="tag" style="margin-left:6px">合計 +45.92円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>EUR/JPY</td><td>売</td><td class="num">1.0000</td><td>岡三オンライン</td><td class="num neg">-77.00</td><td class="num">不明</td></tr><tr><td>EUR/USD</td><td>買</td><td class="num">1.0000</td><td>外為オンライン</td><td class="num neg">-65.00</td><td class="num">229.34円</td></tr><tr><td>USD/JPY</td><td>買</td><td class="num">1.1389</td><td>GMO外貨</td><td class="num pos">+187.92</td><td class="num">11.39円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">24. EUR/JPY/USD
+<span class="tag" style="margin-left:6px">合計 +45.92円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>EUR/USD</td><td>買</td><td class="num">1.0000</td><td>外為オンライン</td><td class="num neg">-65.00</td><td class="num">229.34円</td></tr><tr><td>EUR/JPY</td><td>売</td><td class="num">1.0000</td><td>岡三オンライン</td><td class="num neg">-77.00</td><td class="num">不明</td></tr><tr><td>USD/JPY</td><td>買</td><td class="num">1.1389</td><td>GMO外貨</td><td class="num pos">+187.92</td><td class="num">11.39円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">25. EUR/JPY/USD
+<span class="tag" style="margin-left:6px">合計 +45.92円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>EUR/USD</td><td>買</td><td class="num">1.0000</td><td>外為オンライン</td><td class="num neg">-65.00</td><td class="num">229.34円</td></tr><tr><td>USD/JPY</td><td>買</td><td class="num">1.1389</td><td>GMO外貨</td><td class="num pos">+187.92</td><td class="num">11.39円</td></tr><tr><td>EUR/JPY</td><td>売</td><td class="num">1.0000</td><td>岡三オンライン</td><td class="num neg">-77.00</td><td class="num">不明</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">26. CHF/GBP/JPY
+<span class="tag" style="margin-left:6px">合計 +45.44円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>GBP/CHF</td><td>売</td><td class="num">1.0000</td><td>GMO外貨</td><td class="num neg">-193.00</td><td class="num">499.81円</td></tr><tr><td>CHF/JPY</td><td>売</td><td class="num">1.0889</td><td>岡三オンライン</td><td class="num pos">+54.44</td><td class="num">不明</td></tr><tr><td>GBP/JPY</td><td>買</td><td class="num">1.0000</td><td>セントラル短資FX</td><td class="num pos">+184.00</td><td class="num">60.00円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">27. CHF/GBP/JPY
+<span class="tag" style="margin-left:6px">合計 +45.44円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>GBP/CHF</td><td>売</td><td class="num">1.0000</td><td>GMO外貨</td><td class="num neg">-193.00</td><td class="num">499.81円</td></tr><tr><td>GBP/JPY</td><td>買</td><td class="num">1.0000</td><td>セントラル短資FX</td><td class="num pos">+184.00</td><td class="num">60.00円</td></tr><tr><td>CHF/JPY</td><td>売</td><td class="num">1.0889</td><td>岡三オンライン</td><td class="num pos">+54.44</td><td class="num">不明</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">28. CHF/GBP/JPY
+<span class="tag" style="margin-left:6px">合計 +45.44円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>GBP/JPY</td><td>買</td><td class="num">1.0000</td><td>セントラル短資FX</td><td class="num pos">+184.00</td><td class="num">60.00円</td></tr><tr><td>GBP/CHF</td><td>売</td><td class="num">1.0000</td><td>GMO外貨</td><td class="num neg">-193.00</td><td class="num">499.81円</td></tr><tr><td>CHF/JPY</td><td>売</td><td class="num">1.0889</td><td>岡三オンライン</td><td class="num pos">+54.44</td><td class="num">不明</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">29. AUD/JPY/NZD
+<span class="tag" style="margin-left:6px">合計 +42.54円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 465.99円 ／ 利益化目安 11日</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>AUD/JPY</td><td>売</td><td class="num">1.0000</td><td>楽天FX</td><td class="num neg">-105.00</td><td class="num">50.00円</td></tr><tr><td>AUD/NZD</td><td>買</td><td class="num">1.0000</td><td>インヴァスト証券</td><td class="num pos">+80.00</td><td class="num">331.57円</td></tr><tr><td>NZD/JPY</td><td>買</td><td class="num">1.2061</td><td>インヴァスト証券</td><td class="num pos">+67.54</td><td class="num">84.42円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">30. AUD/JPY/NZD
+<span class="tag" style="margin-left:6px">合計 +42.54円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 465.99円 ／ 利益化目安 11日</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>AUD/NZD</td><td>買</td><td class="num">1.0000</td><td>インヴァスト証券</td><td class="num pos">+80.00</td><td class="num">331.57円</td></tr><tr><td>AUD/JPY</td><td>売</td><td class="num">1.0000</td><td>楽天FX</td><td class="num neg">-105.00</td><td class="num">50.00円</td></tr><tr><td>NZD/JPY</td><td>買</td><td class="num">1.2061</td><td>インヴァスト証券</td><td class="num pos">+67.54</td><td class="num">84.42円</td></tr></tbody></table></div>
+</div>
+
+<h2>ロット数について</h2>
+<p>各脚のロット数は、通貨の持ち高が打ち消し合うように逆算した理論値です。
+実際には業者ごとの最小取引単位に丸める必要があり、
+丸めた分だけ為替リスクが残ります。端数の扱いは各自でご確認ください。</p>
+<p>仕組みの説明は<a href="/guide/swap-arbitrage.html">サヤ取りの仕組み</a>、
+注意点は<a href="/guide/risks.html">リスクと注意点</a>をご覧ください。</p>
+
+<p class="stamp">最終更新：2026年7月29日（水）時点</p>
+</div></main>
+
+<footer class="site-foot"><div class="wrap">
+<div class="foot-grid">
+<div>
+  <h4>スワップサヤ取りウォッチ</h4>
+  <p style="margin:0;color:var(--ink-2)">国内FX23社のスワップポイントを毎日自動収集し、業者間のサヤを検証付きで公開</p>
+</div>
+<div><h4>サイトについて</h4><ul><li><a href="/about.html">このサイトについて</a></li><li><a href="/guide/methodology.html">データの集め方と検証</a></li><li><a href="/contact.html">お問い合わせ</a></li></ul></div><div><h4>解説</h4><ul><li><a href="/guide/what-is-swap.html">スワップポイントとは</a></li><li><a href="/guide/swap-arbitrage.html">サヤ取りの仕組み</a></li><li><a href="/guide/risks.html">リスクと注意点</a></li><li><a href="/guide/glossary.html">用語集</a></li></ul></div><div><h4>規約</h4><ul><li><a href="/privacy.html">プライバシーポリシー</a></li><li><a href="/disclaimer.html">免責事項</a></li></ul></div>
+</div>
+<p class="disclaim">本サイトは各FX業者が公表している情報を自動収集して掲載する情報提供サイトであり、特定の金融商品の売買を推奨するものではありません。掲載内容の正確性・完全性を保証するものではなく、本サイトの情報に基づく判断・行動により生じた損害について一切の責任を負いません。実際の取引にあたっては必ず各業者の公式サイトで最新の条件をご確認ください。</p>
+<p class="copy">© スワップサヤ取りウォッチ</p>
+</div></footer>
+</body>
+</html>
