@@ -161,6 +161,16 @@ figcaption{font-size:13px; color:var(--muted); margin-top:7px}
 details.tbl{margin:9px 0 0}
 details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
 
+/* --- 証跡画像 --- */
+.evfig{
+  margin:18px 0; border:1px solid var(--border); border-radius:var(--radius);
+  background:var(--surface); overflow:hidden; scroll-margin-top:96px;
+}
+.evfig:target{border-color:var(--accent); box-shadow:0 0 0 3px rgba(42,120,214,.18)}
+.evfig .evhead{font-weight:600; color:var(--ink); font-size:14.5px; padding:12px 15px 10px}
+.evfig img{display:block; width:100%; height:auto; border-top:1px solid var(--border)}
+.evfig figcaption{font-size:12.5px; color:var(--ink-2); padding:10px 15px 13px; line-height:1.65}
+
 /* --- リンク一覧 --- */
 .chips{display:flex; flex-wrap:wrap; gap:7px; margin:12px 0}
 .chips a{
