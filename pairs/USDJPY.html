@@ -3,17 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>USD/JPY スワップポイント比較（7/30）｜スワップサヤ取りウォッチ</title>
-<meta name="description" content="USD/JPY のスワップポイントを国内FX18社で比較。買いはインヴァスト証券、売りは岡三オンラインが最良です。1万通貨・1日あたりに換算して掲載しています。">
+<title>USD/JPY スワップポイント比較（7/31）｜スワップサヤ取りウォッチ</title>
+<meta name="description" content="USD/JPY のスワップポイントを国内FX15社で比較。買いはインヴァスト証券、売りはGMOクリック証券が最良です。1万通貨・1日あたりに換算して掲載しています。">
 <link rel="canonical" href="https://investern.github.io/pairs/USDJPY.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="スワップサヤ取りウォッチ">
-<meta property="og:title" content="USD/JPY スワップポイント比較（7/30）｜スワップサヤ取りウォッチ">
-<meta property="og:description" content="USD/JPY のスワップポイントを国内FX18社で比較。買いはインヴァスト証券、売りは岡三オンラインが最良です。1万通貨・1日あたりに換算して掲載しています。">
+<meta property="og:title" content="USD/JPY スワップポイント比較（7/31）｜スワップサヤ取りウォッチ">
+<meta property="og:description" content="USD/JPY のスワップポイントを国内FX15社で比較。買いはインヴァスト証券、売りはGMOクリック証券が最良です。1万通貨・1日あたりに換算して掲載しています。">
 <meta property="og:url" content="https://investern.github.io/pairs/USDJPY.html">
 <meta name="twitter:card" content="summary">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="スワップサヤ取りウォッチの更新" href="/feed.xml">
 <style>
 *,*::before,*::after{box-sizing:border-box}
 :root{
@@ -171,6 +172,93 @@ details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
 .evfig img{display:block; width:100%; height:auto; border-top:1px solid var(--border)}
 .evfig figcaption{font-size:12.5px; color:var(--ink-2); padding:10px 15px 13px; line-height:1.65}
 
+/* --- 前日比 --- */
+.delta{font-size:12px; font-weight:600; white-space:nowrap; font-variant-numeric:tabular-nums}
+.delta.up{color:var(--pos)} .delta.down{color:var(--neg)} .delta.flat{color:var(--muted)}
+.delta.new{color:var(--accent)}
+
+/* --- ヒーロー（本日いちばんのサヤ） --- */
+.hero{
+  background:linear-gradient(180deg,var(--surface),var(--surface-2));
+  border:1px solid var(--border); border-radius:14px; padding:20px 22px; margin:18px 0;
+}
+.hero .eyebrow{font-size:12.5px; color:var(--muted); margin:0 0 6px; letter-spacing:.02em}
+.hero .pair{font-size:27px; font-weight:700; letter-spacing:-.02em; margin:0; line-height:1.25}
+.hero .amount{
+  font-size:38px; font-weight:700; letter-spacing:-.03em; color:var(--pos);
+  line-height:1.15; margin:2px 0 0;
+}
+.hero .amount .unit{font-size:15px; color:var(--ink-2); font-weight:500}
+.hero .leg p{margin:0}
+.hero .legs{display:grid; gap:10px; margin:14px 0 0}
+@media(min-width:640px){ .hero .legs{grid-template-columns:1fr 1fr} }
+.hero .leg{background:var(--surface); border:1px solid var(--border); border-radius:9px; padding:10px 13px}
+.hero .leg .lab{font-size:11.5px; color:var(--muted); margin:0}
+.hero .leg .who{font-size:15px; font-weight:600; margin:1px 0 0}
+.hero .leg .val{font-size:13px; margin:1px 0 0; font-variant-numeric:tabular-nums}
+
+/* --- 表の道具（絞り込み・並べ替え・お気に入り） --- */
+.tools{display:flex; gap:9px; flex-wrap:wrap; align-items:center; margin:12px 0 9px}
+.tools input[type="search"]{
+  flex:1 1 220px; min-width:0; font:inherit; font-size:14px; padding:8px 12px;
+  border:1px solid var(--border); border-radius:8px; background:var(--surface); color:var(--ink);
+}
+.tools input[type="search"]:focus{outline:2px solid var(--accent); outline-offset:-1px}
+.btn{
+  font:inherit; font-size:13.5px; padding:8px 13px; border-radius:8px; cursor:pointer;
+  border:1px solid var(--border); background:var(--surface); color:var(--ink-2);
+}
+.btn:hover{border-color:var(--accent); color:var(--accent)}
+.btn[aria-pressed="true"]{background:var(--accent); border-color:var(--accent); color:#fff}
+.hits{font-size:13px; color:var(--muted)}
+th[data-sort]{cursor:pointer; user-select:none}
+th[data-sort]:hover{color:var(--ink)}
+th[data-sort]::after{content:"⇅"; font-size:10px; opacity:.35; margin-left:5px}
+th[data-sort][aria-sort="ascending"]::after{content:"↑"; opacity:1}
+th[data-sort][aria-sort="descending"]::after{content:"↓"; opacity:1}
+.star{
+  border:0; background:none; cursor:pointer; font-size:15px; line-height:1; padding:0 6px 0 0;
+  color:var(--muted);
+}
+.star[aria-pressed="true"]{color:#eda100}
+.star:hover{color:#eda100}
+tr.faved{background:rgba(237,161,0,.07)}
+
+/* --- 証跡ライトボックス --- */
+.lb{
+  position:fixed; inset:0; z-index:200; background:rgba(0,0,0,.72);
+  display:flex; align-items:center; justify-content:center; padding:18px;
+}
+.lb[hidden]{display:none}
+.lb-in{
+  background:var(--surface); border-radius:12px; max-width:1000px; width:100%;
+  max-height:92vh; display:flex; flex-direction:column; overflow:hidden;
+}
+.lb-head{
+  display:flex; align-items:center; gap:12px; padding:12px 15px;
+  border-bottom:1px solid var(--border);
+}
+.lb-head h3{margin:0; font-size:15.5px; flex:1; min-width:0}
+.lb-body{overflow:auto; -webkit-overflow-scrolling:touch}
+.lb-body img{display:block; width:100%; height:auto}
+.lb-foot{
+  padding:10px 15px; border-top:1px solid var(--border);
+  font-size:12.5px; color:var(--ink-2); line-height:1.6;
+}
+.lb-x{
+  border:0; background:var(--surface-2); color:var(--ink); border-radius:7px;
+  width:32px; height:32px; font-size:17px; cursor:pointer; flex:none;
+}
+.lb-x:hover{background:var(--accent); color:#fff}
+
+/* --- テーマ切替 --- */
+.theme-btn{
+  border:1px solid var(--border); background:var(--surface); color:var(--ink-2);
+  border-radius:7px; width:34px; height:34px; cursor:pointer; font-size:15px; flex:none;
+}
+.theme-btn:hover{border-color:var(--accent); color:var(--accent)}
+@media (max-width:760px){ .theme-btn{position:absolute; right:15px; top:9px} .site-head{position:relative} }
+
 /* --- リンク一覧 --- */
 .chips{display:flex; flex-wrap:wrap; gap:7px; margin:12px 0}
 .chips a{
@@ -193,7 +281,26 @@ details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
 .foot-grid a{color:var(--ink-2)}
 .copy{font-size:12.5px; color:var(--muted); margin:22px 0 0}
 .disclaim{font-size:12.5px; color:var(--muted); margin:10px 0 0; line-height:1.7}
+
+/* --- 狭い画面での表 --- */
+@media (max-width:760px){
+  /* 順位は場所を食うだけなので隠し、通貨ペア列を左に貼り付けて
+     横スクロールしても「どのペアの行か」を見失わないようにする */
+  td.rank,th.rank{display:none}
+  td.pairc,th.pairc{
+    position:sticky; left:0; z-index:4; background:var(--surface);
+    box-shadow:1px 0 0 var(--line);
+  }
+  thead th.pairc{background:var(--surface-2); z-index:6}
+  tr.faved td.pairc{background:#fdf6e3}
+  th,td{padding:8px 10px}
+  table{font-size:13.5px}
+}
+:root[data-theme="dark"] tr.faved td.pairc{background:#2a2617}
 </style>
+<script>
+try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}
+</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://investern.github.io/"}, {"@type": "ListItem", "position": 2, "name": "通貨ペア", "item": "https://investern.github.io/pairs/"}, {"@type": "ListItem", "position": 3, "name": "USD/JPY"}]}</script>
 
 
@@ -202,39 +309,50 @@ details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
 <header class="site-head"><div class="wrap head-in">
 <a class="brand" href="/">スワップ<span>サヤ取り</span>ウォッチ</a>
 <nav class="nav"><a href="/">トップ</a><a href="/ranking/two-pair.html">2通貨のサヤ</a><a href="/ranking/triangle.html">3通貨のサヤ</a><a href="/swaps.html">スワップ一覧</a><a href="/pairs/" aria-current="page">通貨ペア</a><a href="/brokers/">FX業者</a><a href="/guide/">解説</a></nav>
+<button class="theme-btn" type="button" data-theme-toggle
+        aria-label="配色を切り替える" title="配色を切り替える">◐</button>
 </div></header>
 
 <main><div class="wrap">
 <nav class="crumb"><a href="/">トップ</a> › <a href="/pairs/">通貨ペア</a> › USD/JPY</nav>
 
 <h1>USD/JPY のスワップポイント業者間比較</h1>
-<p class="lede">USD/JPY を取り扱う18社の買い・売りスワップを、
+<p class="lede">USD/JPY を取り扱う15社の買い・売りスワップを、
 1万通貨・1日あたりに換算して比較しています。</p>
-<div class="grid c2" style="margin-top:18px"><div class="tile"><p class="k">買いスワップが最良</p><p class="v"><span class="pos">+166.00円</span></p><p class="s">インヴァスト証券</p></div><div class="tile"><p class="k">売りスワップが最良</p><p class="v"><span class="neg">-142.33円</span></p><p class="s">岡三オンライン</p></div><div class="tile"><p class="k">組み合わせたサヤ</p><p class="v"><span class="pos">+23.67円</span></p><p class="s">1万通貨・1日あたり</p></div><div class="tile"><p class="k">比較した業者</p><p class="v">18社</p><p class="s">この通貨ペアを取り扱う社</p></div></div>
+<div class="grid c2" style="margin-top:18px"><div class="tile"><p class="k">買いスワップが最良</p><p class="v"><span class="pos">+166.00円</span></p><p class="s">インヴァスト証券</p></div><div class="tile"><p class="k">売りスワップが最良</p><p class="v"><span class="pos">+0.10円</span></p><p class="s">GMOクリック証券</p></div><div class="tile"><p class="k">組み合わせたサヤ</p><p class="v"><span class="pos">+166.10円</span></p><p class="s">1万通貨・1日あたり</p></div><div class="tile"><p class="k">比較した業者</p><p class="v">15社</p><p class="s">この通貨ペアを取り扱う社</p></div></div>
 
 <h2>この通貨ペアのサヤ</h2>
 <div class="card">
 <p style="margin:0 0 8px"><strong>インヴァスト証券</strong> で買い、
-<strong>岡三オンライン</strong> で売ると、
-1万通貨あたり1日 <strong class="pos">+23.67円</strong> になります。</p>
+<strong>GMOクリック証券</strong> で売ると、
+1万通貨あたり1日 <strong class="pos">+166.10円</strong> になります。</p>
 <p style="margin:0;font-size:13.5px;color:var(--muted)">
-初期取引コスト 不明 ／ 利益化目安 —</p>
+初期取引コスト 40.00円 ／ 利益化目安 1日</p>
 </div>
 
 
 <h2>業者別の比較</h2>
-<figure><svg viewBox="0 0 860 570" role="img" aria-label="買スワップ" preserveAspectRatio="xMidYMid meet"><line x1="132.0" y1="10" x2="132.0" y2="544" stroke="var(--axis)" stroke-width="1"/><rect x="132.0" y="10" width="654.0" height="18" rx="4" fill="var(--s1)" opacity="1"/><text x="122" y="23" text-anchor="end" font-size="12" font-weight="700" fill="var(--ink-2)">インヴァスト証券</text><text x="793.0" y="23" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">166.0円</text><rect x="132.0" y="40" width="634.3" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="53" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">GMO外貨</text><text x="773.3" y="53" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">161.0円</text><rect x="132.0" y="70" width="634.3" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="83" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">LIGHT FX</text><text x="773.3" y="83" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">161.0円</text><rect x="132.0" y="100" width="634.3" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="113" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">ヒロセ通商</text><text x="773.3" y="113" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">161.0円</text><rect x="132.0" y="130" width="634.3" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="143" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">JFX</text><text x="773.3" y="143" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">161.0円</text><rect x="132.0" y="160" width="630.4" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="173" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">FXTF</text><text x="769.4" y="173" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">160.0円</text><rect x="132.0" y="190" width="630.4" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="203" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">みんなのFX</text><text x="769.4" y="203" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">160.0円</text><rect x="132.0" y="220" width="630.4" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="233" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">外為どっとコム</text><text x="769.4" y="233" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">160.0円</text><rect x="132.0" y="250" width="626.4" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="263" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">GMOクリック証券</text><text x="765.4" y="263" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">159.0円</text><rect x="132.0" y="280" width="602.8" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="293" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">FXブロードネット</text><text x="741.8" y="293" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">153.0円</text><rect x="132.0" y="310" width="591.0" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="323" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">DMM FX</text><text x="730.0" y="323" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">150.0円</text><rect x="132.0" y="340" width="575.2" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="353" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">LINE FX</text><text x="714.2" y="353" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">146.0円</text><rect x="132.0" y="370" width="560.8" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="383" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">岡三オンライン</text><text x="699.8" y="383" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">142.3円</text><rect x="132.0" y="400" width="512.2" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="413" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">アイネット証券</text><text x="651.2" y="413" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">130.0円</text><rect x="132.0" y="430" width="512.2" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="443" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">外為オンライン</text><text x="651.2" y="443" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">130.0円</text><rect x="132.0" y="460" width="378.2" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="473" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">IG証券</text><text x="517.2" y="473" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">96.00円</text><rect x="132.0" y="490" width="275.8" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="503" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">サクソバンク証券</text><text x="414.8" y="503" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">70.00円</text><rect x="132.0" y="520" width="232.1" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="533" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">フィリップ証券</text><text x="371.1" y="533" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">58.90円</text></svg><figcaption>USD/JPY の買いスワップ（1万通貨・1日あたり、2026年7月30日（木）時点）</figcaption><details class="tbl"><summary>この図のデータを表で見る</summary><div class="tblwrap" style="margin-top:8px"><table><thead><tr><th>FX業者</th><th class="num">買スワップ</th></tr></thead><tbody><tr><td>インヴァスト証券</td><td class="num">166.0円</td></tr><tr><td>GMO外貨</td><td class="num">161.0円</td></tr><tr><td>LIGHT FX</td><td class="num">161.0円</td></tr><tr><td>ヒロセ通商</td><td class="num">161.0円</td></tr><tr><td>JFX</td><td class="num">161.0円</td></tr><tr><td>FXTF</td><td class="num">160.0円</td></tr><tr><td>みんなのFX</td><td class="num">160.0円</td></tr><tr><td>外為どっとコム</td><td class="num">160.0円</td></tr><tr><td>GMOクリック証券</td><td class="num">159.0円</td></tr><tr><td>FXブロードネット</td><td class="num">153.0円</td></tr><tr><td>DMM FX</td><td class="num">150.0円</td></tr><tr><td>LINE FX</td><td class="num">146.0円</td></tr><tr><td>岡三オンライン</td><td class="num">142.3円</td></tr><tr><td>アイネット証券</td><td class="num">130.0円</td></tr><tr><td>外為オンライン</td><td class="num">130.0円</td></tr><tr><td>IG証券</td><td class="num">96.00円</td></tr><tr><td>サクソバンク証券</td><td class="num">70.00円</td></tr><tr><td>フィリップ証券</td><td class="num">58.90円</td></tr></tbody></table></div></details></figure>
-<figure><svg viewBox="0 0 860 570" role="img" aria-label="売スワップ" preserveAspectRatio="xMidYMid meet"><line x1="786.0" y1="10" x2="786.0" y2="544" stroke="var(--axis)" stroke-width="1"/><rect x="399.8" y="10" width="386.2" height="18" rx="4" fill="var(--neg)" opacity="1"/><text x="122" y="23" text-anchor="end" font-size="12" font-weight="700" fill="var(--ink-2)">岡三オンライン</text><text x="392.8" y="23" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-142.3円</text><rect x="392.5" y="40" width="393.5" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="53" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">アイネット証券</text><text x="385.5" y="53" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-145.0円</text><rect x="392.5" y="70" width="393.5" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="83" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">外為オンライン</text><text x="385.5" y="83" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-145.0円</text><rect x="362.7" y="100" width="423.3" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="113" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">LINE FX</text><text x="355.7" y="113" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-156.0円</text><rect x="354.5" y="130" width="431.5" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="143" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">GMOクリック証券</text><text x="347.5" y="143" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-159.0円</text><rect x="351.8" y="160" width="434.2" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="173" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">DMM FX</text><text x="344.8" y="173" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-160.0円</text><rect x="351.8" y="190" width="434.2" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="203" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">IG証券</text><text x="344.8" y="203" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-160.0円</text><rect x="351.8" y="220" width="434.2" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="233" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">みんなのFX</text><text x="344.8" y="233" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-160.0円</text><rect x="349.1" y="250" width="436.9" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="263" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">GMO外貨</text><text x="342.1" y="263" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-161.0円</text><rect x="349.1" y="280" width="436.9" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="293" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">LIGHT FX</text><text x="342.1" y="293" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-161.0円</text><rect x="278.5" y="310" width="507.5" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="323" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">FXブロードネット</text><text x="271.5" y="323" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-187.0円</text><rect x="273.1" y="340" width="512.9" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="353" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">サクソバンク証券</text><text x="266.1" y="353" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-189.0円</text><rect x="270.4" y="370" width="515.6" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="383" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">FXTF</text><text x="263.4" y="383" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-190.0円</text><rect x="270.4" y="400" width="515.6" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="413" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">外為どっとコム</text><text x="263.4" y="413" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-190.0円</text><rect x="254.1" y="430" width="531.9" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="443" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">ヒロセ通商</text><text x="247.1" y="443" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-196.0円</text><rect x="254.1" y="460" width="531.9" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="473" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">JFX</text><text x="247.1" y="473" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-196.0円</text><rect x="225.4" y="490" width="560.6" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="503" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">フィリップ証券</text><text x="218.4" y="503" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-206.6円</text><rect x="132.0" y="520" width="654.0" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="533" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">インヴァスト証券</text><text x="125.0" y="533" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-241.0円</text></svg><figcaption>USD/JPY の売りスワップ（1万通貨・1日あたり、2026年7月30日（木）時点）</figcaption><details class="tbl"><summary>この図のデータを表で見る</summary><div class="tblwrap" style="margin-top:8px"><table><thead><tr><th>FX業者</th><th class="num">売スワップ</th></tr></thead><tbody><tr><td>岡三オンライン</td><td class="num">-142.3円</td></tr><tr><td>アイネット証券</td><td class="num">-145.0円</td></tr><tr><td>外為オンライン</td><td class="num">-145.0円</td></tr><tr><td>LINE FX</td><td class="num">-156.0円</td></tr><tr><td>GMOクリック証券</td><td class="num">-159.0円</td></tr><tr><td>DMM FX</td><td class="num">-160.0円</td></tr><tr><td>IG証券</td><td class="num">-160.0円</td></tr><tr><td>みんなのFX</td><td class="num">-160.0円</td></tr><tr><td>GMO外貨</td><td class="num">-161.0円</td></tr><tr><td>LIGHT FX</td><td class="num">-161.0円</td></tr><tr><td>FXブロードネット</td><td class="num">-187.0円</td></tr><tr><td>サクソバンク証券</td><td class="num">-189.0円</td></tr><tr><td>FXTF</td><td class="num">-190.0円</td></tr><tr><td>外為どっとコム</td><td class="num">-190.0円</td></tr><tr><td>ヒロセ通商</td><td class="num">-196.0円</td></tr><tr><td>JFX</td><td class="num">-196.0円</td></tr><tr><td>フィリップ証券</td><td class="num">-206.6円</td></tr><tr><td>インヴァスト証券</td><td class="num">-241.0円</td></tr></tbody></table></div></details></figure>
+<figure><svg viewBox="0 0 860 480" role="img" aria-label="買スワップ" preserveAspectRatio="xMidYMid meet"><line x1="132.0" y1="10" x2="132.0" y2="454" stroke="var(--axis)" stroke-width="1"/><rect x="132.0" y="10" width="654.0" height="18" rx="4" fill="var(--s1)" opacity="1"/><text x="122" y="23" text-anchor="end" font-size="12" font-weight="700" fill="var(--ink-2)">インヴァスト証券</text><text x="793.0" y="23" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">166.0円</text><rect x="132.0" y="40" width="634.3" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="53" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">ヒロセ通商</text><text x="773.3" y="53" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">161.0円</text><rect x="132.0" y="70" width="634.3" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="83" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">JFX</text><text x="773.3" y="83" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">161.0円</text><rect x="132.0" y="100" width="630.4" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="113" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">FXTF</text><text x="769.4" y="113" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">160.0円</text><rect x="132.0" y="130" width="630.4" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="143" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">外為どっとコム</text><text x="769.4" y="143" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">160.0円</text><rect x="132.0" y="160" width="626.4" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="173" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">楽天FX</text><text x="765.4" y="173" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">159.0円</text><rect x="132.0" y="190" width="602.8" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="203" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">FXブロードネット</text><text x="741.8" y="203" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">153.0円</text><rect x="132.0" y="220" width="591.0" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="233" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">DMM FX</text><text x="730.0" y="233" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">150.0円</text><rect x="132.0" y="250" width="560.8" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="263" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">岡三オンライン</text><text x="699.8" y="263" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">142.3円</text><rect x="132.0" y="280" width="512.2" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="293" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">アイネット証券</text><text x="651.2" y="293" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">130.0円</text><rect x="132.0" y="310" width="512.2" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="323" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">外為オンライン</text><text x="651.2" y="323" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">130.0円</text><rect x="132.0" y="340" width="378.2" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="353" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">IG証券</text><text x="517.2" y="353" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">96.00円</text><rect x="132.0" y="370" width="275.8" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="383" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">サクソバンク証券</text><text x="414.8" y="383" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">70.00円</text><rect x="132.0" y="400" width="232.1" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="413" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">フィリップ証券</text><text x="371.1" y="413" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">58.90円</text><rect x="132.0" y="430" width="1.5" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="443" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">GMOクリック証券</text><text x="140.5" y="443" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">0.10円</text></svg><figcaption>USD/JPY の買いスワップ（1万通貨・1日あたり、2026年7月31日（金）時点）</figcaption><details class="tbl"><summary>この図のデータを表で見る</summary><div class="tblwrap" style="margin-top:8px"><table><thead><tr><th>FX業者</th><th class="num">買スワップ</th></tr></thead><tbody><tr><td>インヴァスト証券</td><td class="num">166.0円</td></tr><tr><td>ヒロセ通商</td><td class="num">161.0円</td></tr><tr><td>JFX</td><td class="num">161.0円</td></tr><tr><td>FXTF</td><td class="num">160.0円</td></tr><tr><td>外為どっとコム</td><td class="num">160.0円</td></tr><tr><td>楽天FX</td><td class="num">159.0円</td></tr><tr><td>FXブロードネット</td><td class="num">153.0円</td></tr><tr><td>DMM FX</td><td class="num">150.0円</td></tr><tr><td>岡三オンライン</td><td class="num">142.3円</td></tr><tr><td>アイネット証券</td><td class="num">130.0円</td></tr><tr><td>外為オンライン</td><td class="num">130.0円</td></tr><tr><td>IG証券</td><td class="num">96.00円</td></tr><tr><td>サクソバンク証券</td><td class="num">70.00円</td></tr><tr><td>フィリップ証券</td><td class="num">58.90円</td></tr><tr><td>GMOクリック証券</td><td class="num">0.10円</td></tr></tbody></table></div></details></figure>
+<figure><svg viewBox="0 0 860 480" role="img" aria-label="売スワップ" preserveAspectRatio="xMidYMid meet"><line x1="785.7" y1="10" x2="785.7" y2="454" stroke="var(--axis)" stroke-width="1"/><rect x="785.7" y="10" width="1.5" height="18" rx="4" fill="var(--s1)" opacity="1"/><text x="122" y="23" text-anchor="end" font-size="12" font-weight="700" fill="var(--ink-2)">GMOクリック証券</text><text x="794.2" y="23" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">0.10円</text><rect x="399.6" y="40" width="386.1" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="53" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">岡三オンライン</text><text x="392.6" y="53" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-142.3円</text><rect x="392.4" y="70" width="393.3" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="83" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">アイネット証券</text><text x="385.4" y="83" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-145.0円</text><rect x="392.4" y="100" width="393.3" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="113" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">外為オンライン</text><text x="385.4" y="113" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-145.0円</text><rect x="351.7" y="130" width="434.0" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="143" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">DMM FX</text><text x="344.7" y="143" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-160.0円</text><rect x="351.7" y="160" width="434.0" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="173" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">IG証券</text><text x="344.7" y="173" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-160.0円</text><rect x="340.9" y="190" width="444.9" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="203" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">楽天FX</text><text x="333.9" y="203" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-164.0円</text><rect x="278.5" y="220" width="507.3" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="233" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">FXブロードネット</text><text x="271.5" y="233" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-187.0円</text><rect x="273.1" y="250" width="512.7" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="263" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">サクソバンク証券</text><text x="266.1" y="263" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-189.0円</text><rect x="270.3" y="280" width="515.4" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="293" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">FXTF</text><text x="263.3" y="293" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-190.0円</text><rect x="270.3" y="310" width="515.4" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="323" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">外為どっとコム</text><text x="263.3" y="323" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-190.0円</text><rect x="254.1" y="340" width="531.7" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="353" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">ヒロセ通商</text><text x="247.1" y="353" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-196.0円</text><rect x="254.1" y="370" width="531.7" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="383" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">JFX</text><text x="247.1" y="383" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-196.0円</text><rect x="225.3" y="400" width="560.4" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="413" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">フィリップ証券</text><text x="218.3" y="413" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-206.6円</text><rect x="132.0" y="430" width="653.7" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="443" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">インヴァスト証券</text><text x="125.0" y="443" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-241.0円</text></svg><figcaption>USD/JPY の売りスワップ（1万通貨・1日あたり、2026年7月31日（金）時点）</figcaption><details class="tbl"><summary>この図のデータを表で見る</summary><div class="tblwrap" style="margin-top:8px"><table><thead><tr><th>FX業者</th><th class="num">売スワップ</th></tr></thead><tbody><tr><td>GMOクリック証券</td><td class="num">0.10円</td></tr><tr><td>岡三オンライン</td><td class="num">-142.3円</td></tr><tr><td>アイネット証券</td><td class="num">-145.0円</td></tr><tr><td>外為オンライン</td><td class="num">-145.0円</td></tr><tr><td>DMM FX</td><td class="num">-160.0円</td></tr><tr><td>IG証券</td><td class="num">-160.0円</td></tr><tr><td>楽天FX</td><td class="num">-164.0円</td></tr><tr><td>FXブロードネット</td><td class="num">-187.0円</td></tr><tr><td>サクソバンク証券</td><td class="num">-189.0円</td></tr><tr><td>FXTF</td><td class="num">-190.0円</td></tr><tr><td>外為どっとコム</td><td class="num">-190.0円</td></tr><tr><td>ヒロセ通商</td><td class="num">-196.0円</td></tr><tr><td>JFX</td><td class="num">-196.0円</td></tr><tr><td>フィリップ証券</td><td class="num">-206.6円</td></tr><tr><td>インヴァスト証券</td><td class="num">-241.0円</td></tr></tbody></table></div></details></figure>
 
 <h2>一覧</h2>
 <div class="tblwrap"><table>
-<caption>2026年7月30日（木）時点。買スワップの高い順。</caption>
+<caption>2026年7月31日（金）時点。買スワップの高い順。</caption>
 <thead><tr><th>FX業者</th><th class="num">買スワップ</th><th class="num">売スワップ</th>
 <th class="num">付与日数</th><th class="num">初期コスト</th><th>出典</th></tr></thead>
-<tbody><tr><td><a href="/brokers/invast-shoken.html">インヴァスト証券</a></td><td class="num pos">+166.00</td><td class="num neg">-241.00</td><td class="num">1</td><td class="num">20.00円</td><td><a href="https://www.invast.jp/triauto/market/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/gmo-gaika.html">GMO外貨</a></td><td class="num pos">+161.00</td><td class="num neg">-161.00</td><td class="num">1</td><td class="num">10.00円</td><td><a href="https://www.gaikaex.com/gaikaex/mark/swap/calendar.php" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/light-fx.html">LIGHT FX</a></td><td class="num pos">+161.00</td><td class="num neg">-161.00</td><td class="num">1</td><td class="num">20.00円</td><td><a href="https://lightfx.jp/market/swap/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/hirose-fx.html">ヒロセ通商</a></td><td class="num pos">+161.00</td><td class="num neg">-196.00</td><td class="num">1</td><td class="num">20.00円</td><td><a href="https://hirose-fx.co.jp/contents/news/Swap" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/jfx.html">JFX</a></td><td class="num pos">+161.00</td><td class="num neg">-196.00</td><td class="num">1</td><td class="num">20.00円</td><td><a href="https://www.jfx.co.jp/trading_rule/swap/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/fxtf.html">FXTF</a></td><td class="num pos">+160.00</td><td class="num neg">-190.00</td><td class="num">1</td><td class="num">100.00円</td><td><a href="https://www.fxtrade.co.jp/pdf/swap_templete.pdf" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/minna-no-fx.html">みんなのFX</a></td><td class="num pos">+160.00</td><td class="num neg">-160.00</td><td class="num">1</td><td class="num">20.00円</td><td><a href="https://min-fx.jp/market/swap/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/gaitame-com.html">外為どっとコム</a></td><td class="num pos">+160.00</td><td class="num neg">-190.00</td><td class="num">1</td><td class="num">20.00円</td><td><a href="https://www.gaitame.com/service/fx/swap-cal.html?pair=usdjpy" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/gmo-click.html">GMOクリック証券</a></td><td class="num pos">+159.00</td><td class="num neg">-159.00</td><td class="num">1</td><td class="num">20.00円</td><td><a href="https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&amp;month=07&amp;pare=USDJPY" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/fx-broadnet.html">FXブロードネット</a></td><td class="num pos">+153.00</td><td class="num neg">-187.00</td><td class="num">1</td><td class="num">20.00円</td><td><a href="https://www.fxbroadnet.com/swap.jsp" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/dmm-fx.html">DMM FX</a></td><td class="num pos">+150.00</td><td class="num neg">-160.00</td><td class="num">1</td><td class="num">20.00円</td><td><a href="https://fx.dmm.com/fx/service/swapcalendar/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/line-fx.html">LINE FX</a></td><td class="num pos">+146.00</td><td class="num neg">-156.00</td><td class="num">1</td><td class="num">20.00円</td><td><a href="https://line-sec.co.jp/fx/market/swap-calendar" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/okasan-online.html">岡三オンライン</a></td><td class="num pos">+142.33</td><td class="num neg">-142.33</td><td class="num">1</td><td class="num">不明</td><td><a href="https://www.okasan-online.co.jp/fx/swap_calender/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/inet-shoken.html">アイネット証券</a></td><td class="num pos">+130.00</td><td class="num neg">-145.00</td><td class="num">1</td><td class="num">70.00円</td><td><a href="https://inet-sec.co.jp/study/fx-guide/swap-point/#nowswap" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/gaitame-online.html">外為オンライン</a></td><td class="num pos">+130.00</td><td class="num neg">-145.00</td><td class="num">1</td><td class="num">90.00円</td><td><a href="https://www.gaitameonline.com/dealings.jsp" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/ig-shoken.html">IG証券</a></td><td class="num pos">+96.00</td><td class="num neg">-160.00</td><td class="num">1</td><td class="num">不明</td><td><a href="https://www.ig.com/jp/forex/swap-point" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/saxobank.html">サクソバンク証券</a></td><td class="num pos">+70.00</td><td class="num neg">-189.00</td><td class="num">1</td><td class="num">20.00円</td><td><a href="https://cdn-storage.saxobank.com/jp/swappoint/swappoint-weekly.pdf" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/phillip-shoken.html">フィリップ証券</a></td><td class="num pos">+58.90</td><td class="num neg">-206.60</td><td class="num">1</td><td class="num">不明</td><td><a href="https://www.phillip.co.jp/fx/swap/" rel="nofollow noopener" target="_blank">公式</a></td></tr></tbody></table></div>
+<tbody><tr><td><a href="/brokers/invast-shoken.html">インヴァスト証券</a></td><td class="num pos">+166.00</td><td class="num neg">-241.00</td><td class="num">1</td><td class="num">20.00円</td><td><a href="https://www.invast.jp/triauto/market/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/hirose-fx.html">ヒロセ通商</a></td><td class="num pos">+161.00</td><td class="num neg">-196.00</td><td class="num">1</td><td class="num">20.00円</td><td><a href="https://hirose-fx.co.jp/contents/news/Swap" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/jfx.html">JFX</a></td><td class="num pos">+161.00</td><td class="num neg">-196.00</td><td class="num">1</td><td class="num">20.00円</td><td><a href="https://www.jfx.co.jp/trading_rule/swap/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/fxtf.html">FXTF</a></td><td class="num pos">+160.00</td><td class="num neg">-190.00</td><td class="num">1</td><td class="num">100.00円</td><td><a href="https://www.fxtrade.co.jp/pdf/swap_templete.pdf" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/gaitame-com.html">外為どっとコム</a></td><td class="num pos">+160.00</td><td class="num neg">-190.00</td><td class="num">1</td><td class="num">20.00円</td><td><a href="https://www.gaitame.com/service/fx/swap-cal.html?pair=usdjpy" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/rakuten-fx.html">楽天FX</a></td><td class="num pos">+159.00</td><td class="num neg">-164.00</td><td class="num">1</td><td class="num">130.00円</td><td><a href="https://www.rakuten-sec.co.jp/web/fx/spread_swap/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/fx-broadnet.html">FXブロードネット</a></td><td class="num pos">+153.00</td><td class="num neg">-187.00</td><td class="num">1</td><td class="num">20.00円</td><td><a href="https://www.fxbroadnet.com/swap.jsp" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/dmm-fx.html">DMM FX</a></td><td class="num pos">+150.00</td><td class="num neg">-160.00</td><td class="num">1</td><td class="num">20.00円</td><td><a href="https://fx.dmm.com/fx/service/swapcalendar/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/okasan-online.html">岡三オンライン</a></td><td class="num pos">+142.33</td><td class="num neg">-142.33</td><td class="num">1</td><td class="num">不明</td><td><a href="https://www.okasan-online.co.jp/fx/swap_calender/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/inet-shoken.html">アイネット証券</a></td><td class="num pos">+130.00</td><td class="num neg">-145.00</td><td class="num">1</td><td class="num">70.00円</td><td><a href="https://inet-sec.co.jp/study/fx-guide/swap-point/#nowswap" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/gaitame-online.html">外為オンライン</a></td><td class="num pos">+130.00</td><td class="num neg">-145.00</td><td class="num">1</td><td class="num">90.00円</td><td><a href="https://www.gaitameonline.com/dealings.jsp" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/ig-shoken.html">IG証券</a></td><td class="num pos">+96.00</td><td class="num neg">-160.00</td><td class="num">1</td><td class="num">不明</td><td><a href="https://www.ig.com/jp/forex/swap-point" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/saxobank.html">サクソバンク証券</a></td><td class="num pos">+70.00</td><td class="num neg">-189.00</td><td class="num">1</td><td class="num">20.00円</td><td><a href="https://cdn-storage.saxobank.com/jp/swappoint/swappoint-weekly.pdf" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/phillip-shoken.html">フィリップ証券</a></td><td class="num pos">+58.90</td><td class="num neg">-206.60</td><td class="num">1</td><td class="num">不明</td><td><a href="https://www.phillip.co.jp/fx/swap/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/gmo-click.html">GMOクリック証券</a></td><td class="num pos">+0.10</td><td class="num pos">+0.10</td><td class="num">1</td><td class="num">20.00円</td><td><a href="https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&amp;month=07&amp;pare=USDJPY" rel="nofollow noopener" target="_blank">公式</a></td></tr></tbody></table></div>
 
 <h2>推移</h2><p>推移グラフは数日分のデータが貯まってから表示されます。</p>
 
+
+<h2 id="evidence">証跡：公式ページの掲載箇所</h2>
+<p>上の表に出した数値が、実際に各社の公式ページに載っていることを確認できるように、
+ページを開いて該当箇所を撮影した画像です。加工した画像ではなく公式ページそのものです。
+撮影時点は2026年7月31日（金）前後で、その後に各社が数値を更新している場合があります。</p>
+<figure class="evfig" id="ev-invast-shoken-usdjpy"><div class="evhead">インヴァスト証券　USD/JPY</div><img src="/evidence/value_0507a7_USDJPY.png" loading="lazy" decoding="async" alt="インヴァスト証券　USD/JPYのスワップポイントが掲載されている公式ページの画面"><figcaption>掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 498.0／売 -723.0／日付 7月29日）</figcaption></figure><figure class="evfig" id="ev-gmo-click-usdjpy"><div class="evhead">GMOクリック証券　USD/JPY</div><img src="/evidence/GMO_9b76c5_USDJPY.png" loading="lazy" decoding="async" alt="GMOクリック証券　USD/JPYのスワップポイントが掲載されている公式ページの画面"><figcaption>掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 1／売 1／日付 7月30日）</figcaption></figure>
+<p style="font-size:13px;color:var(--muted)">
+※ 各社の公式ページの内容に関する権利は各社に帰属します。掲載元の確認を目的として引用しています。
+削除のご要望は<a href="/contact.html">お問い合わせ</a>よりご連絡ください。</p>
 
 
 
@@ -248,7 +366,7 @@ details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
 <a href="/guide/risks.html">リスクと注意点</a>／
 <a href="/swaps.html">全通貨ペアの一覧</a></p>
 
-<p class="stamp">最終更新：2026年7月30日（木）時点</p>
+<p class="stamp">最終更新：2026年7月31日（金）時点</p>
 </div></main>
 
 <footer class="site-foot"><div class="wrap">
@@ -262,5 +380,159 @@ details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
 <p class="disclaim">本サイトは各FX業者が公表している情報を自動収集して掲載する情報提供サイトであり、特定の金融商品の売買を推奨するものではありません。掲載内容の正確性・完全性を保証するものではなく、本サイトの情報に基づく判断・行動により生じた損害について一切の責任を負いません。実際の取引にあたっては必ず各業者の公式サイトで最新の条件をご確認ください。</p>
 <p class="copy">© スワップサヤ取りウォッチ</p>
 </div></footer>
+<script>
+(function(){
+  var root = document.documentElement;
+
+  /* ---- テーマ切替 ---- */
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('[data-theme-toggle]');
+    if(!b) return;
+    var cur = root.getAttribute('data-theme');
+    if(!cur) cur = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+    var next = cur === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try{ localStorage.setItem('swtheme', next); }catch(err){}
+    b.setAttribute('aria-label', next === 'dark' ? '明るい配色に切り替える' : '暗い配色に切り替える');
+  });
+
+  /* ---- お気に入り（通貨ペア） ---- */
+  var FAV = 'swfav';
+  function favs(){
+    try{ return JSON.parse(localStorage.getItem(FAV) || '[]'); }catch(e){ return []; }
+  }
+  function saveFavs(list){
+    try{ localStorage.setItem(FAV, JSON.stringify(list)); }catch(e){}
+  }
+  function paintFavs(){
+    var list = favs();
+    document.querySelectorAll('.star').forEach(function(s){
+      var on = list.indexOf(s.dataset.pair) >= 0;
+      s.setAttribute('aria-pressed', on ? 'true' : 'false');
+      s.textContent = on ? '★' : '☆';
+      var tr = s.closest('tr');
+      if(tr) tr.classList.toggle('faved', on);
+    });
+    document.querySelectorAll('[data-fav-count]').forEach(function(el){
+      el.textContent = list.length;
+    });
+  }
+  document.addEventListener('click', function(e){
+    var s = e.target.closest('.star');
+    if(!s) return;
+    e.preventDefault();
+    var list = favs(), i = list.indexOf(s.dataset.pair);
+    if(i >= 0) list.splice(i,1); else list.push(s.dataset.pair);
+    saveFavs(list);
+    paintFavs();
+    applyFilter(s.closest('.tblwrap') && s.closest('.tblwrap').previousElementSibling);
+  });
+
+  /* ---- 絞り込み ---- */
+  function applyFilter(tools){
+    if(!tools || !tools.classList || !tools.classList.contains('tools')) {
+      document.querySelectorAll('.tools').forEach(applyFilter);
+      return;
+    }
+    var wrap = tools.nextElementSibling;
+    var table = wrap && wrap.querySelector('table');
+    if(!table) return;
+    var q = (tools.querySelector('input[type=search]') || {}).value || '';
+    q = q.trim().toLowerCase().replace(/[\/\s]/g,'');
+    var onlyFav = (tools.querySelector('[data-only-fav]') || {}).getAttribute
+      ? tools.querySelector('[data-only-fav]').getAttribute('aria-pressed') === 'true' : false;
+    var list = favs(), shown = 0;
+    table.querySelectorAll('tbody tr').forEach(function(tr){
+      var text = tr.textContent.toLowerCase().replace(/[\/\s]/g,'');
+      var star = tr.querySelector('.star');
+      var okQ = !q || text.indexOf(q) >= 0;
+      var okF = !onlyFav || (star && list.indexOf(star.dataset.pair) >= 0);
+      var show = okQ && okF;
+      tr.hidden = !show;
+      if(show) shown++;
+    });
+    var hits = tools.querySelector('.hits');
+    if(hits) hits.textContent = shown + ' 件';
+  }
+  document.addEventListener('input', function(e){
+    if(e.target.matches('.tools input[type=search]')) applyFilter(e.target.closest('.tools'));
+  });
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('[data-only-fav]');
+    if(!b) return;
+    b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+    applyFilter(b.closest('.tools'));
+  });
+
+  /* ---- 並べ替え ---- */
+  function cellValue(tr, idx){
+    var td = tr.children[idx];
+    if(!td) return '';
+    var raw = (td.getAttribute('data-v') !== null) ? td.getAttribute('data-v') : td.textContent;
+    return raw.trim();
+  }
+  document.addEventListener('click', function(e){
+    var th = e.target.closest('th[data-sort]');
+    if(!th) return;
+    var table = th.closest('table');
+    var tbody = table.querySelector('tbody');
+    var idx = Array.prototype.indexOf.call(th.parentElement.children, th);
+    var numeric = th.dataset.sort === 'num';
+    var cur = th.getAttribute('aria-sort');
+    var dir = cur === 'descending' ? 1 : -1;   // 既定は大きい順
+    table.querySelectorAll('th[data-sort]').forEach(function(o){ o.removeAttribute('aria-sort'); });
+    th.setAttribute('aria-sort', dir === -1 ? 'descending' : 'ascending');
+    var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+    rows.sort(function(a,b){
+      var x = cellValue(a, idx), y = cellValue(b, idx);
+      if(numeric){
+        var nx = parseFloat(x.replace(/[^0-9.\-]/g,'')), ny = parseFloat(y.replace(/[^0-9.\-]/g,''));
+        if(isNaN(nx) && isNaN(ny)) return 0;
+        if(isNaN(nx)) return 1;          // 「不明」は常に後ろ
+        if(isNaN(ny)) return -1;
+        return (nx - ny) * dir;
+      }
+      return x.localeCompare(y, 'ja') * dir;
+    });
+    rows.forEach(function(r){ tbody.appendChild(r); });
+  });
+
+  /* ---- 証跡のライトボックス ---- */
+  var lb = null;
+  function closeLb(){ if(lb){ lb.hidden = true; document.body.style.overflow = ''; } }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a[data-ev-src]');
+    if(!a) return;
+    e.preventDefault();
+    if(!lb){
+      lb = document.createElement('div');
+      lb.className = 'lb';
+      lb.innerHTML = '<div class="lb-in" role="dialog" aria-modal="true" aria-label="証跡画像">' +
+        '<div class="lb-head"><h3></h3>' +
+        '<button class="lb-x" type="button" aria-label="閉じる">✕</button></div>' +
+        '<div class="lb-body"><img alt=""></div><div class="lb-foot"></div></div>';
+      document.body.appendChild(lb);
+      lb.addEventListener('click', function(ev){
+        if(ev.target === lb || ev.target.closest('.lb-x')) closeLb();
+      });
+    }
+    lb.querySelector('h3').textContent = a.dataset.evTitle || '';
+    var img = lb.querySelector('img');
+    img.src = a.dataset.evSrc;
+    img.alt = (a.dataset.evTitle || '') + 'のスワップポイントが載っている公式ページの画面';
+    lb.querySelector('.lb-foot').textContent = a.dataset.evNote || '';
+    lb.querySelector('.lb-body').scrollTop = 0;
+    lb.hidden = false;
+    document.body.style.overflow = 'hidden';
+    lb.querySelector('.lb-x').focus();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeLb();
+  });
+
+  paintFavs();
+  applyFilter();
+})();
+</script>
 </body>
 </html>
