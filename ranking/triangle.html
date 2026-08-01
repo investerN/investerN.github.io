@@ -177,6 +177,32 @@ td.est{color:var(--ink-2)}
 td.est::after{content:"推定"; font-size:9.5px; color:var(--muted); margin-left:5px;
   border:1px solid var(--border); border-radius:4px; padding:0 3px; vertical-align:1px}
 
+/* --- 損益シミュレーター --- */
+.sim{
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius); padding:16px 18px; margin:14px 0;
+}
+.sim-in{display:grid; gap:12px; margin-bottom:15px}
+@media(min-width:560px){ .sim-in{grid-template-columns:1fr 1fr} }
+.sim-in label{display:block; font-size:13px; font-weight:600; color:var(--ink)}
+.sim-in label span{display:block; font-size:11.5px; font-weight:400; color:var(--muted); margin:1px 0 5px}
+.sim-in input{
+  width:100%; font:inherit; font-size:16px; padding:8px 11px; color:var(--ink);
+  border:1px solid var(--border); border-radius:8px; background:var(--plane);
+  font-variant-numeric:tabular-nums;
+}
+.sim-in input:focus{outline:2px solid var(--accent); outline-offset:-1px}
+.sim-out{display:grid; gap:10px; grid-template-columns:1fr 1fr}
+@media(min-width:720px){ .sim-out{grid-template-columns:repeat(3,1fr)} }
+.so{background:var(--plane); border:1px solid var(--border); border-radius:9px; padding:10px 12px}
+.so .k{font-size:11.5px; color:var(--muted); margin:0}
+.so .v{font-size:19px; font-weight:700; margin:2px 0 0; letter-spacing:-.01em;
+  font-variant-numeric:tabular-nums; line-height:1.3}
+.so.big{grid-column:1/-1; background:var(--surface-2)}
+.so.big .v{font-size:27px}
+@media(min-width:720px){ .so.big{grid-column:auto} }
+.sim-note{font-size:12.5px; color:var(--ink-2); margin:11px 0 0; line-height:1.65}
+
 /* --- 広告表記（ステマ規制） --- */
 .prbar{
   font-size:12.5px; color:var(--ink-2); background:var(--surface-2);
@@ -384,56 +410,46 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 </div>
 <div class="card">
 <h3 style="margin-top:0">5. EUR/JPY/PLN
-<span class="tag" style="margin-left:6px">合計 +203.98円／日</span></h3>
+<span class="tag" style="margin-left:6px">合計 +189.98円／日</span></h3>
 <p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
 初期取引コスト 不明 ／ 利益化目安 —</p>
 <div class="tblwrap"><table>
 <thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
 <th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
-<tbody><tr><td>EUR/JPY</td><td>売</td><td class="num">1.0000</td><td>楽天FX</td><td class="num neg">-60.00</td><td class="num">40.00円</td></tr><tr><td>EUR/PLN</td><td>買</td><td class="num">1.0000</td><td>LIGHT FX</td><td class="num neg">-59.20</td><td class="num">不明</td></tr><tr><td>PLN/JPY</td><td>買</td><td class="num">4.3091</td><td>LIGHT FX</td><td class="num pos">+323.18</td><td class="num">不明</td></tr></tbody></table></div>
+<tbody><tr><td>EUR/JPY</td><td>売</td><td class="num">1.0000</td><td>岡三オンライン</td><td class="num neg">-74.00</td><td class="num">不明</td></tr><tr><td>EUR/PLN</td><td>買</td><td class="num">1.0000</td><td>LIGHT FX</td><td class="num neg">-59.20</td><td class="num">不明</td></tr><tr><td>PLN/JPY</td><td>買</td><td class="num">4.3091</td><td>LIGHT FX</td><td class="num pos">+323.18</td><td class="num">不明</td></tr></tbody></table></div>
 </div>
 <div class="card">
 <h3 style="margin-top:0">6. GBP/JPY/PLN
-<span class="tag" style="margin-left:6px">合計 +190.13円／日</span></h3>
+<span class="tag" style="margin-left:6px">合計 +186.13円／日</span></h3>
 <p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
 初期取引コスト 不明 ／ 利益化目安 —</p>
 <div class="tblwrap"><table>
 <thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
 <th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
-<tbody><tr><td>GBP/JPY</td><td>売</td><td class="num">1.0000</td><td>楽天FX</td><td class="num neg">-166.00</td><td class="num">90.00円</td></tr><tr><td>GBP/PLN</td><td>買</td><td class="num">1.0000</td><td>IG証券</td><td class="num neg">-21.51</td><td class="num">不明</td></tr><tr><td>PLN/JPY</td><td>買</td><td class="num">5.0353</td><td>LIGHT FX</td><td class="num pos">+377.65</td><td class="num">不明</td></tr></tbody></table></div>
+<tbody><tr><td>GBP/JPY</td><td>売</td><td class="num">1.0000</td><td>みんなのFX</td><td class="num neg">-170.00</td><td class="num">90.00円</td></tr><tr><td>GBP/PLN</td><td>買</td><td class="num">1.0000</td><td>IG証券</td><td class="num neg">-21.51</td><td class="num">不明</td></tr><tr><td>PLN/JPY</td><td>買</td><td class="num">5.0353</td><td>LIGHT FX</td><td class="num pos">+377.65</td><td class="num">不明</td></tr></tbody></table></div>
 </div>
 <div class="card">
 <h3 style="margin-top:0">7. JPY/PLN/USD
-<span class="tag" style="margin-left:6px">合計 +151.73円／日</span></h3>
+<span class="tag" style="margin-left:6px">合計 +143.73円／日</span></h3>
 <p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
 初期取引コスト 不明 ／ 利益化目安 —</p>
 <div class="tblwrap"><table>
 <thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
 <th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
-<tbody><tr><td>USD/JPY</td><td>売</td><td class="num">1.0000</td><td>楽天FX</td><td class="num neg">-117.00</td><td class="num">20.00円</td></tr><tr><td>USD/PLN</td><td>買</td><td class="num">1.0000</td><td>IG証券</td><td class="num neg">-11.55</td><td class="num">不明</td></tr><tr><td>PLN/JPY</td><td>買</td><td class="num">3.7371</td><td>LIGHT FX</td><td class="num pos">+280.28</td><td class="num">不明</td></tr></tbody></table></div>
+<tbody><tr><td>USD/JPY</td><td>売</td><td class="num">1.0000</td><td>岡三オンライン</td><td class="num neg">-125.00</td><td class="num">不明</td></tr><tr><td>USD/PLN</td><td>買</td><td class="num">1.0000</td><td>IG証券</td><td class="num neg">-11.55</td><td class="num">不明</td></tr><tr><td>PLN/JPY</td><td>買</td><td class="num">3.7371</td><td>LIGHT FX</td><td class="num pos">+280.28</td><td class="num">不明</td></tr></tbody></table></div>
 </div>
 <div class="card">
 <h3 style="margin-top:0">8. CZK/JPY/USD
-<span class="tag" style="margin-left:6px">合計 +133.98円／日</span></h3>
+<span class="tag" style="margin-left:6px">合計 +125.98円／日</span></h3>
 <p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
 初期取引コスト 不明 ／ 利益化目安 —</p>
 <div class="tblwrap"><table>
 <thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
 <th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
-<tbody><tr><td>USD/CZK</td><td>買</td><td class="num">1.0000</td><td>IG証券</td><td class="num pos">+83.18</td><td class="num">不明</td></tr><tr><td>CZK/JPY</td><td>買</td><td class="num">20.9760</td><td>インヴァスト証券</td><td class="num pos">+167.81</td><td class="num">419.52円</td></tr><tr><td>USD/JPY</td><td>売</td><td class="num">1.0000</td><td>楽天FX</td><td class="num neg">-117.00</td><td class="num">20.00円</td></tr></tbody></table></div>
+<tbody><tr><td>USD/CZK</td><td>買</td><td class="num">1.0000</td><td>IG証券</td><td class="num pos">+83.18</td><td class="num">不明</td></tr><tr><td>CZK/JPY</td><td>買</td><td class="num">20.9760</td><td>インヴァスト証券</td><td class="num pos">+167.81</td><td class="num">419.52円</td></tr><tr><td>USD/JPY</td><td>売</td><td class="num">1.0000</td><td>岡三オンライン</td><td class="num neg">-125.00</td><td class="num">不明</td></tr></tbody></table></div>
 </div>
 <div class="card">
-<h3 style="margin-top:0">9. CZK/EUR/JPY
-<span class="tag" style="margin-left:6px">合計 +132.43円／日</span></h3>
-<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
-初期取引コスト 不明 ／ 利益化目安 —</p>
-<div class="tblwrap"><table>
-<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
-<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
-<tbody><tr><td>EUR/CZK</td><td>買</td><td class="num">1.0000</td><td>IG証券</td><td class="num neg">-1.03</td><td class="num">不明</td></tr><tr><td>CZK/JPY</td><td>買</td><td class="num">24.1830</td><td>インヴァスト証券</td><td class="num pos">+193.46</td><td class="num">483.66円</td></tr><tr><td>EUR/JPY</td><td>売</td><td class="num">1.0000</td><td>楽天FX</td><td class="num neg">-60.00</td><td class="num">40.00円</td></tr></tbody></table></div>
-</div>
-<div class="card">
-<h3 style="margin-top:0">10. CHF/JPY/ZAR
+<h3 style="margin-top:0">9. CHF/JPY/ZAR
 <span class="tag" style="margin-left:6px">合計 +119.16円／日</span></h3>
 <p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
 初期取引コスト 不明 ／ 利益化目安 —</p>
@@ -441,6 +457,16 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 <thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
 <th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
 <tbody><tr><td>CHF/JPY</td><td>売</td><td class="num">1.0000</td><td>FXTF</td><td class="num pos">+45.00</td><td class="num">不明</td></tr><tr><td>CHF/ZAR</td><td>買</td><td class="num">1.0000</td><td>LIGHT FX</td><td class="num neg">-247.40</td><td class="num">不明</td></tr><tr><td>ZAR/JPY</td><td>買</td><td class="num">20.4816</td><td>みんなのFX</td><td class="num pos">+321.56</td><td class="num">1,843.34円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">10. CZK/EUR/JPY
+<span class="tag" style="margin-left:6px">合計 +118.43円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>EUR/CZK</td><td>買</td><td class="num">1.0000</td><td>IG証券</td><td class="num neg">-1.03</td><td class="num">不明</td></tr><tr><td>CZK/JPY</td><td>買</td><td class="num">24.1830</td><td>インヴァスト証券</td><td class="num pos">+193.46</td><td class="num">483.66円</td></tr><tr><td>EUR/JPY</td><td>売</td><td class="num">1.0000</td><td>岡三オンライン</td><td class="num neg">-74.00</td><td class="num">不明</td></tr></tbody></table></div>
 </div>
 <div class="card">
 <h3 style="margin-top:0">11. CHF/JPY/PLN
@@ -473,57 +499,37 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 <tbody><tr><td>CHF/JPY</td><td>売</td><td class="num">1.0000</td><td>FXTF</td><td class="num pos">+45.00</td><td class="num">不明</td></tr><tr><td>USD/CHF</td><td>売</td><td class="num">1.2389</td><td>LIGHT FX</td><td class="num neg">-159.82</td><td class="num">不明</td></tr><tr><td>USD/JPY</td><td>買</td><td class="num">1.2389</td><td>GMOクリック証券</td><td class="num pos">+199.47</td><td class="num">24.78円</td></tr></tbody></table></div>
 </div>
 <div class="card">
-<h3 style="margin-top:0">14. GBP/JPY/USD
-<span class="tag" style="margin-left:6px">合計 +68.57円／日</span></h3>
+<h3 style="margin-top:0">14. CAD/JPY/PLN
+<span class="tag" style="margin-left:6px">合計 +65.52円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>CAD/JPY</td><td>売</td><td class="num">1.0000</td><td>GMOクリック証券</td><td class="num neg">-40.00</td><td class="num">60.00円</td></tr><tr><td>CAD/PLN</td><td>買</td><td class="num">1.0000</td><td>サクソバンク証券</td><td class="num neg">-94.11</td><td class="num">不明</td></tr><tr><td>PLN/JPY</td><td>買</td><td class="num">2.6617</td><td>LIGHT FX</td><td class="num pos">+199.63</td><td class="num">不明</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">15. GBP/JPY/USD
+<span class="tag" style="margin-left:6px">合計 +64.57円／日</span></h3>
 <p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
 初期取引コスト 274.68円 ／ 利益化目安 5日</p>
 <div class="tblwrap"><table>
 <thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
 <th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
-<tbody><tr><td>GBP/JPY</td><td>売</td><td class="num">1.0000</td><td>楽天FX</td><td class="num neg">-166.00</td><td class="num">90.00円</td></tr><tr><td>GBP/USD</td><td>買</td><td class="num">1.0000</td><td>LINE FX</td><td class="num pos">+17.35</td><td class="num">157.69円</td></tr><tr><td>USD/JPY</td><td>買</td><td class="num">1.3492</td><td>GMOクリック証券</td><td class="num pos">+217.22</td><td class="num">26.98円</td></tr></tbody></table></div>
+<tbody><tr><td>GBP/JPY</td><td>売</td><td class="num">1.0000</td><td>みんなのFX</td><td class="num neg">-170.00</td><td class="num">90.00円</td></tr><tr><td>GBP/USD</td><td>買</td><td class="num">1.0000</td><td>LINE FX</td><td class="num pos">+17.35</td><td class="num">157.69円</td></tr><tr><td>USD/JPY</td><td>買</td><td class="num">1.3492</td><td>GMOクリック証券</td><td class="num pos">+217.22</td><td class="num">26.98円</td></tr></tbody></table></div>
 </div>
 <div class="card">
-<h3 style="margin-top:0">15. CAD/JPY/PLN
-<span class="tag" style="margin-left:6px">合計 +67.52円／日</span></h3>
+<h3 style="margin-top:0">16. AUD/JPY/PLN
+<span class="tag" style="margin-left:6px">合計 +60.34円／日</span></h3>
 <p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
 初期取引コスト 不明 ／ 利益化目安 —</p>
 <div class="tblwrap"><table>
 <thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
 <th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
-<tbody><tr><td>CAD/JPY</td><td>売</td><td class="num">1.0000</td><td>楽天FX</td><td class="num neg">-38.00</td><td class="num">60.00円</td></tr><tr><td>CAD/PLN</td><td>買</td><td class="num">1.0000</td><td>サクソバンク証券</td><td class="num neg">-94.11</td><td class="num">不明</td></tr><tr><td>PLN/JPY</td><td>買</td><td class="num">2.6617</td><td>LIGHT FX</td><td class="num pos">+199.63</td><td class="num">不明</td></tr></tbody></table></div>
+<tbody><tr><td>AUD/JPY</td><td>売</td><td class="num">1.0000</td><td>DMM FX</td><td class="num neg">-108.00</td><td class="num">50.00円</td></tr><tr><td>AUD/PLN</td><td>買</td><td class="num">1.0000</td><td>サクソバンク証券</td><td class="num neg">-28.06</td><td class="num">不明</td></tr><tr><td>PLN/JPY</td><td>買</td><td class="num">2.6187</td><td>LIGHT FX</td><td class="num pos">+196.40</td><td class="num">不明</td></tr></tbody></table></div>
 </div>
 <div class="card">
-<h3 style="margin-top:0">16. CNH/EUR/JPY
-<span class="tag" style="margin-left:6px">合計 +62.68円／日</span></h3>
-<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
-初期取引コスト 不明 ／ 利益化目安 —</p>
-<div class="tblwrap"><table>
-<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
-<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
-<tbody><tr><td>EUR/CNH</td><td>買</td><td class="num">1.0000</td><td>IG証券</td><td class="num pos">+44.87</td><td class="num">不明</td></tr><tr><td>CNH/JPY</td><td>買</td><td class="num">7.7802</td><td>JFX</td><td class="num pos">+77.80</td><td class="num">544.61円</td></tr><tr><td>EUR/JPY</td><td>売</td><td class="num">1.0000</td><td>楽天FX</td><td class="num neg">-60.00</td><td class="num">40.00円</td></tr></tbody></table></div>
-</div>
-<div class="card">
-<h3 style="margin-top:0">17. EUR/JPY/USD
-<span class="tag" style="margin-left:6px">合計 +60.85円／日</span></h3>
-<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
-初期取引コスト 283.86円 ／ 利益化目安 5日</p>
-<div class="tblwrap"><table>
-<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
-<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
-<tbody><tr><td>EUR/JPY</td><td>売</td><td class="num">1.0000</td><td>楽天FX</td><td class="num neg">-60.00</td><td class="num">40.00円</td></tr><tr><td>EUR/USD</td><td>買</td><td class="num">1.0000</td><td>外為オンライン</td><td class="num neg">-65.00</td><td class="num">220.77円</td></tr><tr><td>USD/JPY</td><td>買</td><td class="num">1.1543</td><td>GMOクリック証券</td><td class="num pos">+185.85</td><td class="num">23.09円</td></tr></tbody></table></div>
-</div>
-<div class="card">
-<h3 style="margin-top:0">18. AUD/JPY/PLN
-<span class="tag" style="margin-left:6px">合計 +60.48円／日</span></h3>
-<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
-初期取引コスト 不明 ／ 利益化目安 —</p>
-<div class="tblwrap"><table>
-<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
-<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
-<tbody><tr><td>AUD/JPY</td><td>売</td><td class="num">1.0000</td><td>DMM FX</td><td class="num neg">-108.00</td><td class="num">50.00円</td></tr><tr><td>AUD/PLN</td><td>買</td><td class="num">1.0000</td><td>サクソバンク証券</td><td class="num neg">-28.06</td><td class="num">不明</td></tr><tr><td>PLN/JPY</td><td>買</td><td class="num">2.6206</td><td>LIGHT FX</td><td class="num pos">+196.54</td><td class="num">不明</td></tr></tbody></table></div>
-</div>
-<div class="card">
-<h3 style="margin-top:0">19. JPY/NZD/USD
+<h3 style="margin-top:0">17. JPY/NZD/USD
 <span class="tag" style="margin-left:6px">合計 +59.73円／日</span></h3>
 <p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
 初期取引コスト 不明 ／ 利益化目安 —</p>
@@ -533,17 +539,7 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 <tbody><tr><td>USD/JPY</td><td>買</td><td class="num">1.0000</td><td>GMOクリック証券</td><td class="num pos">+161.00</td><td class="num">20.00円</td></tr><tr><td>NZD/USD</td><td>買</td><td class="num">1.6963</td><td>LIGHT FX</td><td class="num neg">-40.20</td><td class="num">不明</td></tr><tr><td>NZD/JPY</td><td>売</td><td class="num">1.6963</td><td>岡三オンライン</td><td class="num neg">-61.07</td><td class="num">不明</td></tr></tbody></table></div>
 </div>
 <div class="card">
-<h3 style="margin-top:0">20. CAD/CNH/JPY
-<span class="tag" style="margin-left:6px">合計 +59.00円／日</span></h3>
-<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
-初期取引コスト 不明 ／ 利益化目安 —</p>
-<div class="tblwrap"><table>
-<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
-<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
-<tbody><tr><td>CAD/CNH</td><td>買</td><td class="num">1.0000</td><td>IG証券</td><td class="num pos">+48.88</td><td class="num">不明</td></tr><tr><td>CAD/JPY</td><td>売</td><td class="num">1.0000</td><td>楽天FX</td><td class="num neg">-38.00</td><td class="num">60.00円</td></tr><tr><td>CNH/JPY</td><td>買</td><td class="num">4.8121</td><td>JFX</td><td class="num pos">+48.12</td><td class="num">336.85円</td></tr></tbody></table></div>
-</div>
-<div class="card">
-<h3 style="margin-top:0">21. JPY/SGD/USD
+<h3 style="margin-top:0">18. JPY/SGD/USD
 <span class="tag" style="margin-left:6px">合計 +58.89円／日</span></h3>
 <p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
 初期取引コスト 不明 ／ 利益化目安 —</p>
@@ -553,17 +549,17 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 <tbody><tr><td>USD/JPY</td><td>買</td><td class="num">1.0000</td><td>GMOクリック証券</td><td class="num pos">+161.00</td><td class="num">20.00円</td></tr><tr><td>USD/SGD</td><td>売</td><td class="num">1.0000</td><td>ヒロセ通商</td><td class="num neg">-86.30</td><td class="num">1,155.96円</td></tr><tr><td>SGD/JPY</td><td>売</td><td class="num">1.2818</td><td>IG証券</td><td class="num neg">-15.81</td><td class="num">不明</td></tr></tbody></table></div>
 </div>
 <div class="card">
-<h3 style="margin-top:0">22. CZK/GBP/JPY
-<span class="tag" style="margin-left:6px">合計 +57.71円／日</span></h3>
+<h3 style="margin-top:0">19. CAD/CNH/JPY
+<span class="tag" style="margin-left:6px">合計 +57.00円／日</span></h3>
 <p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
 初期取引コスト 不明 ／ 利益化目安 —</p>
 <div class="tblwrap"><table>
 <thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
 <th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
-<tbody><tr><td>GBP/CZK</td><td>買</td><td class="num">1.0000</td><td>IG証券</td><td class="num neg">-2.58</td><td class="num">不明</td></tr><tr><td>CZK/JPY</td><td>買</td><td class="num">28.2870</td><td>インヴァスト証券</td><td class="num pos">+226.30</td><td class="num">565.74円</td></tr><tr><td>GBP/JPY</td><td>売</td><td class="num">1.0000</td><td>楽天FX</td><td class="num neg">-166.00</td><td class="num">90.00円</td></tr></tbody></table></div>
+<tbody><tr><td>CAD/CNH</td><td>買</td><td class="num">1.0000</td><td>IG証券</td><td class="num pos">+48.88</td><td class="num">不明</td></tr><tr><td>CAD/JPY</td><td>売</td><td class="num">1.0000</td><td>GMOクリック証券</td><td class="num neg">-40.00</td><td class="num">60.00円</td></tr><tr><td>CNH/JPY</td><td>買</td><td class="num">4.8121</td><td>JFX</td><td class="num pos">+48.12</td><td class="num">336.85円</td></tr></tbody></table></div>
 </div>
 <div class="card">
-<h3 style="margin-top:0">23. JPY/USD/ZAR
+<h3 style="margin-top:0">20. JPY/USD/ZAR
 <span class="tag" style="margin-left:6px">合計 +56.17円／日</span></h3>
 <p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
 初期取引コスト 不明 ／ 利益化目安 —</p>
@@ -573,7 +569,7 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 <tbody><tr><td>USD/JPY</td><td>買</td><td class="num">1.0000</td><td>GMOクリック証券</td><td class="num pos">+161.00</td><td class="num">20.00円</td></tr><tr><td>USD/ZAR</td><td>売</td><td class="num">1.0000</td><td>IG証券</td><td class="num pos">+110.24</td><td class="num">不明</td></tr><tr><td>ZAR/JPY</td><td>売</td><td class="num">16.5438</td><td>GMOクリック証券</td><td class="num neg">-215.07</td><td class="num">1,488.94円</td></tr></tbody></table></div>
 </div>
 <div class="card">
-<h3 style="margin-top:0">24. CHF/JPY/NOK
+<h3 style="margin-top:0">21. CHF/JPY/NOK
 <span class="tag" style="margin-left:6px">合計 +55.36円／日</span></h3>
 <p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
 初期取引コスト 不明 ／ 利益化目安 —</p>
@@ -583,7 +579,7 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 <tbody><tr><td>CHF/JPY</td><td>買</td><td class="num">1.0000</td><td>LIGHT FX</td><td class="num neg">-20.00</td><td class="num">不明</td></tr><tr><td>CHF/NOK</td><td>売</td><td class="num">1.0000</td><td>IG証券</td><td class="num pos">+216.13</td><td class="num">不明</td></tr><tr><td>NOK/JPY</td><td>売</td><td class="num">11.7307</td><td>LIGHT FX</td><td class="num neg">-140.77</td><td class="num">不明</td></tr></tbody></table></div>
 </div>
 <div class="card">
-<h3 style="margin-top:0">25. JPY/NZD/PLN
+<h3 style="margin-top:0">22. JPY/NZD/PLN
 <span class="tag" style="margin-left:6px">合計 +55.24円／日</span></h3>
 <p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
 初期取引コスト 不明 ／ 利益化目安 —</p>
@@ -593,7 +589,7 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 <tbody><tr><td>NZD/JPY</td><td>売</td><td class="num">1.0000</td><td>岡三オンライン</td><td class="num neg">-36.00</td><td class="num">不明</td></tr><tr><td>NZD/PLN</td><td>買</td><td class="num">1.0000</td><td>サクソバンク証券</td><td class="num neg">-73.39</td><td class="num">不明</td></tr><tr><td>PLN/JPY</td><td>買</td><td class="num">2.1951</td><td>LIGHT FX</td><td class="num pos">+164.63</td><td class="num">不明</td></tr></tbody></table></div>
 </div>
 <div class="card">
-<h3 style="margin-top:0">26. CHF/GBP/JPY
+<h3 style="margin-top:0">23. CHF/GBP/JPY
 <span class="tag" style="margin-left:6px">合計 +55.10円／日</span></h3>
 <p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
 初期取引コスト 不明 ／ 利益化目安 —</p>
@@ -603,7 +599,17 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 <tbody><tr><td>GBP/CHF</td><td>売</td><td class="num">1.0000</td><td>LIGHT FX</td><td class="num neg">-175.90</td><td class="num">不明</td></tr><tr><td>CHF/JPY</td><td>売</td><td class="num">1.0889</td><td>FXTF</td><td class="num pos">+49.00</td><td class="num">不明</td></tr><tr><td>GBP/JPY</td><td>買</td><td class="num">1.0000</td><td>GMOクリック証券</td><td class="num pos">+182.00</td><td class="num">90.00円</td></tr></tbody></table></div>
 </div>
 <div class="card">
-<h3 style="margin-top:0">27. JPY/NOK/USD
+<h3 style="margin-top:0">24. CZK/GBP/JPY
+<span class="tag" style="margin-left:6px">合計 +53.71円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>GBP/CZK</td><td>買</td><td class="num">1.0000</td><td>IG証券</td><td class="num neg">-2.58</td><td class="num">不明</td></tr><tr><td>CZK/JPY</td><td>買</td><td class="num">28.2870</td><td>インヴァスト証券</td><td class="num pos">+226.30</td><td class="num">565.74円</td></tr><tr><td>GBP/JPY</td><td>売</td><td class="num">1.0000</td><td>みんなのFX</td><td class="num neg">-170.00</td><td class="num">90.00円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">25. JPY/NOK/USD
 <span class="tag" style="margin-left:6px">合計 +49.78円／日</span></h3>
 <p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
 初期取引コスト 不明 ／ 利益化目安 —</p>
@@ -613,7 +619,7 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 <tbody><tr><td>USD/JPY</td><td>買</td><td class="num">1.0000</td><td>GMOクリック証券</td><td class="num pos">+161.00</td><td class="num">20.00円</td></tr><tr><td>USD/NOK</td><td>売</td><td class="num">1.0000</td><td>IG証券</td><td class="num pos">+2.33</td><td class="num">不明</td></tr><tr><td>NOK/JPY</td><td>売</td><td class="num">9.4625</td><td>LIGHT FX</td><td class="num neg">-113.55</td><td class="num">不明</td></tr></tbody></table></div>
 </div>
 <div class="card">
-<h3 style="margin-top:0">28. DKK/JPY/TRY
+<h3 style="margin-top:0">26. DKK/JPY/TRY
 <span class="tag" style="margin-left:6px">合計 +49.27円／日</span></h3>
 <p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
 初期取引コスト 不明 ／ 利益化目安 —</p>
@@ -623,7 +629,17 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 <tbody><tr><td>DKK/JPY</td><td>買</td><td class="num">1.0000</td><td>サクソバンク証券</td><td class="num neg">-2.30</td><td class="num">不明</td></tr><tr><td>TRY/DKK</td><td>買</td><td class="num">7.4627</td><td>サクソバンク証券</td><td class="num pos">+215.75</td><td class="num">不明</td></tr><tr><td>TRY/JPY</td><td>売</td><td class="num">7.4627</td><td>岡三オンライン</td><td class="num neg">-164.18</td><td class="num">不明</td></tr></tbody></table></div>
 </div>
 <div class="card">
-<h3 style="margin-top:0">29. CHF/JPY/MXN
+<h3 style="margin-top:0">27. CNH/EUR/JPY
+<span class="tag" style="margin-left:6px">合計 +48.68円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>EUR/CNH</td><td>買</td><td class="num">1.0000</td><td>IG証券</td><td class="num pos">+44.87</td><td class="num">不明</td></tr><tr><td>CNH/JPY</td><td>買</td><td class="num">7.7802</td><td>JFX</td><td class="num pos">+77.80</td><td class="num">544.61円</td></tr><tr><td>EUR/JPY</td><td>売</td><td class="num">1.0000</td><td>岡三オンライン</td><td class="num neg">-74.00</td><td class="num">不明</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">28. CHF/JPY/MXN
 <span class="tag" style="margin-left:6px">合計 +48.48円／日</span></h3>
 <p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
 初期取引コスト 不明 ／ 利益化目安 —</p>
@@ -633,14 +649,24 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 <tbody><tr><td>CHF/JPY</td><td>買</td><td class="num">1.0000</td><td>LIGHT FX</td><td class="num neg">-20.00</td><td class="num">不明</td></tr><tr><td>CHF/MXN</td><td>売</td><td class="num">1.0000</td><td>インヴァスト証券</td><td class="num pos">+360.00</td><td class="num">不明</td></tr><tr><td>MXN/JPY</td><td>売</td><td class="num">21.4355</td><td>岡三オンライン</td><td class="num neg">-291.52</td><td class="num">不明</td></tr></tbody></table></div>
 </div>
 <div class="card">
-<h3 style="margin-top:0">30. CNH/GBP/JPY
-<span class="tag" style="margin-left:6px">合計 +48.17円／日</span></h3>
+<h3 style="margin-top:0">29. CHF/EUR/JPY
+<span class="tag" style="margin-left:6px">合計 +48.01円／日</span></h3>
 <p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
 初期取引コスト 不明 ／ 利益化目安 —</p>
 <div class="tblwrap"><table>
 <thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
 <th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
-<tbody><tr><td>GBP/CNH</td><td>買</td><td class="num">1.0000</td><td>IG証券</td><td class="num pos">+123.18</td><td class="num">不明</td></tr><tr><td>CNH/JPY</td><td>買</td><td class="num">9.0995</td><td>JFX</td><td class="num pos">+90.99</td><td class="num">636.96円</td></tr><tr><td>GBP/JPY</td><td>売</td><td class="num">1.0000</td><td>楽天FX</td><td class="num neg">-166.00</td><td class="num">90.00円</td></tr></tbody></table></div>
+<tbody><tr><td>CHF/JPY</td><td>売</td><td class="num">1.0000</td><td>FXTF</td><td class="num pos">+45.00</td><td class="num">不明</td></tr><tr><td>EUR/CHF</td><td>売</td><td class="num">1.0733</td><td>LIGHT FX</td><td class="num neg">-83.93</td><td class="num">不明</td></tr><tr><td>EUR/JPY</td><td>買</td><td class="num">1.0733</td><td>LIGHT FX</td><td class="num pos">+86.94</td><td class="num">42.93円</td></tr></tbody></table></div>
+</div>
+<div class="card">
+<h3 style="margin-top:0">30. EUR/JPY/USD
+<span class="tag" style="margin-left:6px">合計 +46.85円／日</span></h3>
+<p style="font-size:13.5px;color:var(--muted);margin:0 0 10px">
+初期取引コスト 不明 ／ 利益化目安 —</p>
+<div class="tblwrap"><table>
+<thead><tr><th>通貨ペア</th><th>売買</th><th class="num">ロット(1万通貨)</th>
+<th>業者</th><th class="num">スワップ／日</th><th class="num">コスト</th></tr></thead>
+<tbody><tr><td>EUR/JPY</td><td>売</td><td class="num">1.0000</td><td>岡三オンライン</td><td class="num neg">-74.00</td><td class="num">不明</td></tr><tr><td>EUR/USD</td><td>買</td><td class="num">1.0000</td><td>外為オンライン</td><td class="num neg">-65.00</td><td class="num">220.77円</td></tr><tr><td>USD/JPY</td><td>買</td><td class="num">1.1543</td><td>GMOクリック証券</td><td class="num pos">+185.85</td><td class="num">23.09円</td></tr></tbody></table></div>
 </div>
 
 <h2>ロット数について</h2>
@@ -813,6 +839,63 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape') closeLb();
   });
+
+  /* ---- 損益シミュレーター ---- */
+  var yen = function(v){
+    return (v < 0 ? '-' : '') + Math.abs(Math.round(v)).toLocaleString('ja-JP') + '円';
+  };
+  function runSim(sim){
+    var spread = parseFloat(sim.dataset.spread);      // 1万通貨・1日あたりのサヤ
+    var cost1  = parseFloat(sim.dataset.cost);        // 1万通貨あたりの初期コスト（2社分）
+    var margin1= parseFloat(sim.dataset.margin);      // 1万通貨あたりの必要証拠金（2社分）
+    var est    = sim.dataset.est === '1';
+    var lots = parseFloat((sim.querySelector('[data-sim=lots]')||{}).value);
+    var days = parseFloat((sim.querySelector('[data-sim=days]')||{}).value);
+    if(!isFinite(lots) || lots <= 0) lots = 1;
+    if(!isFinite(days) || days <= 0) days = 1;
+
+    var gross = spread * lots * days;
+    var cost  = cost1 * lots;
+    var net   = gross - cost;
+    var margin = margin1 * lots;
+    var be = spread > 0 ? cost1 / spread : null;      // ロット数によらない
+    var apy = (margin > 0 && days > 0) ? (net / margin) * (365 / days) * 100 : null;
+    var pre = est ? '約' : '';
+
+    var set = function(name, text, cls){
+      var el = sim.querySelector('[data-o=' + name + ']');
+      if(!el) return;
+      el.textContent = text;
+      el.classList.remove('pos','neg');
+      if(cls) el.classList.add(cls);
+    };
+    set('gross', pre + yen(gross));
+    set('cost', pre + yen(cost), 'neg');
+    set('net', pre + (net >= 0 ? '+' : '') + yen(net), net >= 0 ? 'pos' : 'neg');
+    set('be', be === null ? '—' : pre + Math.ceil(be).toLocaleString('ja-JP') + '日');
+    set('margin', margin > 0 ? yen(margin) : '—');
+    set('apy', apy === null ? '—' : pre + apy.toFixed(1) + '%');
+
+    var note = sim.querySelector('[data-o=note]');
+    if(note){
+      var msg;
+      if(be !== null && days < be){
+        msg = '保有日数が損益分岐（約' + Math.ceil(be) + '日）に届いていないため、'
+            + 'この条件では赤字になります。';
+      } else if(net > 0){
+        msg = '1万通貨あたり ' + yen(spread) + '／日 のサヤが ' + days
+            + '日続いた場合の試算です。スワップは毎営業日見直されます。';
+      } else {
+        msg = 'この条件ではコストを回収できません。';
+      }
+      note.textContent = msg + (est ? ' コストに推定を含むため、実際の値とは差が出ます。' : '');
+    }
+  }
+  document.addEventListener('input', function(e){
+    var sim = e.target.closest ? e.target.closest('.sim') : null;
+    if(sim && e.target.matches('[data-sim]')) runSim(sim);
+  });
+  document.querySelectorAll('.sim').forEach(runSim);
 
   paintFavs();
   applyFilter();

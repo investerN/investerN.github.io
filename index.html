@@ -177,6 +177,32 @@ td.est{color:var(--ink-2)}
 td.est::after{content:"推定"; font-size:9.5px; color:var(--muted); margin-left:5px;
   border:1px solid var(--border); border-radius:4px; padding:0 3px; vertical-align:1px}
 
+/* --- 損益シミュレーター --- */
+.sim{
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius); padding:16px 18px; margin:14px 0;
+}
+.sim-in{display:grid; gap:12px; margin-bottom:15px}
+@media(min-width:560px){ .sim-in{grid-template-columns:1fr 1fr} }
+.sim-in label{display:block; font-size:13px; font-weight:600; color:var(--ink)}
+.sim-in label span{display:block; font-size:11.5px; font-weight:400; color:var(--muted); margin:1px 0 5px}
+.sim-in input{
+  width:100%; font:inherit; font-size:16px; padding:8px 11px; color:var(--ink);
+  border:1px solid var(--border); border-radius:8px; background:var(--plane);
+  font-variant-numeric:tabular-nums;
+}
+.sim-in input:focus{outline:2px solid var(--accent); outline-offset:-1px}
+.sim-out{display:grid; gap:10px; grid-template-columns:1fr 1fr}
+@media(min-width:720px){ .sim-out{grid-template-columns:repeat(3,1fr)} }
+.so{background:var(--plane); border:1px solid var(--border); border-radius:9px; padding:10px 12px}
+.so .k{font-size:11.5px; color:var(--muted); margin:0}
+.so .v{font-size:19px; font-weight:700; margin:2px 0 0; letter-spacing:-.01em;
+  font-variant-numeric:tabular-nums; line-height:1.3}
+.so.big{grid-column:1/-1; background:var(--surface-2)}
+.so.big .v{font-size:27px}
+@media(min-width:720px){ .so.big{grid-column:auto} }
+.sim-note{font-size:12.5px; color:var(--ink-2); margin:11px 0 0; line-height:1.65}
+
 /* --- 広告表記（ステマ規制） --- */
 .prbar{
   font-size:12.5px; color:var(--ink-2); background:var(--surface-2);
@@ -340,10 +366,10 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 <div class="hero">
   <p class="eyebrow">30日保有したときの純利益がいちばん大きい組み合わせ</p>
   <p class="pair"><a href="/pairs/USDJPY.html">USD/JPY</a></p>
-  <p class="amount">+1,280円
+  <p class="amount">約+1,040円
     <span class="unit">／30日・1万通貨（コスト差引後）</span></p>
-  <p class="sub">1日あたりのサヤ +44.00円 　<span class="delta up">+20.3</span>
-    　初期コスト 40円
+  <p class="sub">1日あたりのサヤ +36.00円 　<span class="delta up">+12.3</span>
+    　初期コスト 約40円
     　回収 約1日
     　必要証拠金 126,155円</p>
   <div class="legs">
@@ -351,11 +377,11 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
       <p class="who"><a href="#ev-gmo-click-usdjpy" data-ev-src="/evidence/GMO_9b76c5_USDJPY.png" data-ev-title="GMOクリック証券　USD/JPY" data-ev-note="掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 161／売 -161／日付 7月31日）" title="GMOクリック証券の掲載画面を見る">GMOクリック証券<span aria-hidden="true"> 🔎</span></a></p>
       <p class="val">+161.00円／日</p></div>
     <div class="leg"><p class="lab">売る</p>
-      <p class="who"><a href="#ev-rakuten-fx-usdjpy" data-ev-src="/evidence/Rakuten_ec6ecd_USDJPY.png" data-ev-title="楽天FX　USD/JPY" data-ev-note="掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 112／売 -117）" title="楽天FXの掲載画面を見る">楽天FX<span aria-hidden="true"> 🔎</span></a></p>
-      <p class="val">-117.00円／日</p></div>
+      <p class="who"><a href="#ev-okasan-online-usdjpy" data-ev-src="/evidence/value_cd4379_USDJPY.png" data-ev-title="岡三オンライン　USD/JPY" data-ev-note="掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 125／売 -125／日付 7/31）" title="岡三オンラインの掲載画面を見る">岡三オンライン<span aria-hidden="true"> 🔎</span></a></p>
+      <p class="val">-125.00円／日</p></div>
   </div>
 </div>
-<div class="grid c2"><div class="tile"><p class="k">集計した日付</p><p class="v">7/31</p><p class="s">2026年7月31日（金）</p></div><div class="tile"><p class="k">比較したFX業者</p><p class="v">18社</p><p class="s">公式ページから自動収集</p></div><div class="tile"><p class="k">30日で黒になる組</p><p class="v">18件</p><p class="s">サヤを計算できた47組中</p></div><div class="tile"><p class="k">比較した通貨ペア</p><p class="v">162</p><p class="s">1万通貨・1日あたりに換算済み</p></div></div>
+<div class="grid c2"><div class="tile"><p class="k">集計した日付</p><p class="v">7/31</p><p class="s">2026年7月31日（金）</p></div><div class="tile"><p class="k">比較したFX業者</p><p class="v">17社</p><p class="s">公式ページから自動収集</p></div><div class="tile"><p class="k">30日で黒になる組</p><p class="v">17件</p><p class="s">サヤを計算できた47組中</p></div><div class="tile"><p class="k">比較した通貨ペア</p><p class="v">162</p><p class="s">1万通貨・1日あたりに換算済み</p></div></div>
 
 
 
@@ -372,9 +398,40 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 <th class="num" data-sort="num">初期コスト</th><th class="num" data-sort="num">回収</th>
 <th>買う業者</th><th>売る業者</th>
 <th class="num" data-sort="num">必要証拠金</th></tr></thead>
-<tbody><tr><td class="rank">1</td><td class="pairc"><button class="star" type="button" data-pair="USDJPY" aria-pressed="false" title="USD/JPYをお気に入りに入れる" aria-label="USD/JPYをお気に入りに入れる">☆</button><a href="/pairs/USDJPY.html"><strong>USD/JPY</strong></a></td><td class="num pos" data-v="1280">+1,280円</td><td class="num pos" data-v="44.0">+44.00</td><td class="num"><span class="delta up">+20.3</span></td><td class="num" data-v="40">40円</td><td class="num" data-v="0.9">1日</td><td><a href="#ev-gmo-click-usdjpy" data-ev-src="/evidence/GMO_9b76c5_USDJPY.png" data-ev-title="GMOクリック証券　USD/JPY" data-ev-note="掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 161／売 -161／日付 7月31日）" title="GMOクリック証券の掲載画面を見る">GMOクリック証券<span aria-hidden="true"> 🔎</span></a></td><td><a href="#ev-rakuten-fx-usdjpy" data-ev-src="/evidence/Rakuten_ec6ecd_USDJPY.png" data-ev-title="楽天FX　USD/JPY" data-ev-note="掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 112／売 -117）" title="楽天FXの掲載画面を見る">楽天FX<span aria-hidden="true"> 🔎</span></a></td><td class="num">126,155円</td></tr><tr><td class="rank">2</td><td class="pairc"><button class="star" type="button" data-pair="USDTRY" aria-pressed="false" title="USD/TRYをお気に入りに入れる" aria-label="USD/TRYをお気に入りに入れる">☆</button><a href="/pairs/USDTRY.html"><strong>USD/TRY</strong></a></td><td class="num pos" data-v="711">約+711円</td><td class="num pos" data-v="166.33333333333326">+166.33</td><td class="num"><span class="delta up">+48.0</span></td><td class="num est" data-v="4279">約4,279円</td><td class="num" data-v="25.7">約26日</td><td><a href="#ev-gaitame-com-usdtry" data-ev-src="/evidence/value_982a49_USDTRY.png" data-ev-title="外為どっとコム　USD/TRY" data-ev-note="⚠️ 該当箇所を自動で特定できなかったため囲めていません。公式ページの表示そのものです。" title="外為どっとコムの掲載画面を見る">外為どっとコム<span aria-hidden="true"> 🔎</span></a></td><td><a href="#ev-saxobank-usdtry" data-ev-src="/evidence/value_fc3501_USDTRY.png" data-ev-title="サクソバンク証券　USD/TRY" data-ev-note="公式が配布しているPDFの該当行を赤枠で囲んでいます。（買 -4,356.55／売 3,868.00／日付 2026年7月24日(金)）" title="サクソバンク証券の掲載画面を見る">サクソバンク証券<span aria-hidden="true"> 🔎</span></a></td><td class="num">126,155円</td></tr><tr><td class="rank">3</td><td class="pairc"><button class="star" type="button" data-pair="CHFJPY" aria-pressed="false" title="CHF/JPYをお気に入りに入れる" aria-label="CHF/JPYをお気に入りに入れる">☆</button><a href="/pairs/CHFJPY.html"><strong>CHF/JPY</strong></a></td><td class="num pos" data-v="590">約+590円</td><td class="num pos" data-v="25.0">+25.00</td><td class="num"><span class="delta down">-0.3</span></td><td class="num est" data-v="160">約160円</td><td class="num" data-v="6.4">約6日</td><td>LIGHT FX</td><td>FXTF</td><td class="num">156,272円</td></tr><tr><td class="rank">4</td><td class="pairc"><button class="star" type="button" data-pair="PLNJPY" aria-pressed="false" title="PLN/JPYをお気に入りに入れる" aria-label="PLN/JPYをお気に入りに入れる">☆</button><a href="/pairs/PLNJPY.html"><strong>PLN/JPY</strong></a></td><td class="num pos" data-v="590">約+590円</td><td class="num pos" data-v="38.31666666666667">+38.32</td><td class="num"><span class="delta up">+2.4</span></td><td class="num est" data-v="560">約560円</td><td class="num" data-v="14.6">約15日</td><td><a href="#ev-light-fx-plnjpy" data-ev-src="/evidence/LIGHT_FX_fe3e7c_PLNJPY.png" data-ev-title="LIGHT FX　PLN/JPY" data-ev-note="掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 75.0／売 -75.0／日付 07/31）" title="LIGHT FXの掲載画面を見る">LIGHT FX<span aria-hidden="true"> 🔎</span></a></td><td><a href="#ev-ig-shoken-plnjpy" data-ev-src="/evidence/IG_Sec_e7c86a_PLNJPY.png" data-ev-title="IG証券　PLN/JPY" data-ev-note="公式が配布しているファイルの該当セルを抜き出した表です（数値は原本のまま）。（買 99.95／売 -110.05／日付 2026/07/30）" title="IG証券の掲載画面を見る">IG証券<span aria-hidden="true"> 🔎</span></a></td><td class="num">33,803円</td></tr><tr><td class="rank">5</td><td class="pairc"><button class="star" type="button" data-pair="EURJPY" aria-pressed="false" title="EUR/JPYをお気に入りに入れる" aria-label="EUR/JPYをお気に入りに入れる">☆</button><a href="/pairs/EURJPY.html"><strong>EUR/JPY</strong></a></td><td class="num pos" data-v="550">+550円</td><td class="num pos" data-v="21.0">+21.00</td><td class="num"><span class="delta up">+19.0</span></td><td class="num" data-v="80">80円</td><td class="num" data-v="3.8">4日</td><td>LIGHT FX</td><td>楽天FX</td><td class="num">145,607円</td></tr><tr><td class="rank">6</td><td class="pairc"><button class="star" type="button" data-pair="GBPCHF" aria-pressed="false" title="GBP/CHFをお気に入りに入れる" aria-label="GBP/CHFをお気に入りに入れる">☆</button><a href="/pairs/GBPCHF.html"><strong>GBP/CHF</strong></a></td><td class="num pos" data-v="498">約+498円</td><td class="num pos" data-v="53.066720000000004">+53.07</td><td class="num"><span class="delta down">-2.8</span></td><td class="num est" data-v="1094">約1,094円</td><td class="num" data-v="20.6">約21日</td><td><a href="#ev-ig-shoken-gbpchf" data-ev-src="/evidence/IG_Sec_e7c86a_GBPCHF.png" data-ev-title="IG証券　GBP/CHF" data-ev-note="公式が配布しているファイルの該当セルを抜き出した表です（数値は原本のまま）。（買 686.90016／売 -771.25632／日付 2026/07/30）" title="IG証券の掲載画面を見る">IG証券<span aria-hidden="true"> 🔎</span></a></td><td><a href="#ev-light-fx-gbpchf" data-ev-src="/evidence/LIGHT_FX_fe3e7c_GBPCHF.png" data-ev-title="LIGHT FX　GBP/CHF" data-ev-note="掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 175.8／売 -175.9／日付 07/31）" title="LIGHT FXの掲載画面を見る">LIGHT FX<span aria-hidden="true"> 🔎</span></a></td><td class="num">170,196円</td></tr><tr><td class="rank">7</td><td class="pairc"><button class="star" type="button" data-pair="USDCHF" aria-pressed="false" title="USD/CHFをお気に入りに入れる" aria-label="USD/CHFをお気に入りに入れる">☆</button><a href="/pairs/USDCHF.html"><strong>USD/CHF</strong></a></td><td class="num pos" data-v="427">約+427円</td><td class="num pos" data-v="35.0856">+35.09</td><td class="num"><span class="delta down">-4.4</span></td><td class="num est" data-v="625">約625円</td><td class="num" data-v="17.8">約18日</td><td><a href="#ev-okasan-online-usdchf" data-ev-src="/evidence/value_cd4379_USDCHF.png" data-ev-title="岡三オンライン　USD/CHF" data-ev-note="掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 0.84／売 -0.84／日付 7/31）" title="岡三オンラインの掲載画面を見る">岡三オンライン<span aria-hidden="true"> 🔎</span></a></td><td><a href="#ev-light-fx-usdchf" data-ev-src="/evidence/LIGHT_FX_fe3e7c_USDCHF.png" data-ev-title="LIGHT FX　USD/CHF" data-ev-note="掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 128.9／売 -129.0／日付 07/31）" title="LIGHT FXの掲載画面を見る">LIGHT FX<span aria-hidden="true"> 🔎</span></a></td><td class="num">126,155円</td></tr><tr><td class="rank">8</td><td class="pairc"><button class="star" type="button" data-pair="EURCHF" aria-pressed="false" title="EUR/CHFをお気に入りに入れる" aria-label="EUR/CHFをお気に入りに入れる">☆</button><a href="/pairs/EURCHF.html"><strong>EUR/CHF</strong></a></td><td class="num pos" data-v="369">約+369円</td><td class="num pos" data-v="33.143799999999985">+33.14</td><td class="num"><span class="delta down">-1.8</span></td><td class="num est" data-v="625">約625円</td><td class="num" data-v="18.9">約19日</td><td>岡三オンライン</td><td>LIGHT FX</td><td class="num">145,607円</td></tr><tr><td class="rank">9</td><td class="pairc"><button class="star" type="button" data-pair="GBPJPY" aria-pressed="false" title="GBP/JPYをお気に入りに入れる" aria-label="GBP/JPYをお気に入りに入れる">☆</button><a href="/pairs/GBPJPY.html"><strong>GBP/JPY</strong></a></td><td class="num pos" data-v="300">+300円</td><td class="num pos" data-v="16.0">+16.00</td><td class="num"><span class="delta down">-9.7</span></td><td class="num" data-v="180">180円</td><td class="num" data-v="11.3">11日</td><td>GMOクリック証券</td><td>楽天FX</td><td class="num">170,196円</td></tr><tr><td class="rank">10</td><td class="pairc"><button class="star" type="button" data-pair="NZDUSD" aria-pressed="false" title="NZD/USDをお気に入りに入れる" aria-label="NZD/USDをお気に入りに入れる">☆</button><a href="/pairs/NZDUSD.html"><strong>NZD/USD</strong></a></td><td class="num pos" data-v="221">約+221円</td><td class="num pos" data-v="26.3">+26.30</td><td class="num"><span class="delta up">+0.3</span></td><td class="num est" data-v="568">約568円</td><td class="num" data-v="21.6">約22日</td><td>LIGHT FX</td><td>インヴァスト証券</td><td class="num">74,356円</td></tr></tbody>
+<tbody><tr><td class="rank">1</td><td class="pairc"><button class="star" type="button" data-pair="USDJPY" aria-pressed="false" title="USD/JPYをお気に入りに入れる" aria-label="USD/JPYをお気に入りに入れる">☆</button><a href="/pairs/USDJPY.html"><strong>USD/JPY</strong></a></td><td class="num pos" data-v="1040">約+1,040円</td><td class="num pos" data-v="36.0">+36.00</td><td class="num"><span class="delta up">+12.3</span></td><td class="num est" data-v="40">約40円</td><td class="num" data-v="1.1">約1日</td><td><a href="#ev-gmo-click-usdjpy" data-ev-src="/evidence/GMO_9b76c5_USDJPY.png" data-ev-title="GMOクリック証券　USD/JPY" data-ev-note="掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 161／売 -161／日付 7月31日）" title="GMOクリック証券の掲載画面を見る">GMOクリック証券<span aria-hidden="true"> 🔎</span></a></td><td><a href="#ev-okasan-online-usdjpy" data-ev-src="/evidence/value_cd4379_USDJPY.png" data-ev-title="岡三オンライン　USD/JPY" data-ev-note="掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 125／売 -125／日付 7/31）" title="岡三オンラインの掲載画面を見る">岡三オンライン<span aria-hidden="true"> 🔎</span></a></td><td class="num">126,155円</td></tr><tr><td class="rank">2</td><td class="pairc"><button class="star" type="button" data-pair="USDTRY" aria-pressed="false" title="USD/TRYをお気に入りに入れる" aria-label="USD/TRYをお気に入りに入れる">☆</button><a href="/pairs/USDTRY.html"><strong>USD/TRY</strong></a></td><td class="num pos" data-v="864">約+864円</td><td class="num pos" data-v="166.33333333333326">+166.33</td><td class="num"><span class="delta up">+48.0</span></td><td class="num est" data-v="4126">約4,126円</td><td class="num" data-v="24.8">約25日</td><td><a href="#ev-gaitame-com-usdtry" data-ev-src="/evidence/value_982a49_USDTRY.png" data-ev-title="外為どっとコム　USD/TRY" data-ev-note="⚠️ 該当箇所を自動で特定できなかったため囲めていません。公式ページの表示そのものです。" title="外為どっとコムの掲載画面を見る">外為どっとコム<span aria-hidden="true"> 🔎</span></a></td><td><a href="#ev-saxobank-usdtry" data-ev-src="/evidence/value_fc3501_USDTRY.png" data-ev-title="サクソバンク証券　USD/TRY" data-ev-note="公式が配布しているPDFの該当行を赤枠で囲んでいます。（買 -4,356.55／売 3,868.00／日付 2026年7月24日(金)）" title="サクソバンク証券の掲載画面を見る">サクソバンク証券<span aria-hidden="true"> 🔎</span></a></td><td class="num">126,155円</td></tr><tr><td class="rank">3</td><td class="pairc"><button class="star" type="button" data-pair="PLNJPY" aria-pressed="false" title="PLN/JPYをお気に入りに入れる" aria-label="PLN/JPYをお気に入りに入れる">☆</button><a href="/pairs/PLNJPY.html"><strong>PLN/JPY</strong></a></td><td class="num pos" data-v="590">約+590円</td><td class="num pos" data-v="38.31666666666667">+38.32</td><td class="num"><span class="delta up">+2.4</span></td><td class="num est" data-v="560">約560円</td><td class="num" data-v="14.6">約15日</td><td><a href="#ev-light-fx-plnjpy" data-ev-src="/evidence/LIGHT_FX_fe3e7c_PLNJPY.png" data-ev-title="LIGHT FX　PLN/JPY" data-ev-note="掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 75.0／売 -75.0／日付 07/31）" title="LIGHT FXの掲載画面を見る">LIGHT FX<span aria-hidden="true"> 🔎</span></a></td><td><a href="#ev-ig-shoken-plnjpy" data-ev-src="/evidence/IG_Sec_e7c86a_PLNJPY.png" data-ev-title="IG証券　PLN/JPY" data-ev-note="公式が配布しているファイルの該当セルを抜き出した表です（数値は原本のまま）。（買 99.95／売 -110.05／日付 2026/07/30）" title="IG証券の掲載画面を見る">IG証券<span aria-hidden="true"> 🔎</span></a></td><td class="num">33,803円</td></tr><tr><td class="rank">4</td><td class="pairc"><button class="star" type="button" data-pair="CHFJPY" aria-pressed="false" title="CHF/JPYをお気に入りに入れる" aria-label="CHF/JPYをお気に入りに入れる">☆</button><a href="/pairs/CHFJPY.html"><strong>CHF/JPY</strong></a></td><td class="num pos" data-v="510">約+510円</td><td class="num pos" data-v="25.0">+25.00</td><td class="num"><span class="delta down">-0.3</span></td><td class="num est" data-v="240">約240円</td><td class="num" data-v="9.6">約10日</td><td>LIGHT FX</td><td>FXTF</td><td class="num">156,272円</td></tr><tr><td class="rank">5</td><td class="pairc"><button class="star" type="button" data-pair="GBPCHF" aria-pressed="false" title="GBP/CHFをお気に入りに入れる" aria-label="GBP/CHFをお気に入りに入れる">☆</button><a href="/pairs/GBPCHF.html"><strong>GBP/CHF</strong></a></td><td class="num pos" data-v="498">約+498円</td><td class="num pos" data-v="53.066720000000004">+53.07</td><td class="num"><span class="delta down">-2.8</span></td><td class="num est" data-v="1094">約1,094円</td><td class="num" data-v="20.6">約21日</td><td><a href="#ev-ig-shoken-gbpchf" data-ev-src="/evidence/IG_Sec_e7c86a_GBPCHF.png" data-ev-title="IG証券　GBP/CHF" data-ev-note="公式が配布しているファイルの該当セルを抜き出した表です（数値は原本のまま）。（買 686.90016／売 -771.25632／日付 2026/07/30）" title="IG証券の掲載画面を見る">IG証券<span aria-hidden="true"> 🔎</span></a></td><td><a href="#ev-light-fx-gbpchf" data-ev-src="/evidence/LIGHT_FX_fe3e7c_GBPCHF.png" data-ev-title="LIGHT FX　GBP/CHF" data-ev-note="掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 175.8／売 -175.9／日付 07/31）" title="LIGHT FXの掲載画面を見る">LIGHT FX<span aria-hidden="true"> 🔎</span></a></td><td class="num">170,196円</td></tr><tr><td class="rank">6</td><td class="pairc"><button class="star" type="button" data-pair="USDCHF" aria-pressed="false" title="USD/CHFをお気に入りに入れる" aria-label="USD/CHFをお気に入りに入れる">☆</button><a href="/pairs/USDCHF.html"><strong>USD/CHF</strong></a></td><td class="num pos" data-v="427">約+427円</td><td class="num pos" data-v="35.0856">+35.09</td><td class="num"><span class="delta down">-4.4</span></td><td class="num est" data-v="625">約625円</td><td class="num" data-v="17.8">約18日</td><td><a href="#ev-okasan-online-usdchf" data-ev-src="/evidence/value_cd4379_USDCHF.png" data-ev-title="岡三オンライン　USD/CHF" data-ev-note="掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 0.84／売 -0.84／日付 7/31）" title="岡三オンラインの掲載画面を見る">岡三オンライン<span aria-hidden="true"> 🔎</span></a></td><td><a href="#ev-light-fx-usdchf" data-ev-src="/evidence/LIGHT_FX_fe3e7c_USDCHF.png" data-ev-title="LIGHT FX　USD/CHF" data-ev-note="掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 128.9／売 -129.0／日付 07/31）" title="LIGHT FXの掲載画面を見る">LIGHT FX<span aria-hidden="true"> 🔎</span></a></td><td class="num">126,155円</td></tr><tr><td class="rank">7</td><td class="pairc"><button class="star" type="button" data-pair="EURCHF" aria-pressed="false" title="EUR/CHFをお気に入りに入れる" aria-label="EUR/CHFをお気に入りに入れる">☆</button><a href="/pairs/EURCHF.html"><strong>EUR/CHF</strong></a></td><td class="num pos" data-v="369">約+369円</td><td class="num pos" data-v="33.143799999999985">+33.14</td><td class="num"><span class="delta down">-1.8</span></td><td class="num est" data-v="625">約625円</td><td class="num" data-v="18.9">約19日</td><td>岡三オンライン</td><td>LIGHT FX</td><td class="num">145,607円</td></tr><tr><td class="rank">8</td><td class="pairc"><button class="star" type="button" data-pair="NZDUSD" aria-pressed="false" title="NZD/USDをお気に入りに入れる" aria-label="NZD/USDをお気に入りに入れる">☆</button><a href="/pairs/NZDUSD.html"><strong>NZD/USD</strong></a></td><td class="num pos" data-v="221">約+221円</td><td class="num pos" data-v="26.3">+26.30</td><td class="num"><span class="delta up">+0.3</span></td><td class="num est" data-v="568">約568円</td><td class="num" data-v="21.6">約22日</td><td>LIGHT FX</td><td>インヴァスト証券</td><td class="num">74,356円</td></tr><tr><td class="rank">9</td><td class="pairc"><button class="star" type="button" data-pair="NZDJPY" aria-pressed="false" title="NZD/JPYをお気に入りに入れる" aria-label="NZD/JPYをお気に入りに入れる">☆</button><a href="/pairs/NZDJPY.html"><strong>NZD/JPY</strong></a></td><td class="num pos" data-v="220">約+220円</td><td class="num pos" data-v="12.0">+12.00</td><td class="num"><span class="delta down">-3.7</span></td><td class="num est" data-v="140">約140円</td><td class="num" data-v="11.7">約12日</td><td>GMOクリック証券</td><td>岡三オンライン</td><td class="num">74,356円</td></tr><tr><td class="rank">10</td><td class="pairc"><button class="star" type="button" data-pair="EURAUD" aria-pressed="false" title="EUR/AUDをお気に入りに入れる" aria-label="EUR/AUDをお気に入りに入れる">☆</button><a href="/pairs/EURAUD.html"><strong>EUR/AUD</strong></a></td><td class="num pos" data-v="209">約+209円</td><td class="num pos" data-v="18.074674999999985">+18.07</td><td class="num"><span class="delta down">-5.9</span></td><td class="num est" data-v="333">約333円</td><td class="num" data-v="18.4">約18日</td><td>DMM FX</td><td>IG証券</td><td class="num">145,607円</td></tr></tbody>
 </table></div>
 <p style="margin-top:10px"><a href="/ranking/two-pair.html">すべての組み合わせを見る →</a></p>
+
+
+<h2 id="sim">損益シミュレーション</h2>
+<p>ロット数と保有日数を変えて、この組み合わせの採算を確かめられます。
+入力した内容がどこかに送られることはありません。 データに推定を含みます。</p>
+<div class="sim" data-spread="36.0000" data-cost="40.00"
+     data-margin="126155.20" data-est="1">
+  <div class="sim-in">
+    <label>ロット数<span>1ロット＝1万通貨</span>
+      <input type="number" data-sim="lots" value="1" min="0.1" max="1000" step="0.1"></label>
+    <label>保有日数<span>スワップが今の水準で続いた場合</span>
+      <input type="number" data-sim="days" value="30" min="1" max="3650" step="1"></label>
+  </div>
+  <div class="sim-out">
+    <div class="so"><p class="k">スワップの受取総額</p><p class="v" data-o="gross">—</p></div>
+    <div class="so"><p class="k">初期コスト（2社合計）</p><p class="v neg" data-o="cost">—</p></div>
+    <div class="so big"><p class="k">差引の損益</p><p class="v" data-o="net">—</p></div>
+    <div class="so"><p class="k">損益が0になる日数</p><p class="v" data-o="be">—</p></div>
+    <div class="so"><p class="k">必要証拠金（2社合計）</p><p class="v" data-o="margin">—</p></div>
+    <div class="so"><p class="k">証拠金に対する年利</p><p class="v" data-o="apy">—</p></div>
+  </div>
+  <p class="sim-note" data-o="note"></p>
+</div>
+<div class="note"><strong>この計算の前提：</strong>
+スワップポイントが入力した日数のあいだ今の水準のまま続くものとしています。
+実際には毎営業日見直され、受け取りが支払いに転じることもあります。
+必要証拠金は取引額の4%（レバレッジ25倍）で計算した最低額で、
+<strong>含み損に耐えるにはこれより十分に多い資金が必要です</strong>。
+片方の口座だけがロスカットされると為替リスクが残ります。
+詳しくは<a href="/guide/risks.html">リスクと注意点</a>をご覧ください。</div>
+
 
 
 <h2 id="accounts">この組み合わせに必要な口座</h2>
@@ -386,8 +443,8 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
     <p style="margin:3px 0 0;font-size:15px"><a href="https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&amp;month=07&amp;pare=AUDJPY" rel="nofollow noopener" target="_blank">GMOクリック証券の公式サイト</a></p>
     <p class="s">USD/JPY の買いスワップ +161.00円／日</p></div>
   <div class="tile"><p class="k">売る側</p>
-    <p style="margin:3px 0 0;font-size:15px"><a href="https://www.rakuten-sec.co.jp/web/fx/spread_swap/" rel="nofollow noopener" target="_blank">楽天FXの公式サイト</a></p>
-    <p class="s">USD/JPY の売りスワップ -117.00円／日</p></div>
+    <p style="margin:3px 0 0;font-size:15px"><a href="https://www.okasan-online.co.jp/fx/swap_calender/" rel="nofollow noopener" target="_blank">岡三オンラインの公式サイト</a></p>
+    <p class="s">USD/JPY の売りスワップ -125.00円／日</p></div>
 </div>
 <p style="font-size:13px;color:var(--muted);margin-top:10px">
 掲載順位は取得した数値だけで機械的に決めており、広告の有無は順位に影響しません。
@@ -406,7 +463,7 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 昨日よかった組み合わせが今日も同じとは限りません。</p>
 <div class="grid c2">
   <div class="tile"><p class="k">サヤが広がった</p><ul style="margin:6px 0 0"><li><a href="/pairs/USDCZK.html">USD/CZK</a>　+15.26円 <span class="delta up">+84.7</span></li><li><a href="/pairs/CHFZAR.html">CHF/ZAR</a>　+92.60円 <span class="delta up">+76.3</span></li><li><a href="/pairs/EURTRY.html">EUR/TRY</a>　+188.36円 <span class="delta up">+58.3</span></li><li><a href="/pairs/EURCZK.html">EUR/CZK</a>　+25.99円 <span class="delta up">+52.0</span></li><li><a href="/pairs/USDTRY.html">USD/TRY</a>　+166.33円 <span class="delta up">+48.0</span></li></ul></div>
-  <div class="tile"><p class="k">サヤが縮んだ</p><ul style="margin:6px 0 0"><li><a href="/pairs/GBPTRY.html">GBP/TRY</a>　+34.58円 <span class="delta down">-49.9</span></li><li><a href="/pairs/USDCAD.html">USD/CAD</a>　+8.00円 <span class="delta down">-42.1</span></li><li><a href="/pairs/CADJPY.html">CAD/JPY</a>　+10.25円 <span class="delta down">-39.5</span></li><li><a href="/pairs/AUDNZD.html">AUD/NZD</a>　+13.00円 <span class="delta down">-17.4</span></li><li><a href="/pairs/SGDJPY.html">SGD/JPY</a>　+5.67円 <span class="delta down">-12.3</span></li></ul></div>
+  <div class="tile"><p class="k">サヤが縮んだ</p><ul style="margin:6px 0 0"><li><a href="/pairs/GBPTRY.html">GBP/TRY</a>　+34.58円 <span class="delta down">-49.9</span></li><li><a href="/pairs/USDCAD.html">USD/CAD</a>　+8.00円 <span class="delta down">-42.1</span></li><li><a href="/pairs/CADJPY.html">CAD/JPY</a>　+8.25円 <span class="delta down">-41.5</span></li><li><a href="/pairs/AUDNZD.html">AUD/NZD</a>　+13.00円 <span class="delta down">-17.4</span></li><li><a href="/pairs/GBPJPY.html">GBP/JPY</a>　+12.00円 <span class="delta down">-13.7</span></li></ul></div>
 </div>
 
 <h2 id="three">3通貨のサヤ 上位5件</h2>
@@ -415,7 +472,7 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 <div class="tblwrap"><table>
 <thead><tr><th class="rank">#</th><th>通貨</th>
 <th class="num" data-sort="num">合計スワップ／日</th><th>組み合わせ</th></tr></thead>
-<tbody><tr><td class="rank">1</td><td><strong>JPY/TRY/USD</strong></td><td class="num pos" data-v="405.1617101033528">+405.16</td><td style="white-space:normal">USD/JPY 買（GMOクリック証券）／USD/TRY 売（サクソバンク証券）／TRY/JPY 売（岡三オンライン）</td></tr><tr><td class="rank">2</td><td><strong>CAD/JPY/TRY</strong></td><td class="num pos" data-v="266.3855522664388">+266.39</td><td style="white-space:normal">CAD/JPY 買（IG証券）／CAD/TRY 売（サクソバンク証券）／TRY/JPY 売（岡三オンライン）</td></tr><tr><td class="rank">3</td><td><strong>AUD/JPY/TRY</strong></td><td class="num pos" data-v="264.14283477783204">+264.14</td><td style="white-space:normal">AUD/JPY 買（外為オンライン）／AUD/TRY 売（サクソバンク証券）／TRY/JPY 売（岡三オンライン）</td></tr><tr><td class="rank">4</td><td><strong>JPY/NZD/TRY</strong></td><td class="num pos" data-v="211.32280960083006">+211.32</td><td style="white-space:normal">NZD/JPY 買（GMOクリック証券）／NZD/TRY 売（サクソバンク証券）／TRY/JPY 売（岡三オンライン）</td></tr><tr><td class="rank">5</td><td><strong>EUR/JPY/PLN</strong></td><td class="num pos" data-v="203.98474999999996">+203.98</td><td style="white-space:normal">EUR/JPY 売（楽天FX）／EUR/PLN 買（LIGHT FX）／PLN/JPY 買（LIGHT FX）</td></tr></tbody>
+<tbody><tr><td class="rank">1</td><td><strong>JPY/TRY/USD</strong></td><td class="num pos" data-v="405.1617101033528">+405.16</td><td style="white-space:normal">USD/JPY 買（GMOクリック証券）／USD/TRY 売（サクソバンク証券）／TRY/JPY 売（岡三オンライン）</td></tr><tr><td class="rank">2</td><td><strong>CAD/JPY/TRY</strong></td><td class="num pos" data-v="266.3855522664388">+266.39</td><td style="white-space:normal">CAD/JPY 買（IG証券）／CAD/TRY 売（サクソバンク証券）／TRY/JPY 売（岡三オンライン）</td></tr><tr><td class="rank">3</td><td><strong>AUD/JPY/TRY</strong></td><td class="num pos" data-v="264.14283477783204">+264.14</td><td style="white-space:normal">AUD/JPY 買（外為オンライン）／AUD/TRY 売（サクソバンク証券）／TRY/JPY 売（岡三オンライン）</td></tr><tr><td class="rank">4</td><td><strong>JPY/NZD/TRY</strong></td><td class="num pos" data-v="211.32280960083006">+211.32</td><td style="white-space:normal">NZD/JPY 買（GMOクリック証券）／NZD/TRY 売（サクソバンク証券）／TRY/JPY 売（岡三オンライン）</td></tr><tr><td class="rank">5</td><td><strong>EUR/JPY/PLN</strong></td><td class="num pos" data-v="189.98474999999996">+189.98</td><td style="white-space:normal">EUR/JPY 売（岡三オンライン）／EUR/PLN 買（LIGHT FX）／PLN/JPY 買（LIGHT FX）</td></tr></tbody>
 </table></div>
 <p style="margin-top:10px"><a href="/ranking/triangle.html">3通貨のサヤをすべて見る →</a></p>
 
@@ -424,7 +481,7 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 <p>上の表に出した数値が、実際に各社の公式ページに載っていることを確認できるように、
 ページを開いて該当箇所を撮影した画像です。加工した画像ではなく公式ページそのものです。
 撮影時点は2026年7月31日（金）前後で、その後に各社が数値を更新している場合があります。</p>
-<figure class="evfig" id="ev-gmo-click-usdjpy"><div class="evhead">GMOクリック証券　USD/JPY</div><img src="/evidence/GMO_9b76c5_USDJPY.png" loading="lazy" decoding="async" alt="GMOクリック証券　USD/JPYのスワップポイントが掲載されている公式ページの画面"><figcaption>掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 161／売 -161／日付 7月31日）</figcaption></figure><figure class="evfig" id="ev-gaitame-com-usdtry"><div class="evhead">外為どっとコム　USD/TRY</div><img src="/evidence/value_982a49_USDTRY.png" loading="lazy" decoding="async" alt="外為どっとコム　USD/TRYのスワップポイントが掲載されている公式ページの画面"><figcaption>⚠️ 該当箇所を自動で特定できなかったため囲めていません。公式ページの表示そのものです。</figcaption></figure><figure class="evfig" id="ev-light-fx-plnjpy"><div class="evhead">LIGHT FX　PLN/JPY</div><img src="/evidence/LIGHT_FX_fe3e7c_PLNJPY.png" loading="lazy" decoding="async" alt="LIGHT FX　PLN/JPYのスワップポイントが掲載されている公式ページの画面"><figcaption>掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 75.0／売 -75.0／日付 07/31）</figcaption></figure><figure class="evfig" id="ev-ig-shoken-gbpchf"><div class="evhead">IG証券　GBP/CHF</div><img src="/evidence/IG_Sec_e7c86a_GBPCHF.png" loading="lazy" decoding="async" alt="IG証券　GBP/CHFのスワップポイントが掲載されている公式ページの画面"><figcaption>公式が配布しているファイルの該当セルを抜き出した表です（数値は原本のまま）。（買 686.90016／売 -771.25632／日付 2026/07/30）</figcaption></figure><figure class="evfig" id="ev-okasan-online-usdchf"><div class="evhead">岡三オンライン　USD/CHF</div><img src="/evidence/value_cd4379_USDCHF.png" loading="lazy" decoding="async" alt="岡三オンライン　USD/CHFのスワップポイントが掲載されている公式ページの画面"><figcaption>掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 0.84／売 -0.84／日付 7/31）</figcaption></figure><figure class="evfig" id="ev-rakuten-fx-usdjpy"><div class="evhead">楽天FX　USD/JPY</div><img src="/evidence/Rakuten_ec6ecd_USDJPY.png" loading="lazy" decoding="async" alt="楽天FX　USD/JPYのスワップポイントが掲載されている公式ページの画面"><figcaption>掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 112／売 -117）</figcaption></figure><figure class="evfig" id="ev-saxobank-usdtry"><div class="evhead">サクソバンク証券　USD/TRY</div><img src="/evidence/value_fc3501_USDTRY.png" loading="lazy" decoding="async" alt="サクソバンク証券　USD/TRYのスワップポイントが掲載されている公式ページの画面"><figcaption>公式が配布しているPDFの該当行を赤枠で囲んでいます。（買 -4,356.55／売 3,868.00／日付 2026年7月24日(金)）</figcaption></figure><figure class="evfig" id="ev-ig-shoken-plnjpy"><div class="evhead">IG証券　PLN/JPY</div><img src="/evidence/IG_Sec_e7c86a_PLNJPY.png" loading="lazy" decoding="async" alt="IG証券　PLN/JPYのスワップポイントが掲載されている公式ページの画面"><figcaption>公式が配布しているファイルの該当セルを抜き出した表です（数値は原本のまま）。（買 99.95／売 -110.05／日付 2026/07/30）</figcaption></figure><figure class="evfig" id="ev-light-fx-gbpchf"><div class="evhead">LIGHT FX　GBP/CHF</div><img src="/evidence/LIGHT_FX_fe3e7c_GBPCHF.png" loading="lazy" decoding="async" alt="LIGHT FX　GBP/CHFのスワップポイントが掲載されている公式ページの画面"><figcaption>掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 175.8／売 -175.9／日付 07/31）</figcaption></figure><figure class="evfig" id="ev-light-fx-usdchf"><div class="evhead">LIGHT FX　USD/CHF</div><img src="/evidence/LIGHT_FX_fe3e7c_USDCHF.png" loading="lazy" decoding="async" alt="LIGHT FX　USD/CHFのスワップポイントが掲載されている公式ページの画面"><figcaption>掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 128.9／売 -129.0／日付 07/31）</figcaption></figure>
+<figure class="evfig" id="ev-gmo-click-usdjpy"><div class="evhead">GMOクリック証券　USD/JPY</div><img src="/evidence/GMO_9b76c5_USDJPY.png" loading="lazy" decoding="async" alt="GMOクリック証券　USD/JPYのスワップポイントが掲載されている公式ページの画面"><figcaption>掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 161／売 -161／日付 7月31日）</figcaption></figure><figure class="evfig" id="ev-gaitame-com-usdtry"><div class="evhead">外為どっとコム　USD/TRY</div><img src="/evidence/value_982a49_USDTRY.png" loading="lazy" decoding="async" alt="外為どっとコム　USD/TRYのスワップポイントが掲載されている公式ページの画面"><figcaption>⚠️ 該当箇所を自動で特定できなかったため囲めていません。公式ページの表示そのものです。</figcaption></figure><figure class="evfig" id="ev-light-fx-plnjpy"><div class="evhead">LIGHT FX　PLN/JPY</div><img src="/evidence/LIGHT_FX_fe3e7c_PLNJPY.png" loading="lazy" decoding="async" alt="LIGHT FX　PLN/JPYのスワップポイントが掲載されている公式ページの画面"><figcaption>掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 75.0／売 -75.0／日付 07/31）</figcaption></figure><figure class="evfig" id="ev-ig-shoken-gbpchf"><div class="evhead">IG証券　GBP/CHF</div><img src="/evidence/IG_Sec_e7c86a_GBPCHF.png" loading="lazy" decoding="async" alt="IG証券　GBP/CHFのスワップポイントが掲載されている公式ページの画面"><figcaption>公式が配布しているファイルの該当セルを抜き出した表です（数値は原本のまま）。（買 686.90016／売 -771.25632／日付 2026/07/30）</figcaption></figure><figure class="evfig" id="ev-okasan-online-usdchf"><div class="evhead">岡三オンライン　USD/CHF</div><img src="/evidence/value_cd4379_USDCHF.png" loading="lazy" decoding="async" alt="岡三オンライン　USD/CHFのスワップポイントが掲載されている公式ページの画面"><figcaption>掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 0.84／売 -0.84／日付 7/31）</figcaption></figure><figure class="evfig" id="ev-okasan-online-usdjpy"><div class="evhead">岡三オンライン　USD/JPY</div><img src="/evidence/value_cd4379_USDJPY.png" loading="lazy" decoding="async" alt="岡三オンライン　USD/JPYのスワップポイントが掲載されている公式ページの画面"><figcaption>掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 125／売 -125／日付 7/31）</figcaption></figure><figure class="evfig" id="ev-saxobank-usdtry"><div class="evhead">サクソバンク証券　USD/TRY</div><img src="/evidence/value_fc3501_USDTRY.png" loading="lazy" decoding="async" alt="サクソバンク証券　USD/TRYのスワップポイントが掲載されている公式ページの画面"><figcaption>公式が配布しているPDFの該当行を赤枠で囲んでいます。（買 -4,356.55／売 3,868.00／日付 2026年7月24日(金)）</figcaption></figure><figure class="evfig" id="ev-ig-shoken-plnjpy"><div class="evhead">IG証券　PLN/JPY</div><img src="/evidence/IG_Sec_e7c86a_PLNJPY.png" loading="lazy" decoding="async" alt="IG証券　PLN/JPYのスワップポイントが掲載されている公式ページの画面"><figcaption>公式が配布しているファイルの該当セルを抜き出した表です（数値は原本のまま）。（買 99.95／売 -110.05／日付 2026/07/30）</figcaption></figure><figure class="evfig" id="ev-light-fx-gbpchf"><div class="evhead">LIGHT FX　GBP/CHF</div><img src="/evidence/LIGHT_FX_fe3e7c_GBPCHF.png" loading="lazy" decoding="async" alt="LIGHT FX　GBP/CHFのスワップポイントが掲載されている公式ページの画面"><figcaption>掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 175.8／売 -175.9／日付 07/31）</figcaption></figure><figure class="evfig" id="ev-light-fx-usdchf"><div class="evhead">LIGHT FX　USD/CHF</div><img src="/evidence/LIGHT_FX_fe3e7c_USDCHF.png" loading="lazy" decoding="async" alt="LIGHT FX　USD/CHFのスワップポイントが掲載されている公式ページの画面"><figcaption>掲載値と同じ数値が載っている箇所を赤枠で囲んでいます。（買 128.9／売 -129.0／日付 07/31）</figcaption></figure>
 <p style="font-size:13px;color:var(--muted)">
 ※ 各社の公式ページの内容に関する権利は各社に帰属します。掲載元の確認を目的として引用しています。
 削除のご要望は<a href="/contact.html">お問い合わせ</a>よりご連絡ください。</p>
@@ -615,6 +672,63 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape') closeLb();
   });
+
+  /* ---- 損益シミュレーター ---- */
+  var yen = function(v){
+    return (v < 0 ? '-' : '') + Math.abs(Math.round(v)).toLocaleString('ja-JP') + '円';
+  };
+  function runSim(sim){
+    var spread = parseFloat(sim.dataset.spread);      // 1万通貨・1日あたりのサヤ
+    var cost1  = parseFloat(sim.dataset.cost);        // 1万通貨あたりの初期コスト（2社分）
+    var margin1= parseFloat(sim.dataset.margin);      // 1万通貨あたりの必要証拠金（2社分）
+    var est    = sim.dataset.est === '1';
+    var lots = parseFloat((sim.querySelector('[data-sim=lots]')||{}).value);
+    var days = parseFloat((sim.querySelector('[data-sim=days]')||{}).value);
+    if(!isFinite(lots) || lots <= 0) lots = 1;
+    if(!isFinite(days) || days <= 0) days = 1;
+
+    var gross = spread * lots * days;
+    var cost  = cost1 * lots;
+    var net   = gross - cost;
+    var margin = margin1 * lots;
+    var be = spread > 0 ? cost1 / spread : null;      // ロット数によらない
+    var apy = (margin > 0 && days > 0) ? (net / margin) * (365 / days) * 100 : null;
+    var pre = est ? '約' : '';
+
+    var set = function(name, text, cls){
+      var el = sim.querySelector('[data-o=' + name + ']');
+      if(!el) return;
+      el.textContent = text;
+      el.classList.remove('pos','neg');
+      if(cls) el.classList.add(cls);
+    };
+    set('gross', pre + yen(gross));
+    set('cost', pre + yen(cost), 'neg');
+    set('net', pre + (net >= 0 ? '+' : '') + yen(net), net >= 0 ? 'pos' : 'neg');
+    set('be', be === null ? '—' : pre + Math.ceil(be).toLocaleString('ja-JP') + '日');
+    set('margin', margin > 0 ? yen(margin) : '—');
+    set('apy', apy === null ? '—' : pre + apy.toFixed(1) + '%');
+
+    var note = sim.querySelector('[data-o=note]');
+    if(note){
+      var msg;
+      if(be !== null && days < be){
+        msg = '保有日数が損益分岐（約' + Math.ceil(be) + '日）に届いていないため、'
+            + 'この条件では赤字になります。';
+      } else if(net > 0){
+        msg = '1万通貨あたり ' + yen(spread) + '／日 のサヤが ' + days
+            + '日続いた場合の試算です。スワップは毎営業日見直されます。';
+      } else {
+        msg = 'この条件ではコストを回収できません。';
+      }
+      note.textContent = msg + (est ? ' コストに推定を含むため、実際の値とは差が出ます。' : '');
+    }
+  }
+  document.addEventListener('input', function(e){
+    var sim = e.target.closest ? e.target.closest('.sim') : null;
+    if(sim && e.target.matches('[data-sim]')) runSim(sim);
+  });
+  document.querySelectorAll('.sim').forEach(runSim);
 
   paintFavs();
   applyFilter();
