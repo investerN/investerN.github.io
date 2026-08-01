@@ -172,6 +172,22 @@ details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
 .evfig img{display:block; width:100%; height:auto; border-top:1px solid var(--border)}
 .evfig figcaption{font-size:12.5px; color:var(--ink-2); padding:10px 15px 13px; line-height:1.65}
 
+/* 推定値は確定値と見分けが付くようにする */
+td.est{color:var(--ink-2)}
+td.est::after{content:"推定"; font-size:9.5px; color:var(--muted); margin-left:5px;
+  border:1px solid var(--border); border-radius:4px; padding:0 3px; vertical-align:1px}
+
+/* --- 広告表記（ステマ規制） --- */
+.prbar{
+  font-size:12.5px; color:var(--ink-2); background:var(--surface-2);
+  border:1px solid var(--border); border-radius:8px; padding:8px 12px; margin:12px 0 0;
+}
+.pr{
+  display:inline-block; font-size:10.5px; font-weight:600; color:var(--muted);
+  border:1px solid var(--border); border-radius:4px; padding:0 5px; margin-left:6px;
+  vertical-align:1px;
+}
+
 /* --- 前日比 --- */
 .delta{font-size:12px; font-weight:600; white-space:nowrap; font-variant-numeric:tabular-nums}
 .delta.up{color:var(--pos)} .delta.down{color:var(--neg)} .delta.flat{color:var(--muted)}
@@ -190,6 +206,7 @@ details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
 }
 .hero .amount .unit{font-size:15px; color:var(--ink-2); font-weight:500}
 .hero .leg p{margin:0}
+.hero .sub{font-size:13px; color:var(--ink-2); margin:8px 0 0; line-height:1.7}
 .hero .legs{display:grid; gap:10px; margin:14px 0 0}
 @media(min-width:640px){ .hero .legs{grid-template-columns:1fr 1fr} }
 .hero .leg{background:var(--surface); border:1px solid var(--border); border-radius:9px; padding:10px 13px}
@@ -321,7 +338,7 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 1万通貨・1日あたりに換算して掲載しています。</p>
 <div class="grid c2" style="margin-top:18px"><div class="tile"><p class="k">取扱通貨ペア</p><p class="v">24</p><p class="s">本サイトが取得できた数</p></div><div class="tile"><p class="k">買いが最良のペア</p><p class="v">1件</p><p class="s">他社より買スワップが高い通貨ペア</p></div><div class="tile"><p class="k">売りが最良のペア</p><p class="v">2件</p><p class="s">他社より売スワップの負担が軽い通貨ペア</p></div><div class="tile"><p class="k">最も高い買スワップ</p><p class="v"><span class="pos">+201.00円</span></p><p class="s">GBP/CHF</p></div></div>
 
-<h2>この業者が最良だった通貨ペア</h2><ul><li><a href="/pairs/GBPAUD.html">GBP/AUD</a>：買いスワップ -30.00円 で最良</li><li><a href="/pairs/USDCAD.html">USD/CAD</a>：売りスワップ -65.00円 で最良</li><li><a href="/pairs/GBPNZD.html">GBP/NZD</a>：売りスワップ -57.00円 で最良</li></ul>
+<h2>この業者が最良だった通貨ペア</h2><ul><li><a href="/pairs/GBPAUD.html">GBP/AUD</a>：買いスワップ -30.00円 で最良</li><li><a href="/pairs/GBPNZD.html">GBP/NZD</a>：売りスワップ -57.00円 で最良</li><li><a href="/pairs/USDCAD.html">USD/CAD</a>：売りスワップ -65.00円 で最良</li></ul>
 
 <h2>通貨ペア別の条件</h2>
 <div class="tblwrap"><table>

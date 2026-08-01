@@ -172,6 +172,22 @@ details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
 .evfig img{display:block; width:100%; height:auto; border-top:1px solid var(--border)}
 .evfig figcaption{font-size:12.5px; color:var(--ink-2); padding:10px 15px 13px; line-height:1.65}
 
+/* 推定値は確定値と見分けが付くようにする */
+td.est{color:var(--ink-2)}
+td.est::after{content:"推定"; font-size:9.5px; color:var(--muted); margin-left:5px;
+  border:1px solid var(--border); border-radius:4px; padding:0 3px; vertical-align:1px}
+
+/* --- 広告表記（ステマ規制） --- */
+.prbar{
+  font-size:12.5px; color:var(--ink-2); background:var(--surface-2);
+  border:1px solid var(--border); border-radius:8px; padding:8px 12px; margin:12px 0 0;
+}
+.pr{
+  display:inline-block; font-size:10.5px; font-weight:600; color:var(--muted);
+  border:1px solid var(--border); border-radius:4px; padding:0 5px; margin-left:6px;
+  vertical-align:1px;
+}
+
 /* --- 前日比 --- */
 .delta{font-size:12px; font-weight:600; white-space:nowrap; font-variant-numeric:tabular-nums}
 .delta.up{color:var(--pos)} .delta.down{color:var(--neg)} .delta.flat{color:var(--muted)}
@@ -190,6 +206,7 @@ details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
 }
 .hero .amount .unit{font-size:15px; color:var(--ink-2); font-weight:500}
 .hero .leg p{margin:0}
+.hero .sub{font-size:13px; color:var(--ink-2); margin:8px 0 0; line-height:1.7}
 .hero .legs{display:grid; gap:10px; margin:14px 0 0}
 @media(min-width:640px){ .hero .legs{grid-template-columns:1fr 1fr} }
 .hero .leg{background:var(--surface); border:1px solid var(--border); border-radius:9px; padding:10px 13px}
@@ -328,7 +345,12 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 </ul>
 
 <h2>2. 広告配信について</h2>
-<p>当サイトは、第三者配信の広告サービスであるGoogle AdSenseを利用しています。</p>
+<p>当サイトは、第三者配信の広告サービスであるGoogle AdSenseと、
+FX業者の口座開設に関するアフィリエイトプログラム（成果報酬型広告）を利用しています。</p>
+<p>アフィリエイトリンクを経由して口座開設等が行われた場合、当サイトは広告主または
+アフィリエイトサービスプロバイダから報酬を受け取ることがあります。
+該当するリンクには「広告」と表示し、ページ先頭にも広告を含む旨を明示しています。
+リンク先での個人情報の取り扱いは各社のプライバシーポリシーに従います。</p>
 <p>Googleを含む第三者配信事業者は、Cookieを使用して、利用者の当サイトや他のウェブサイトへの
 過去のアクセス情報に基づいて広告を配信することがあります。</p>
 <p>利用者は、<a href="https://adssettings.google.com/" rel="nofollow noopener" target="_blank">広告設定</a>

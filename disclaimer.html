@@ -172,6 +172,22 @@ details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
 .evfig img{display:block; width:100%; height:auto; border-top:1px solid var(--border)}
 .evfig figcaption{font-size:12.5px; color:var(--ink-2); padding:10px 15px 13px; line-height:1.65}
 
+/* 推定値は確定値と見分けが付くようにする */
+td.est{color:var(--ink-2)}
+td.est::after{content:"推定"; font-size:9.5px; color:var(--muted); margin-left:5px;
+  border:1px solid var(--border); border-radius:4px; padding:0 3px; vertical-align:1px}
+
+/* --- 広告表記（ステマ規制） --- */
+.prbar{
+  font-size:12.5px; color:var(--ink-2); background:var(--surface-2);
+  border:1px solid var(--border); border-radius:8px; padding:8px 12px; margin:12px 0 0;
+}
+.pr{
+  display:inline-block; font-size:10.5px; font-weight:600; color:var(--muted);
+  border:1px solid var(--border); border-radius:4px; padding:0 5px; margin-left:6px;
+  vertical-align:1px;
+}
+
 /* --- 前日比 --- */
 .delta{font-size:12px; font-weight:600; white-space:nowrap; font-variant-numeric:tabular-nums}
 .delta.up{color:var(--pos)} .delta.down{color:var(--neg)} .delta.flat{color:var(--muted)}
@@ -190,6 +206,7 @@ details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
 }
 .hero .amount .unit{font-size:15px; color:var(--ink-2); font-weight:500}
 .hero .leg p{margin:0}
+.hero .sub{font-size:13px; color:var(--ink-2); margin:8px 0 0; line-height:1.7}
 .hero .legs{display:grid; gap:10px; margin:14px 0 0}
 @media(min-width:640px){ .hero .legs{grid-template-columns:1fr 1fr} }
 .hero .leg{background:var(--surface); border:1px solid var(--border); border-radius:9px; padding:10px 13px}
@@ -322,6 +339,13 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 推奨・勧誘するものではありません。</p>
 <p>当サイトは金融商品取引法上の投資助言・代理業には該当せず、
 個別の投資判断に対する助言を行うものではありません。</p>
+
+<h2>広告と掲載順位の関係</h2>
+<p>当サイトは広告収益を得ていますが、<strong>掲載順位は収集した数値のみに基づいて
+機械的に決定しており、広告主であるかどうかは順位に一切影響しません。</strong>
+特定の業者を優遇して上位に表示することはありません。</p>
+<p>また、当サイトが広告を掲載していない業者についても、
+数値が取得できる限り同じ基準で比較・掲載しています。</p>
 
 <h2>情報の正確性について</h2>
 <p>掲載している数値は、各業者の公式ページから機械的に収集したものです。

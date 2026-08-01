@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>USD/HKD スワップポイント比較（7/31）｜スワップサヤ取りウォッチ</title>
-<meta name="description" content="USD/HKD のスワップポイントを国内FX4社で比較。買いはIG証券、売りはヒロセ通商が最良です。1万通貨・1日あたりに換算して掲載しています。">
-<link rel="canonical" href="https://investern.github.io/pairs/USDHKD.html">
+<title>LINE FX のスワップポイント（7/31）｜スワップサヤ取りウォッチ</title>
+<meta name="description" content="LINE FXのスワップポイントを通貨ペア別に掲載。30ペアを1万通貨・1日あたりに換算し、他社と比較できます。">
+<link rel="canonical" href="https://investern.github.io/brokers/line-fx.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="スワップサヤ取りウォッチ">
-<meta property="og:title" content="USD/HKD スワップポイント比較（7/31）｜スワップサヤ取りウォッチ">
-<meta property="og:description" content="USD/HKD のスワップポイントを国内FX4社で比較。買いはIG証券、売りはヒロセ通商が最良です。1万通貨・1日あたりに換算して掲載しています。">
-<meta property="og:url" content="https://investern.github.io/pairs/USDHKD.html">
+<meta property="og:title" content="LINE FX のスワップポイント（7/31）｜スワップサヤ取りウォッチ">
+<meta property="og:description" content="LINE FXのスワップポイントを通貨ペア別に掲載。30ペアを1万通貨・1日あたりに換算し、他社と比較できます。">
+<meta property="og:url" content="https://investern.github.io/brokers/line-fx.html">
 <meta name="twitter:card" content="summary">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -172,6 +172,22 @@ details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
 .evfig img{display:block; width:100%; height:auto; border-top:1px solid var(--border)}
 .evfig figcaption{font-size:12.5px; color:var(--ink-2); padding:10px 15px 13px; line-height:1.65}
 
+/* 推定値は確定値と見分けが付くようにする */
+td.est{color:var(--ink-2)}
+td.est::after{content:"推定"; font-size:9.5px; color:var(--muted); margin-left:5px;
+  border:1px solid var(--border); border-radius:4px; padding:0 3px; vertical-align:1px}
+
+/* --- 広告表記（ステマ規制） --- */
+.prbar{
+  font-size:12.5px; color:var(--ink-2); background:var(--surface-2);
+  border:1px solid var(--border); border-radius:8px; padding:8px 12px; margin:12px 0 0;
+}
+.pr{
+  display:inline-block; font-size:10.5px; font-weight:600; color:var(--muted);
+  border:1px solid var(--border); border-radius:4px; padding:0 5px; margin-left:6px;
+  vertical-align:1px;
+}
+
 /* --- 前日比 --- */
 .delta{font-size:12px; font-weight:600; white-space:nowrap; font-variant-numeric:tabular-nums}
 .delta.up{color:var(--pos)} .delta.down{color:var(--neg)} .delta.flat{color:var(--muted)}
@@ -190,6 +206,7 @@ details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
 }
 .hero .amount .unit{font-size:15px; color:var(--ink-2); font-weight:500}
 .hero .leg p{margin:0}
+.hero .sub{font-size:13px; color:var(--ink-2); margin:8px 0 0; line-height:1.7}
 .hero .legs{display:grid; gap:10px; margin:14px 0 0}
 @media(min-width:640px){ .hero .legs{grid-template-columns:1fr 1fr} }
 .hero .leg{background:var(--surface); border:1px solid var(--border); border-radius:9px; padding:10px 13px}
@@ -301,53 +318,43 @@ tr.faved{background:rgba(237,161,0,.07)}
 <script>
 try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}
 </script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://investern.github.io/"}, {"@type": "ListItem", "position": 2, "name": "通貨ペア", "item": "https://investern.github.io/pairs/"}, {"@type": "ListItem", "position": 3, "name": "USD/HKD"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://investern.github.io/"}, {"@type": "ListItem", "position": 2, "name": "FX業者", "item": "https://investern.github.io/brokers/"}, {"@type": "ListItem", "position": 3, "name": "LINE FX"}]}</script>
 
 
 </head>
 <body>
 <header class="site-head"><div class="wrap head-in">
 <a class="brand" href="/">スワップ<span>サヤ取り</span>ウォッチ</a>
-<nav class="nav"><a href="/">トップ</a><a href="/ranking/two-pair.html">2通貨のサヤ</a><a href="/ranking/triangle.html">3通貨のサヤ</a><a href="/swaps.html">スワップ一覧</a><a href="/pairs/" aria-current="page">通貨ペア</a><a href="/brokers/">FX業者</a><a href="/guide/">解説</a></nav>
+<nav class="nav"><a href="/">トップ</a><a href="/ranking/two-pair.html">2通貨のサヤ</a><a href="/ranking/triangle.html">3通貨のサヤ</a><a href="/swaps.html">スワップ一覧</a><a href="/pairs/">通貨ペア</a><a href="/brokers/" aria-current="page">FX業者</a><a href="/guide/">解説</a></nav>
 <button class="theme-btn" type="button" data-theme-toggle
         aria-label="配色を切り替える" title="配色を切り替える">◐</button>
 </div></header>
 
 <main><div class="wrap">
-<nav class="crumb"><a href="/">トップ</a> › <a href="/pairs/">通貨ペア</a> › USD/HKD</nav>
+<nav class="crumb"><a href="/">トップ</a> › <a href="/brokers/">FX業者</a> › LINE FX</nav>
 
-<h1>USD/HKD のスワップポイント業者間比較</h1>
-<p class="lede">USD/HKD を取り扱う4社の買い・売りスワップを、
-1万通貨・1日あたりに換算して比較しています。</p>
-<div class="grid c2" style="margin-top:18px"><div class="tile"><p class="k">買いスワップが最良</p><p class="v"><span class="pos">+44.17円</span></p><p class="s">IG証券</p></div><div class="tile"><p class="k">売りスワップが最良</p><p class="v"><span class="neg">-54.40円</span></p><p class="s">ヒロセ通商</p></div><div class="tile"><p class="k">組み合わせたサヤ</p><p class="v">—</p><p class="s">1万通貨・1日あたり</p></div><div class="tile"><p class="k">比較した業者</p><p class="v">4社</p><p class="s">この通貨ペアを取り扱う社</p></div></div>
+<h1>LINE FX のスワップポイント一覧</h1>
+<p class="lede">LINE FX が公表しているスワップポイントを、
+1万通貨・1日あたりに換算して掲載しています。</p>
+<div class="grid c2" style="margin-top:18px"><div class="tile"><p class="k">取扱通貨ペア</p><p class="v">30</p><p class="s">本サイトが取得できた数</p></div><div class="tile"><p class="k">買いが最良のペア</p><p class="v">2件</p><p class="s">他社より買スワップが高い通貨ペア</p></div><div class="tile"><p class="k">売りが最良のペア</p><p class="v">0件</p><p class="s">他社より売スワップの負担が軽い通貨ペア</p></div><div class="tile"><p class="k">最も高い買スワップ</p><p class="v"><span class="pos">+209.06円</span></p><p class="s">GBP/CHF</p></div></div>
 
+<h2>この業者が最良だった通貨ペア</h2><ul><li><a href="/pairs/GBPNZD.html">GBP/NZD</a>：買いスワップ +75.31円 で最良</li><li><a href="/pairs/GBPUSD.html">GBP/USD</a>：買いスワップ +17.35円 で最良</li></ul>
 
-
-<h2>業者別の比較</h2>
-<figure><svg viewBox="0 0 860 150" role="img" aria-label="買スワップ" preserveAspectRatio="xMidYMid meet"><line x1="132.0" y1="10" x2="132.0" y2="124" stroke="var(--axis)" stroke-width="1"/><rect x="132.0" y="10" width="654.0" height="18" rx="4" fill="var(--s1)" opacity="1"/><text x="122" y="23" text-anchor="end" font-size="12" font-weight="700" fill="var(--ink-2)">IG証券</text><text x="793.0" y="23" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">44.17円</text><rect x="132.0" y="40" width="358.3" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="53" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">ヒロセ通商</text><text x="497.3" y="53" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">24.20円</text><rect x="132.0" y="70" width="355.4" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="83" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">楽天FX</text><text x="494.4" y="83" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">24.00円</text><rect x="132.0" y="100" width="46.3" height="18" rx="4" fill="var(--s1)" opacity="0.85"/><text x="122" y="113" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">サクソバンク証券</text><text x="185.3" y="113" text-anchor="start" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">3.13円</text></svg><figcaption>USD/HKD の買いスワップ（1万通貨・1日あたり、2026年7月31日（金）時点）</figcaption><details class="tbl"><summary>この図のデータを表で見る</summary><div class="tblwrap" style="margin-top:8px"><table><thead><tr><th>FX業者</th><th class="num">買スワップ</th></tr></thead><tbody><tr><td>IG証券</td><td class="num">44.17円</td></tr><tr><td>ヒロセ通商</td><td class="num">24.20円</td></tr><tr><td>楽天FX</td><td class="num">24.00円</td></tr><tr><td>サクソバンク証券</td><td class="num">3.13円</td></tr></tbody></table></div></details></figure>
-<figure><svg viewBox="0 0 860 150" role="img" aria-label="売スワップ" preserveAspectRatio="xMidYMid meet"><line x1="786.0" y1="10" x2="786.0" y2="124" stroke="var(--axis)" stroke-width="1"/><rect x="491.4" y="10" width="294.6" height="18" rx="4" fill="var(--neg)" opacity="1"/><text x="122" y="23" text-anchor="end" font-size="12" font-weight="700" fill="var(--ink-2)">ヒロセ通商</text><text x="484.4" y="23" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-54.40円</text><rect x="439.4" y="40" width="346.6" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="53" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">楽天FX</text><text x="432.4" y="53" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-64.00円</text><rect x="435.1" y="70" width="350.9" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="83" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">IG証券</text><text x="428.1" y="83" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-64.80円</text><rect x="132.0" y="100" width="654.0" height="18" rx="4" fill="var(--neg)" opacity="0.85"/><text x="122" y="113" text-anchor="end" font-size="12" font-weight="500" fill="var(--ink-2)">サクソバンク証券</text><text x="125.0" y="113" text-anchor="end" font-size="11.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">-120.8円</text></svg><figcaption>USD/HKD の売りスワップ（1万通貨・1日あたり、2026年7月31日（金）時点）</figcaption><details class="tbl"><summary>この図のデータを表で見る</summary><div class="tblwrap" style="margin-top:8px"><table><thead><tr><th>FX業者</th><th class="num">売スワップ</th></tr></thead><tbody><tr><td>ヒロセ通商</td><td class="num">-54.40円</td></tr><tr><td>楽天FX</td><td class="num">-64.00円</td></tr><tr><td>IG証券</td><td class="num">-64.80円</td></tr><tr><td>サクソバンク証券</td><td class="num">-120.8円</td></tr></tbody></table></div></details></figure>
-
-<h2>一覧</h2>
+<h2>通貨ペア別の条件</h2>
 <div class="tblwrap"><table>
-<caption>2026年7月31日（金）時点。買スワップの高い順。</caption>
-<thead><tr><th>FX業者</th><th class="num">買スワップ</th><th class="num">売スワップ</th>
-<th class="num">付与日数</th><th class="num">初期コスト</th><th>出典</th></tr></thead>
-<tbody><tr><td><a href="/brokers/ig-shoken.html">IG証券</a></td><td class="num pos">+44.17</td><td class="num neg">-64.80</td><td class="num">1</td><td class="num">不明</td><td><a href="https://www.ig.com/jp/forex/swap-point" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/hirose-fx.html">ヒロセ通商</a></td><td class="num pos">+24.20</td><td class="num neg">-54.40</td><td class="num">1</td><td class="num">603.21円</td><td><a href="https://hirose-fx.co.jp/contents/news/Swap" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/rakuten-fx.html">楽天FX</a></td><td class="num pos">+24.00</td><td class="num neg">-64.00</td><td class="num">1</td><td class="num">56.30円</td><td><a href="https://www.rakuten-sec.co.jp/web/fx/spread_swap/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/saxobank.html">サクソバンク証券</a></td><td class="num pos">+3.13</td><td class="num neg">-120.75</td><td class="num">1</td><td class="num">不明</td><td><a href="https://cdn-storage.saxobank.com/jp/swappoint/swappoint-weekly.pdf" rel="nofollow noopener" target="_blank">公式</a></td></tr></tbody></table></div>
+<caption>2026年7月31日（金）時点。通貨ペア順。</caption>
+<thead><tr><th>通貨ペア</th><th class="num">買スワップ</th><th class="num">売スワップ</th>
+<th class="num">付与日数</th><th class="num">スプレッド</th><th class="num">初期コスト</th></tr></thead>
+<tbody><tr><td><a href="/pairs/AUDCHF.html">AUD/CHF</a></td><td class="num ">+0.00</td><td class="num ">+0.00</td><td class="num">1</td><td class="num">—</td><td class="num">不明</td></tr><tr><td><a href="/pairs/AUDJPY.html">AUD/JPY</a></td><td class="num ">+0.00</td><td class="num ">+0.00</td><td class="num">1</td><td class="num">0.5</td><td class="num">50.00円</td></tr><tr><td><a href="/pairs/AUDNZD.html">AUD/NZD</a></td><td class="num ">+0.00</td><td class="num ">+0.00</td><td class="num">1</td><td class="num">1.9</td><td class="num">176.59円</td></tr><tr><td><a href="/pairs/AUDUSD.html">AUD/USD</a></td><td class="num ">+0.00</td><td class="num ">+0.00</td><td class="num">1</td><td class="num">0.4</td><td class="num">63.08円</td></tr><tr><td><a href="/pairs/CADJPY.html">CAD/JPY</a></td><td class="num pos">+41.00</td><td class="num neg">-51.00</td><td class="num">1</td><td class="num">0.6</td><td class="num">60.00円</td></tr><tr><td><a href="/pairs/CHFJPY.html">CHF/JPY</a></td><td class="num neg">-42.00</td><td class="num pos">+32.00</td><td class="num">1</td><td class="num">1.6</td><td class="num">160.00円</td></tr><tr><td><a href="/pairs/CZKJPY.html">CZK/JPY</a></td><td class="num pos">+4.00</td><td class="num neg">-14.00</td><td class="num">1</td><td class="num">—</td><td class="num">不明</td></tr><tr><td><a href="/pairs/EURAUD.html">EUR/AUD</a></td><td class="num ">+0.00</td><td class="num ">+0.00</td><td class="num">1</td><td class="num">1.4</td><td class="num">155.43円</td></tr><tr><td><a href="/pairs/EURCHF.html">EUR/CHF</a></td><td class="num pos">+103.55</td><td class="num neg">-123.09</td><td class="num">1</td><td class="num">1.6</td><td class="num">312.54円</td></tr><tr><td><a href="/pairs/EURGBP.html">EUR/GBP</a></td><td class="num neg">-85.12</td><td class="num pos">+63.84</td><td class="num">1</td><td class="num">0.8</td><td class="num">170.20円</td></tr><tr><td><a href="/pairs/EURJPY.html">EUR/JPY</a></td><td class="num pos">+67.00</td><td class="num neg">-77.00</td><td class="num">1</td><td class="num">0.4</td><td class="num">40.00円</td></tr><tr><td><a href="/pairs/EURNZD.html">EUR/NZD</a></td><td class="num neg">-10.23</td><td class="num pos">+0.93</td><td class="num">1</td><td class="num">—</td><td class="num">不明</td></tr><tr><td><a href="/pairs/EURUSD.html">EUR/USD</a></td><td class="num neg">-80.44</td><td class="num pos">+64.67</td><td class="num">1</td><td class="num">0.3</td><td class="num">47.31円</td></tr><tr><td><a href="/pairs/GBPAUD.html">GBP/AUD</a></td><td class="num ">+0.00</td><td class="num ">+0.00</td><td class="num">1</td><td class="num">—</td><td class="num">不明</td></tr><tr><td><a href="/pairs/GBPCHF.html">GBP/CHF</a></td><td class="num pos">+209.06</td><td class="num neg">-228.59</td><td class="num">1</td><td class="num">—</td><td class="num">不明</td></tr><tr><td><a href="/pairs/GBPJPY.html">GBP/JPY</a></td><td class="num pos">+164.00</td><td class="num neg">-174.00</td><td class="num">1</td><td class="num">0.8</td><td class="num">80.00円</td></tr><tr><td><a href="/pairs/GBPNZD.html">GBP/NZD</a></td><td class="num pos">+75.31</td><td class="num neg">-84.60</td><td class="num">1</td><td class="num">—</td><td class="num">不明</td></tr><tr><td><a href="/pairs/GBPUSD.html">GBP/USD</a></td><td class="num pos">+17.35</td><td class="num neg">-1.58</td><td class="num">1</td><td class="num">1.0</td><td class="num">157.69円</td></tr><tr><td><a href="/pairs/HUFJPY.html">HUF/JPY</a></td><td class="num pos">+0.30</td><td class="num neg">-1.30</td><td class="num">1</td><td class="num">—</td><td class="num">不明</td></tr><tr><td><a href="/pairs/MXNJPY.html">MXN/JPY</a></td><td class="num pos">+12.00</td><td class="num neg">-17.00</td><td class="num">1</td><td class="num">0.2</td><td class="num">20.00円</td></tr><tr><td><a href="/pairs/NOKJPY.html">NOK/JPY</a></td><td class="num pos">+11.00</td><td class="num neg">-21.00</td><td class="num">1</td><td class="num">—</td><td class="num">不明</td></tr><tr><td><a href="/pairs/NZDCHF.html">NZD/CHF</a></td><td class="num pos">+56.66</td><td class="num neg">-76.20</td><td class="num">1</td><td class="num">—</td><td class="num">不明</td></tr><tr><td><a href="/pairs/NZDJPY.html">NZD/JPY</a></td><td class="num pos">+44.00</td><td class="num neg">-54.00</td><td class="num">1</td><td class="num">0.7</td><td class="num">70.00円</td></tr><tr><td><a href="/pairs/NZDUSD.html">NZD/USD</a></td><td class="num neg">-39.43</td><td class="num pos">+23.66</td><td class="num">1</td><td class="num">1.4</td><td class="num">220.77円</td></tr><tr><td><a href="/pairs/PLNJPY.html">PLN/JPY</a></td><td class="num pos">+30.00</td><td class="num neg">-40.00</td><td class="num">1</td><td class="num">—</td><td class="num">不明</td></tr><tr><td><a href="/pairs/SEKJPY.html">SEK/JPY</a></td><td class="num pos">+3.00</td><td class="num neg">-13.00</td><td class="num">1</td><td class="num">—</td><td class="num">不明</td></tr><tr><td><a href="/pairs/TRYJPY.html">TRY/JPY</a></td><td class="num pos">+20.00</td><td class="num neg">-30.00</td><td class="num">1</td><td class="num">—</td><td class="num">不明</td></tr><tr><td><a href="/pairs/USDCHF.html">USD/CHF</a></td><td class="num pos">+154.35</td><td class="num neg">-173.89</td><td class="num">1</td><td class="num">1.5</td><td class="num">293.01円</td></tr><tr><td><a href="/pairs/USDJPY.html">USD/JPY</a></td><td class="num pos">+122.00</td><td class="num neg">-132.00</td><td class="num">1</td><td class="num">0.2</td><td class="num">20.00円</td></tr><tr><td><a href="/pairs/ZARJPY.html">ZAR/JPY</a></td><td class="num pos">+11.00</td><td class="num neg">-16.00</td><td class="num">1</td><td class="num">0.9</td><td class="num">90.00円</td></tr></tbody></table></div>
 
-<h2>推移</h2><p>推移グラフは数日分のデータが貯まってから表示されます。</p>
+<h2>出典</h2><ul><li>スワップポイント：<a href="https://line-sec.co.jp/fx/market/swap-calendar" rel="nofollow noopener" target="_blank">https://line-sec.co.jp/fx/market/swap-calendar</a></li><li>スプレッド：<a href="https://line-sec.co.jp/fx/features/spread-cost" rel="nofollow noopener" target="_blank">https://line-sec.co.jp/fx/features/spread-cost</a></li></ul>
 
-
-
-
-<h2>USD/HKD を比較するときの注意</h2>
-<p>掲載値は各社の公表値を1万通貨・1日あたりに換算したものです。
-掲載単位や付与日数の違いは揃えていますが、公表タイミングの違いにより、
-業者によって参照日が1日前後ずれることがあります。</p>
-<p>また、スワップポイントは日々変動します。今日の順位が明日も同じとは限りません。
-実際の取引前には、必ず各社の公式ページで最新の条件をご確認ください。</p>
-<p>関連：<a href="/guide/how-to-read.html">数字の読み方</a>／
-<a href="/guide/risks.html">リスクと注意点</a>／
-<a href="/swaps.html">全通貨ペアの一覧</a></p>
+<div class="note">本ページはLINE FXが公表している情報を自動収集して掲載しているものであり、
+同社の推奨・非推奨を示すものではありません。また同社との提携関係を示すものでもありません。
+最新の条件は必ず公式サイトでご確認ください。</div>
+<p>関連：<a href="/brokers/">他の業者を見る</a>／
+<a href="/swaps.html">全業者の一覧で比較する</a>／
+<a href="/guide/methodology.html">データの集め方</a></p>
 
 <p class="stamp">最終更新：2026年7月31日（金）時点</p>
 </div></main>

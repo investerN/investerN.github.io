@@ -172,6 +172,22 @@ details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
 .evfig img{display:block; width:100%; height:auto; border-top:1px solid var(--border)}
 .evfig figcaption{font-size:12.5px; color:var(--ink-2); padding:10px 15px 13px; line-height:1.65}
 
+/* 推定値は確定値と見分けが付くようにする */
+td.est{color:var(--ink-2)}
+td.est::after{content:"推定"; font-size:9.5px; color:var(--muted); margin-left:5px;
+  border:1px solid var(--border); border-radius:4px; padding:0 3px; vertical-align:1px}
+
+/* --- 広告表記（ステマ規制） --- */
+.prbar{
+  font-size:12.5px; color:var(--ink-2); background:var(--surface-2);
+  border:1px solid var(--border); border-radius:8px; padding:8px 12px; margin:12px 0 0;
+}
+.pr{
+  display:inline-block; font-size:10.5px; font-weight:600; color:var(--muted);
+  border:1px solid var(--border); border-radius:4px; padding:0 5px; margin-left:6px;
+  vertical-align:1px;
+}
+
 /* --- 前日比 --- */
 .delta{font-size:12px; font-weight:600; white-space:nowrap; font-variant-numeric:tabular-nums}
 .delta.up{color:var(--pos)} .delta.down{color:var(--neg)} .delta.flat{color:var(--muted)}
@@ -190,6 +206,7 @@ details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
 }
 .hero .amount .unit{font-size:15px; color:var(--ink-2); font-weight:500}
 .hero .leg p{margin:0}
+.hero .sub{font-size:13px; color:var(--ink-2); margin:8px 0 0; line-height:1.7}
 .hero .legs{display:grid; gap:10px; margin:14px 0 0}
 @media(min-width:640px){ .hero .legs{grid-template-columns:1fr 1fr} }
 .hero .leg{background:var(--surface); border:1px solid var(--border); border-radius:9px; padding:10px 13px}
@@ -345,9 +362,15 @@ IG証券、サクソバンク証券、FXTF、FXブロードネットの各社で
 その場合、その業者の行は当日の一覧に含まれません。</p>
 
 <h2>収益について</h2>
-<p>本サイトはGoogle AdSenseによる広告を掲載しています。
-広告の掲載は各業者の評価・掲載順位に影響を与えません。
-掲載順位は収集した数値のみに基づいて機械的に決定しています。</p>
+<p>本サイトは、Google AdSenseによる広告と、FX業者の口座開設に関する
+アフィリエイトプログラム（成果報酬型広告）を利用しています。
+広告を含むリンクには「広告」と表示し、そのページの先頭にも
+広告を含む旨を明示しています。</p>
+<p><strong>掲載順位は、収集した数値のみに基づいて機械的に決定しています。</strong>
+広告主であるかどうか、報酬額がいくらかは、順位の計算に一切使用していません。
+順位の決め方は<a href="/guide/methodology.html">データの集め方と検証</a>に、
+数値の意味は<a href="/guide/how-to-read.html">数字の読み方</a>に書いています。</p>
+<p>広告収益は、サーバー費用および収集の維持に充てています。</p>
 
 <h2>このサイトが行わないこと</h2>
 <ul>

@@ -172,6 +172,22 @@ details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
 .evfig img{display:block; width:100%; height:auto; border-top:1px solid var(--border)}
 .evfig figcaption{font-size:12.5px; color:var(--ink-2); padding:10px 15px 13px; line-height:1.65}
 
+/* 推定値は確定値と見分けが付くようにする */
+td.est{color:var(--ink-2)}
+td.est::after{content:"推定"; font-size:9.5px; color:var(--muted); margin-left:5px;
+  border:1px solid var(--border); border-radius:4px; padding:0 3px; vertical-align:1px}
+
+/* --- 広告表記（ステマ規制） --- */
+.prbar{
+  font-size:12.5px; color:var(--ink-2); background:var(--surface-2);
+  border:1px solid var(--border); border-radius:8px; padding:8px 12px; margin:12px 0 0;
+}
+.pr{
+  display:inline-block; font-size:10.5px; font-weight:600; color:var(--muted);
+  border:1px solid var(--border); border-radius:4px; padding:0 5px; margin-left:6px;
+  vertical-align:1px;
+}
+
 /* --- 前日比 --- */
 .delta{font-size:12px; font-weight:600; white-space:nowrap; font-variant-numeric:tabular-nums}
 .delta.up{color:var(--pos)} .delta.down{color:var(--neg)} .delta.flat{color:var(--muted)}
@@ -190,6 +206,7 @@ details.tbl summary{font-size:13px; color:var(--accent); cursor:pointer}
 }
 .hero .amount .unit{font-size:15px; color:var(--ink-2); font-weight:500}
 .hero .leg p{margin:0}
+.hero .sub{font-size:13px; color:var(--ink-2); margin:8px 0 0; line-height:1.7}
 .hero .legs{display:grid; gap:10px; margin:14px 0 0}
 @media(min-width:640px){ .hero .legs{grid-template-columns:1fr 1fr} }
 .hero .leg{background:var(--surface); border:1px solid var(--border); border-radius:9px; padding:10px 13px}
@@ -317,6 +334,7 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 <nav class="crumb"><a href="/">トップ</a> › <a href="/pairs/">通貨ペア</a> › USD/MXN</nav>
 
 <h1>USD/MXN のスワップポイント業者間比較</h1>
+
 <p class="lede">USD/MXN を取り扱う5社の買い・売りスワップを、
 1万通貨・1日あたりに換算して比較しています。</p>
 <div class="grid c2" style="margin-top:18px"><div class="tile"><p class="k">買いスワップが最良</p><p class="v"><span class="neg">-155.97円</span></p><p class="s">IG証券</p></div><div class="tile"><p class="k">売りスワップが最良</p><p class="v"><span class="pos">+118.42円</span></p><p class="s">IG証券</p></div><div class="tile"><p class="k">組み合わせたサヤ</p><p class="v">—</p><p class="s">1万通貨・1日あたり</p></div><div class="tile"><p class="k">比較した業者</p><p class="v">5社</p><p class="s">この通貨ペアを取り扱う社</p></div></div>
@@ -335,6 +353,8 @@ try{var t=localStorage.getItem('swtheme');if(t)document.documentElement.setAttri
 <tbody><tr><td><a href="/brokers/ig-shoken.html">IG証券</a></td><td class="num neg">-155.97</td><td class="num pos">+118.42</td><td class="num">1</td><td class="num">不明</td><td><a href="https://www.ig.com/jp/forex/swap-point" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/gaitame-com.html">外為どっとコム</a></td><td class="num neg">-182.00</td><td class="num pos">+91.00</td><td class="num">1</td><td class="num">18.21円</td><td><a href="https://www.gaitame.com/service/fx/swap-cal.html?pair=usdmxn" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/hirose-fx.html">ヒロセ通商</a></td><td class="num neg">-182.40</td><td class="num pos">+91.20</td><td class="num">1</td><td class="num">1,083.67円</td><td><a href="https://hirose-fx.co.jp/contents/news/Swap" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/jfx.html">JFX</a></td><td class="num neg">-184.00</td><td class="num pos">+92.00</td><td class="num">1</td><td class="num">不明</td><td><a href="https://www.jfx.co.jp/trading_rule/swap/" rel="nofollow noopener" target="_blank">公式</a></td></tr><tr><td><a href="/brokers/saxobank.html">サクソバンク証券</a></td><td class="num neg">-210.50</td><td class="num pos">+63.26</td><td class="num">1</td><td class="num">不明</td><td><a href="https://cdn-storage.saxobank.com/jp/swappoint/swappoint-weekly.pdf" rel="nofollow noopener" target="_blank">公式</a></td></tr></tbody></table></div>
 
 <h2>推移</h2><p>推移グラフは数日分のデータが貯まってから表示されます。</p>
+
+
 
 
 
